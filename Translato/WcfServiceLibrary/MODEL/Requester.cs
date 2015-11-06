@@ -14,3 +14,4 @@ namespace WcfServiceLibrary.MODEL
         public string PasswordSalt { get; set; }
     }
 }
+
