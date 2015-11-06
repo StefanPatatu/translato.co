@@ -8,7 +8,8 @@ namespace WcfServiceLibrary.MODEL
 {
     class Requester
     {
-        public int Id { get; set; }
+        public int RequesterId { get; set; }
+        public int UserName { get; set; }
         public string HashedPassword { get; set; }
         public string PasswordSalt { get; set; }
     }
