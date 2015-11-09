@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace WcfServiceLibrary.MODEL
 {
-    class Provider
+    class Users
     {
-        public int ProviderId { get; set; }
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string HashedPassword { get; set; }
         public string PasswordSalt { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public bool NewsletterOptOut { get; set; }
     }
 }

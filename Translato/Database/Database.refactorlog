@@ -35,4 +35,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="56d219ab-2fb8-4243-9249-e1fdcae7d32e" ChangeDateTime="11/09/2015 13:36:18">
+    <Property Name="ElementName" Value="[dbo].[Provider].[EmailOptOut]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Provider]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NewsletterOptOut" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f1bfd22a-788b-400d-a8e2-eaa8b5dba410" ChangeDateTime="11/09/2015 13:48:12">
+    <Property Name="ElementName" Value="[dbo].[FIles].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FIles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FileId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0904e1bd-c8f7-4bfa-b7c0-06533e5864db" ChangeDateTime="11/09/2015 13:55:18">
+    <Property Name="ElementName" Value="[dbo].[FIles].[RowGUID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FIles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RowGuid" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5b0f1b36-153e-4b93-b400-617e58aae27e" ChangeDateTime="11/09/2015 14:02:29">
+    <Property Name="ElementName" Value="[dbo].[Jobs].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Jobs]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="JobId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="907c2dfe-f168-4a89-b2c3-de00e917b082" ChangeDateTime="11/09/2015 14:38:19">
+    <Property Name="ElementName" Value="[dbo].[Languages].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Languages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LanguageID" />
+  </Operation>
 </Operations>

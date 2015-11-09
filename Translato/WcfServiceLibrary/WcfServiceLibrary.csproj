@@ -46,8 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService1.cs" />
-    <Compile Include="MODEL\Provider.cs" />
-    <Compile Include="MODEL\Requester.cs" />
+    <Compile Include="MODEL\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
   </ItemGroup>

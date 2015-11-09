@@ -1,12 +1,14 @@
-﻿CREATE TABLE [dbo].[Provider]
+﻿CREATE TABLE [dbo].[Users]
 (
-	[UserId] INT IDENTITY(1,1) PRIMARY KEY, 
+	[UserId] INT IDENTITY(1,1) NOT NULL, 
     [UserName] NVARCHAR(15) NOT NULL, 
     [HashedPassword] NVARCHAR(100) NOT NULL, 
     [PasswordSalt] NVARCHAR(15) NOT NULL, 
     [FirstName] NVARCHAR(20) NOT NULL, 
     [LastName] NVARCHAR(20) NOT NULL, 
-    [Country] NVARCHAR(50) NOT NULL, 
     [Email] NVARCHAR(50) NOT NULL, 
-    [EmailOptOut] BIT NOT NULL
+    [NewsletterOptOut] BIT NOT NULL,
+	PRIMARY KEY ([UserId]),
+	CONSTRAINT UNIQUE_USERNAME UNIQUE([UserName]),
+	CONSTRAINT UNIQUE_EMAIL UNIQUE([Email])
 )
