@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>12</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>108</y>
+      <w>120</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Reserve
+--
+-dateToday</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>612</x>
+      <y>492</y>
+      <w>120</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Schedule
+--
+-date
+-startHour
+-available</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>564</x>
+      <y>300</y>
+      <w>120</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Review
+--
+-date
+-text</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>312</x>
+      <y>276</y>
+      <w>156</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>User
+--
+-userName
+-firstName
+-lastName
+-email
+-newsletterOptOut</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>156</x>
+      <y>492</y>
+      <w>120</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>Submission
+--
+-dateSubmitted
+-isAwarded</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>192</y>
+      <w>72</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>m2= 0..*
+m1= 1</panel_attributes>
+    <additional_attributes>40.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>336</y>
+      <w>132</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>m1= 0..*
+m2= 1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>180</y>
+      <w>60</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>408</y>
+      <w>72</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>m1= 0..*
+m2= 1</panel_attributes>
+    <additional_attributes>10.0;70.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>180</y>
+      <w>192</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;80.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>408</y>
+      <w>180</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>m1= 1..*
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>156</x>
+      <y>48</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Job
+--
+-name
+-dateCreated 
+-duration
+-languageIn
+-languageTo
+-reward
+-dateAwarded</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>204</x>
+      <y>216</y>
+      <w>60</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2= 0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+  </element>
+</diagram>
