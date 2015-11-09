@@ -16,6 +16,5 @@ namespace WcfServiceLibrary.MODEL
         public string LastName { get; set; }
         public string Email { get; set; }
         public bool NewsletterOptOut { get; set; }
-        //fuuuuuckkkk!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 }
