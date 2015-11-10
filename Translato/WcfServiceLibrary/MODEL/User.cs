@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WcfServiceLibrary.MODEL
 {
-    public class Useraskghbdf
+    public class User
     {
         private int p_UserId;
         private string p_UserName;
@@ -16,11 +16,11 @@ namespace WcfServiceLibrary.MODEL
         private string p_LastName;
         private string p_Email;
         private bool p_NewsletterOptOut;
-        private Useraskghbdf()
+        private User()
         {
 
         }
-        public Useraskghbdf(
+        public User(
             int UserId,
             string UserName,
             string HashedPassword,
