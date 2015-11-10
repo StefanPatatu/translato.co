@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//author: futz
+//helpers:
+
 namespace WcfServiceLibrary.MODEL
 {
     public class User
