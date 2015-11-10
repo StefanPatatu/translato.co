@@ -22,7 +22,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             bool NewsletterOptOut = false;
 
             //act
-            User user_m1 = new User(
+            Useraskghbdf user_m1 = new Useraskghbdf(
                 UserId,
                 UserName,
                 HashedPassword,
@@ -56,7 +56,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             string LastName = "Frunza";
             string Email = "frunza.adrian@email.com";
             bool NewsletterOptOut = false;
-            User user_m2 = new User(
+            Useraskghbdf user_m2 = new Useraskghbdf(
                 UserId,
                 UserName,
                 HashedPassword,
