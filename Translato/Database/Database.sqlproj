@@ -26,6 +26,9 @@
     <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
     <DefaultSchema>dbo</DefaultSchema>
     <GenerateCreateScript>True</GenerateCreateScript>
+    <NonTransactedFileStreamAccess>FULL</NonTransactedFileStreamAccess>
+    <FileStreamDirectoryName>translato_files</FileStreamDirectoryName>
+    <AssemblyOwner>Stefan Patatu</AssemblyOwner>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -74,5 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 </Project>
