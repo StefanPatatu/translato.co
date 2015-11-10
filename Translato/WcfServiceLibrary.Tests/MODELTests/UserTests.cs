@@ -36,7 +36,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
                 NewsletterOptOut);
 
             //assert
-            Assert.IsNotNull(user_m1);
+            Assert.IsNotNull(user_m1, "User object is null");
             Assert.AreEqual(1, user_m1.UserId, "Wrong UserId");
             Assert.AreEqual("frunza.adrian", user_m1.UserName, "Wrong UserName");
             Assert.AreEqual("rsh45sh46gh4g65h4gf6h4fg6h54th", user_m1.HashedPassword, "Wrong HashedPassword");
@@ -80,7 +80,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             user_m2.NewsletterOptOut = true;
 
             //assert
-            Assert.IsNotNull(user_m2);
+            Assert.IsNotNull(user_m2, "User object is null");
             Assert.AreEqual(2, user_m2.UserId, "UserId not changed");
             Assert.AreEqual("not.frunza.adrian", user_m2.UserName, "UserName not changed");
             Assert.AreEqual("rsh45sh46gh4g65h4gf6h4fg6h54ti", user_m2.HashedPassword, "HashedPassword not changed");

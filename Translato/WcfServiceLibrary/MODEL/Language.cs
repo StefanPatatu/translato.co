@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//author: kristupas
+//helpers:
+
 namespace WcfServiceLibrary.MODEL
 {
     public class Language
@@ -16,11 +19,10 @@ namespace WcfServiceLibrary.MODEL
         }
         public Language(
             int LanguageId,
-            string LanguageName)      {
-
+            string LanguageName)
+        {
             this.LanguageId = LanguageId;
             this.LanguageName = LanguageName;
-          
         }
         public int LanguageId
         {
@@ -32,6 +34,5 @@ namespace WcfServiceLibrary.MODEL
             get { return p_LanguageName; }
             set { p_LanguageName = value; }
         }
-       
     }
 }

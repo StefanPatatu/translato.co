@@ -4,7 +4,8 @@ using WcfServiceLibrary.MODEL;
 
 
 namespace WcfServiceLibrary.Tests.MODELTests
-{   [TestClass]
+{
+    [TestClass]
     public class LanguageTests
     {
         [TestMethod]
@@ -16,14 +17,13 @@ namespace WcfServiceLibrary.Tests.MODELTests
             string LanguageName = "Lithuanian";
 
             //act
-
             Language language_m1 = new Language(
                  LanguageId,
                  LanguageName);
 
             //assert
-            Assert.IsNotNull(language_m1);
-            Assert.AreEqual(1, language_m1.LanguageId, "Wrong UserId");
+            Assert.IsNotNull(language_m1, "Language object is null");
+            Assert.AreEqual(1, language_m1.LanguageId, "Wrong LanguageId");
             Assert.AreEqual("Lithuanian", language_m1.LanguageName, "Wrong LanguageName");
         }
         [TestMethod]
@@ -42,10 +42,9 @@ namespace WcfServiceLibrary.Tests.MODELTests
             language_m2.LanguageName = "not.Lithuanian";
 
             //assert
-            Assert.IsNotNull(language_m2);
+            Assert.IsNotNull(language_m2, "Language object is null");
             Assert.AreEqual(2, language_m2.LanguageId, "LanguageId not changed");
             Assert.AreEqual("not.Lithuanian", language_m2.LanguageName, "LanguageName not changed");
-
         }
     }
 }
