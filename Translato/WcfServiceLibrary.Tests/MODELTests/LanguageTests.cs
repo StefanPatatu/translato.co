@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
 
+//author: kristis133
+//helpers:
 
 namespace WcfServiceLibrary.Tests.MODELTests
 {
