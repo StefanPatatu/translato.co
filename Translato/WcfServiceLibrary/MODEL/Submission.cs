@@ -70,5 +70,4 @@ namespace WcfServiceLibrary.MODEL
             set { p_JobId = value; }
         }
     }
-
 }
