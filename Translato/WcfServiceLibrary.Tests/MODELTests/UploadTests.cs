@@ -17,22 +17,22 @@ namespace WcfServiceLibrary.Tests.MODELTests
             //arrange
             int UploadId = 5;
             string Type = "Hey";
-            int TextId = 4;
-            int FileId = 8;
+            Text Text = new Text(3, "'morning");
+            File File = new File(6);
 
             //act
             Upload upload_m1 = new Upload(
                 UploadId,
                 Type,
-                TextId,
-                FileId);
+                Text,
+                File);
 
             //assert
             Assert.IsNotNull(upload_m1, "Upload object is null");
             Assert.AreEqual(5, upload_m1.UploadId, "Wrong UploadId");
             Assert.AreEqual("Hey", upload_m1.Type, "Wrong Type");
-            Assert.AreEqual(4, upload_m1.TextId, "Wrong TextId");
-            Assert.AreEqual(8, upload_m1.FileId, "Wrong FileId");
+            Assert.IsNotNull(upload_m1.Text, "Text object is null");
+            Assert.IsNotNull(upload_m1.File, "File bject is null");
                 }
         [TestMethod]
         //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
@@ -41,27 +41,26 @@ namespace WcfServiceLibrary.Tests.MODELTests
             //arrange
             int UploadId = 5;
             string Type = "Hey";
-            int TextId = 4;
-            int FileId = 8;
-
+            Text Text = new Text(3, "'morning");
+            File File = new File(6);
             Upload upload_m2 = new Upload(
                 UploadId,
                 Type,
-                TextId,
-                FileId);
+                Text,
+                File);
 
             //act
             upload_m2.UploadId = 2;
             upload_m2.Type = "LoL";
-            upload_m2.TextId = 1;
-            upload_m2.FileId = 5;
+            upload_m2.Text = new Text(2, "'evening");
+            upload_m2.File = new File(5);
 
             //assert
             Assert.IsNotNull(upload_m2, "Upload object is null");
             Assert.AreEqual(2, upload_m2.UploadId, "UploadId not changed");
             Assert.AreEqual("LoL", upload_m2.Type, "Type not changed");
-            Assert.AreEqual(1, upload_m2.TextId, "TextId not changed");
-            Assert.AreEqual(5, upload_m2.FileId, "FileId not changed");
+            Assert.AreEqual(new Text(2, "'evening"), upload_m2.Text, "Text not changed");
+            Assert.AreEqual(new File(5), upload_m2.File, "File not changed");
         }
     }
 }

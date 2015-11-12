@@ -13,8 +13,8 @@ namespace WcfServiceLibrary.MODEL
     {
         private int p_UploadId;
         private string p_Type;
-        private int p_TextId;
-        private int p_FileId;
+        private Text p_Text;
+        private File p_File;
 
         private Upload()
         {
@@ -24,13 +24,13 @@ namespace WcfServiceLibrary.MODEL
         public Upload(
             int UploadId,
             string Type,
-            int TextId,
-            int FileId)
+            Text Text,
+            int File)
         {
             this.UploadId = UploadId;
             this.Type = Type;
-            this.TextId = TextId;
-            this.FileId = FileId;
+            this.Text = Text;
+            this.File = File;
         }
 
         public int UploadId
@@ -43,15 +43,15 @@ namespace WcfServiceLibrary.MODEL
             get { return p_Type; }
             set { p_Type = value; }
         }
-        public int TextId
+        public int Text
         {
-            get { return p_TextId; }
-            set { p_TextId = value; }
+            get { return p_Text; }
+            set { p_Text = value; }
         }
-        public int FileId
+        public int File
         {
-            get { return p_FileId; }
-            set { p_FileId = value; }
+            get { return p_File; }
+            set { p_File = value; }
         }
     }
 }
