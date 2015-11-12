@@ -18,7 +18,7 @@ namespace WcfServiceLibrary.MODEL
         private DateTimeOffset p_DateAwarded;
         private Language p_LanguageFrom, p_LanguageTo;
         private User p_User;
-        private File p_File;
+        private Upload p_Upload;
 
         //empty constructor
         private Job()
@@ -37,7 +37,7 @@ namespace WcfServiceLibrary.MODEL
             Language LanguageFrom,
             Language LanguageTo,
             User User,
-            File File
+            Upload Upload
             )
         {
             this.JobId = JobId;
@@ -49,7 +49,7 @@ namespace WcfServiceLibrary.MODEL
             this.LanguageFrom = LanguageFrom;
             this.LanguageTo = LanguageTo;
             this.User = User;
-            this.File = File;
+            this.Upload = Upload;
         }
 
         //gets and sets
@@ -100,10 +100,10 @@ namespace WcfServiceLibrary.MODEL
             get { return p_User; }
             set { p_User = value; }
         }
-        public File File
+        public Upload Upload
         {
-            get { return p_File; }
-            set { p_File = value; }
+            get { return p_Upload; }
+            set { p_Upload = value; }
         }
 
     }
