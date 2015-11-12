@@ -9,6 +9,6 @@
     [Email] NVARCHAR(50) NOT NULL,
     [NewsletterOptOut] BIT NOT NULL DEFAULT 1,
 	PRIMARY KEY ([UserId]),
-	CONSTRAINT UNIQUE_USERNAME UNIQUE([UserName]),
-	CONSTRAINT UNIQUE_EMAIL UNIQUE([Email])
+	CONSTRAINT CK_Users_Unique_UserName UNIQUE([UserName]),
+	CONSTRAINT CK_Users_Unique_Email UNIQUE([Email])
 )

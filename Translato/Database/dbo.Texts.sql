@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Texts]
+(
+	[TextId] INT IDENTITY(1,1) NOT NULL,
+	[TextData] NVARCHAR(MAX) NOT NULL,
+	PRIMARY KEY([TextId])
+)
