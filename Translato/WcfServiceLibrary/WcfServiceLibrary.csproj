@@ -50,6 +50,7 @@
     <Compile Include="MODEL\Job.cs" />
     <Compile Include="MODEL\Language.cs" />
     <Compile Include="MODEL\Submission.cs" />
+    <Compile Include="MODEL\Text.cs" />
     <Compile Include="MODEL\Upload.cs" />
     <Compile Include="MODEL\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
