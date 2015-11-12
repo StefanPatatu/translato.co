@@ -52,6 +52,32 @@ namespace WcfServiceLibrary.MODEL
             this.Upload = Upload;
         }
 
+        //constructor without id 
+        public Job(
+            
+            string JobName,
+            DateTimeOffset DateCreated,
+            int DurationInDays,
+            decimal Reward,
+            DateTimeOffset DateAwarded,
+            Language LanguageFrom,
+            Language LanguageTo,
+            User User,
+            Upload Upload
+            )
+        {
+            
+            this.JobName = JobName;
+            this.DateCreated = DateCreated;
+            this.DurationInDays = DurationInDays;
+            this.Reward = Reward;
+            this.DateAwarded = DateAwarded;
+            this.LanguageFrom = LanguageFrom;
+            this.LanguageTo = LanguageTo;
+            this.User = User;
+            this.Upload = Upload;
+        }
+
         //gets and sets
 
 
