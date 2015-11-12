@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary", "WcfSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication", "WindowsFormsApplication\WindowsFormsApplication.csproj", "{A5358204-1710-451A-A4DD-7D9C35459FA8}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TranslatoDb", "Database\TranslatoDb.sqlproj", "{1044EFF1-941B-49B8-8EC2-1F492C58008B}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TranslatoDb", "TranslatoDb\TranslatoDb.sqlproj", "{1044EFF1-941B-49B8-8EC2-1F492C58008B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary.Tests", "WcfServiceLibrary.Tests\WcfServiceLibrary.Tests.csproj", "{66855C2F-DF5F-47DA-9080-48270F511216}"
 EndProject
