@@ -55,6 +55,7 @@
     <Compile Include="MODELTests\JobTests.cs" />
     <Compile Include="MODELTests\LanguageTests.cs" />
     <Compile Include="MODELTests\SubmissionTests.cs" />
+    <Compile Include="MODELTests\TextTests.cs" />
     <Compile Include="MODELTests\UploadTests.cs" />
     <Compile Include="MODELTests\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
