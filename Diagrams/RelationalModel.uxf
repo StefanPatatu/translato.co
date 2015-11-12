@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.1">
-  <zoom_level>9</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>18</x>
-      <y>90</y>
-      <w>684</w>
-      <h>27</h>
+      <x>20</x>
+      <y>80</y>
+      <w>760</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*UserId | UserName | HashedPassword | PasswordSalt | FirstName | LastName | Email | NewsletterOptOut</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>549</x>
-      <y>585</y>
-      <w>360</w>
-      <h>27</h>
+      <x>610</x>
+      <y>630</y>
+      <w>400</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>954</x>
+      <x>1060</x>
       <y>180</y>
-      <w>207</w>
-      <h>27</h>
+      <w>230</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*FileId |  FileData | RowGuid  </panel_attributes>
     <additional_attributes/>
@@ -37,10 +37,10 @@
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>261</x>
-      <y>153</y>
-      <w>63</w>
-      <h>27</h>
+      <x>290</x>
+      <y>150</y>
+      <w>70</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*Jobs*</panel_attributes>
     <additional_attributes/>
@@ -48,10 +48,10 @@
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>342</x>
-      <y>567</y>
-      <w>90</w>
-      <h>27</h>
+      <x>380</x>
+      <y>610</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -59,10 +59,10 @@
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>18</x>
-      <y>63</y>
-      <w>45</w>
-      <h>27</h>
+      <x>20</x>
+      <y>50</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*Users*</panel_attributes>
     <additional_attributes/>
@@ -70,10 +70,10 @@
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>954</x>
-      <y>153</y>
-      <w>45</w>
-      <h>27</h>
+      <x>1060</x>
+      <y>150</y>
+      <w>50</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*Files*</panel_attributes>
     <additional_attributes/>
@@ -81,10 +81,10 @@
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>792</x>
-      <y>63</y>
-      <w>90</w>
-      <h>27</h>
+      <x>880</x>
+      <y>50</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*Submissions*</panel_attributes>
     <additional_attributes/>
@@ -92,21 +92,21 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>135</x>
+      <x>150</x>
       <y>180</y>
-      <w>774</w>
-      <h>27</h>
+      <w>860</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>*JobId | JobName | DateCreated | DurationInDays | Reward | DateAwarded | **LanguageFrom | **LanguageTo | **UserId | **FileId</panel_attributes>
+    <panel_attributes>*JobId | JobName | DateCreated | DurationInDays | Reward | DateAwarded | **LanguageFrom | **LanguageTo | **UserId | **UploadId</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>585</x>
-      <y>567</y>
-      <w>90</w>
-      <h>27</h>
+      <x>650</x>
+      <y>610</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*Provider*</panel_attributes>
     <additional_attributes/>
@@ -114,21 +114,21 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>738</x>
-      <y>90</y>
-      <w>414</w>
-      <h>27</h>
+      <x>820</x>
+      <y>80</y>
+      <w>490</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>*SubmissionId | DateSubmitted | IsAwarded | **UserId | **FileId | **JobId </panel_attributes>
+    <panel_attributes>*SubmissionId | DateSubmitted | IsAwarded | **UserId | **UploadId | **JobId </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>477</x>
-      <y>243</y>
-      <w>360</w>
-      <h>27</h>
+      <x>530</x>
+      <y>250</y>
+      <w>400</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*LanguageId | LanguageName</panel_attributes>
     <additional_attributes/>
@@ -136,10 +136,10 @@
   <element>
     <type>com.baselet.element.old.element.Text</type>
     <coordinates>
-      <x>477</x>
-      <y>216</y>
-      <w>90</w>
-      <h>27</h>
+      <x>530</x>
+      <y>220</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>*Languages*</panel_attributes>
     <additional_attributes/>
@@ -147,10 +147,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>36</x>
-      <y>108</y>
-      <w>801</w>
-      <h>90</h>
+      <x>40</x>
+      <y>100</y>
+      <w>890</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;870.0;40.0;870.0;80.0</additional_attributes>
@@ -158,32 +158,32 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>873</x>
-      <y>198</y>
-      <w>135</w>
-      <h>54</h>
+      <x>970</x>
+      <y>200</y>
+      <w>120</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>130.0;10.0;130.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>100.0;100.0;100.0;140.0;10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>999</x>
-      <y>108</y>
-      <w>81</w>
-      <h>90</h>
+      <x>980</x>
+      <y>100</y>
+      <w>220</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;30.0;70.0;30.0;70.0;10.0</additional_attributes>
+    <additional_attributes>50.0;200.0;50.0;220.0;10.0;220.0;10.0;120.0;50.0;120.0;50.0;30.0;200.0;30.0;200.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>198</y>
-      <w>54</w>
-      <h>63</h>
+      <x>650</x>
+      <y>200</y>
+      <w>60</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;30.0;40.0;30.0;40.0;10.0</additional_attributes>
@@ -191,10 +191,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
-      <y>198</y>
-      <w>135</w>
-      <h>63</h>
+      <x>690</x>
+      <y>200</y>
+      <w>150</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;30.0;130.0;30.0;130.0;10.0</additional_attributes>
@@ -202,10 +202,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>54</x>
-      <y>54</y>
-      <w>972</w>
-      <h>99</h>
+      <x>60</x>
+      <y>40</y>
+      <w>1080</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;90.0;750.0;90.0;750.0;10.0;1060.0;10.0;1060.0;40.0</additional_attributes>
@@ -214,11 +214,77 @@
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>18</y>
-      <w>1134</w>
-      <h>234</h>
+      <y>0</y>
+      <w>1260</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>200.0;210.0;200.0;240.0;10.0;240.0;10.0;10.0;1240.0;10.0;1240.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>1020</x>
+      <y>270</y>
+      <w>240</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*UploadId | Type | **TextId | **FileId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Text</type>
+    <coordinates>
+      <x>1020</x>
+      <y>240</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Uploads*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Text</type>
+    <coordinates>
+      <x>1070</x>
+      <y>360</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Texts*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>1070</x>
+      <y>390</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*TextId | TextData</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>290</y>
+      <w>160</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>120.0;130.0;120.0;160.0;10.0;160.0;10.0;60.0;140.0;60.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>200</y>
+      <w>240</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;220.0;30.0;220.0;150.0;150.0;150.0;150.0;100.0</additional_attributes>
   </element>
 </diagram>
