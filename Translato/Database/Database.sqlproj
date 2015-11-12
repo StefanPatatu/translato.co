@@ -29,6 +29,7 @@
     <NonTransactedFileStreamAccess>FULL</NonTransactedFileStreamAccess>
     <FileStreamDirectoryName>translato_files</FileStreamDirectoryName>
     <AssemblyOwner>Stefan Patatu</AssemblyOwner>
+    <TargetDatabase>Database</TargetDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
