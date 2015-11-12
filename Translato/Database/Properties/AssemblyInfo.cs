@@ -3,8 +3,8 @@
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with the SQLCLR assembly.
-[assembly: AssemblyTitle("TranslatoCo_Database")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("TranslatoDb")]
+[assembly: AssemblyDescription("TranslatoCo_Database")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Translato.co")]
 [assembly: AssemblyProduct("TranslatoCo_Database")]

@@ -8,8 +8,8 @@
 	FOREIGN KEY ([TextId]) REFERENCES [dbo].[Texts]([TextId]) ON DELETE NO ACTION ON UPDATE CASCADE,
 	FOREIGN KEY ([FileId]) REFERENCES [dbo].[Files]([FileId]) ON DELETE NO ACTION ON UPDATE CASCADE,
 	CONSTRAINT CK_Uploads_Either_TextIdOrFileId CHECK (
-		[TextId] IS NOT NULL AND [FileId] IS NULL
+		[Uploads].[TextId] IS NOT NULL AND [Uploads].[FileId] IS NULL
 		OR
-		[TextId] IS NULL AND [FileId] IS NOT NULL
+		[Uploads].[TextId] IS NULL AND [Uploads].[FileId] IS NOT NULL
 	)
 )

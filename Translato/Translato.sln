@@ -11,11 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary", "WcfSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication", "WindowsFormsApplication\WindowsFormsApplication.csproj", "{A5358204-1710-451A-A4DD-7D9C35459FA8}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{1044EFF1-941B-49B8-8EC2-1F492C58008B}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TranslatoDb", "Database\TranslatoDb.sqlproj", "{1044EFF1-941B-49B8-8EC2-1F492C58008B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary.Tests", "WcfServiceLibrary.Tests\WcfServiceLibrary.Tests.csproj", "{66855C2F-DF5F-47DA-9080-48270F511216}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database1", "Database1\Database1.sqlproj", "{B3C8A0C8-D474-4A70-B914-707D64197146}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,12 +48,6 @@ Global
 		{66855C2F-DF5F-47DA-9080-48270F511216}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66855C2F-DF5F-47DA-9080-48270F511216}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66855C2F-DF5F-47DA-9080-48270F511216}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3C8A0C8-D474-4A70-B914-707D64197146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3C8A0C8-D474-4A70-B914-707D64197146}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3C8A0C8-D474-4A70-B914-707D64197146}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{B3C8A0C8-D474-4A70-B914-707D64197146}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3C8A0C8-D474-4A70-B914-707D64197146}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3C8A0C8-D474-4A70-B914-707D64197146}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
