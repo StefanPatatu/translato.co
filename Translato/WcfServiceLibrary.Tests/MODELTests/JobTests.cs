@@ -17,80 +17,109 @@ namespace WcfServiceLibrary.Tests.MODELTests
             //arrange
             int JobId = 1;
             string JobName = "Project1";
-            DateTimeOffset DateCreated = DateTimeOffset.Now;
+            DateTimeOffset DateCreated = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0)); 
             int DurationInDays = 3;
             decimal Reward = 100;
-            DateTimeOffset DateAwarded = DateTimeOffset.Now;
+            DateTimeOffset DateAwarded = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0));
             Language LanguageFrom = new Language(1, "English");
             Language LanguageTo = new Language(2, "Roumanian");
             User User = new User(1, "Adrian", "rsh45sh46gh4g65h4gf6h4fg6h54ti", "dg6dfg45d5sfgd6", "Adrian", "Frunza", "frunza.adrian@yahoo.com", false);
-            // I cannot create a File object
+            //I cannot create File object
 
             //act
-            /*User user_m1 = new User(
-                UserId,
-                UserName,
-                HashedPassword,
-                PasswordSalt,
-                FirstName,
-                LastName,
-                Email,
-                NewsletterOptOut);*/
+            public Job job_m1 = new Job(
+                JobId,
+                JobName,
+                DateCreated,
+                DurationInDays,
+                Reward,
+                DateAwarded,
+                LanguageFrom,
+                LanguageTo,
+                User,
+                File);
 
             //assert
-            Assert.IsNotNull(user_m1, "User object is null");
-            Assert.AreEqual(1, user_m1.UserId, "Wrong UserId");
-            Assert.AreEqual("frunza.adrian", user_m1.UserName, "Wrong UserName");
-            Assert.AreEqual("rsh45sh46gh4g65h4gf6h4fg6h54th", user_m1.HashedPassword, "Wrong HashedPassword");
-            Assert.AreEqual("dg6dfg45d5sfgd5", user_m1.PasswordSalt, "Wrong PasswordSalt");
-            Assert.AreEqual("Adrian", user_m1.FirstName, "Wrong FirstName");
-            Assert.AreEqual("Frunza", user_m1.LastName, "Wrong LastName");
-            Assert.AreEqual("frunza.adrian@email.com", user_m1.Email, "Wrong Email");
-            Assert.IsTrue(!user_m1.NewsletterOptOut, "Wrong NewsletterOptOut");
+            Assert.IsNotNull(job_m1, "job object is null");
+            Assert.AreEqual(1, job_m1.JobId, "Wrong JobId");
+            Assert.AreEqual( DateCreated, new DateTimeOffset(2008, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0)),"Wrong DateCreated"); 
+            Assert.AreEqual(3, job_m1.DurationInDays, "Wrong DurationInDays");
+            Assert.AreEqual(100, job_m1.Award, "Wrong Award");
+            Assert.AreEqual(DateAwarded, new DateTimeOffset(2008, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0)), "Wrong DateAwarded");
+            Assert.AreEqual(job_m1.LanguageFrom, new Language(1,"English"), "Wrong Language From");
+            Assert.AreEqual(job_m1.LanguageTo, new Language(2,"Roumanian"), "Wrong Language To");
+            Assert.AreEqual(job_m1.User, new User (1, "Adrian", "rsh45sh46gh4g65h4gf6h4fg6h54ti", "dg6dfg45d5sfgd6", "Adrian", "Frunza", "frunza.adrian@yahoo.com", false), "Wrong User");
+            //Cannot test file
+
         }
         [TestMethod]
         //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void MODEL_User_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
+        public void MODEL_Job_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
         {
-            //arrange
-            int UserId = 1;
-            string UserName = "frunza.adrian";
-            string HashedPassword = "rsh45sh46gh4g65h4gf6h4fg6h54th";
-            string PasswordSalt = "dg6dfg45d5sfgd5";
-            string FirstName = "Adrian";
-            string LastName = "Frunza";
-            string Email = "frunza.adrian@email.com";
-            bool NewsletterOptOut = false;
-            User user_m2 = new User(
-                UserId,
-                UserName,
-                HashedPassword,
-                PasswordSalt,
-                FirstName,
-                LastName,
-                Email,
-                NewsletterOptOut);
+        //arrange
+        int JobId = 1;
+        string JobName = "Project1";
+        DateTimeOffset DateCreated = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
+                             new TimeSpan(1, 0, 0));
+        int DurationInDays = 3;
+        decimal Reward = 100;
+        DateTimeOffset DateAwarded = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
+                             new TimeSpan(1, 0, 0));
+        Language LanguageFrom = new Language(1, "English");
+        Language LanguageTo = new Language(2, "Roumanian");
+        User User = new User(1, "Adrian", "rsh45sh46gh4g65h4gf6h4fg6h54ti", "dg6dfg45d5sfgd6", "Adrian", "Frunza", "frunza.adrian@yahoo.com", false);
+            //I cannot create File object
 
-            //act
-            user_m2.UserId = 2;
-            user_m2.UserName = "not.frunza.adrian";
-            user_m2.HashedPassword = "rsh45sh46gh4g65h4gf6h4fg6h54ti";
-            user_m2.PasswordSalt = "dg6dfg45d5sfgd6";
-            user_m2.FirstName = "Adriann";
-            user_m2.LastName = "Frunzulita";
-            user_m2.Email = "not.frunza.adrian@email.com";
-            user_m2.NewsletterOptOut = true;
+        
+    public Job job_m2 = new Job(
+                JobId,
+                JobName,
+                DateCreated,
+                DurationInDays,
+                Reward,
+                DateAwarded,
+                LanguageFrom,
+                LanguageTo,
+                User,
+                File);
 
-            //assert
-            Assert.IsNotNull(user_m2, "User object is null");
-            Assert.AreEqual(2, user_m2.UserId, "UserId not changed");
-            Assert.AreEqual("not.frunza.adrian", user_m2.UserName, "UserName not changed");
-            Assert.AreEqual("rsh45sh46gh4g65h4gf6h4fg6h54ti", user_m2.HashedPassword, "HashedPassword not changed");
-            Assert.AreEqual("dg6dfg45d5sfgd6", user_m2.PasswordSalt, "PasswordSalt not changed");
-            Assert.AreEqual("Adriann", user_m2.FirstName, "FirstName not changed");
-            Assert.AreEqual("Frunzulita", user_m2.LastName, "LastName not changed");
-            Assert.AreEqual("not.frunza.adrian@email.com", user_m2.Email, "Email not changed");
-            Assert.IsTrue(user_m2.NewsletterOptOut, "NewsletterOptOut not changed");
+    //act
+    
+
+        job_m2.JobId = 2;
+        job_m2.JobName = "Project2";
+        job_m2.DateCreated = new DateTimeOffset(2009, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0));
+        job_m2.DurationInDays = 4;
+        job_m2.Reward = 150;
+        job_m2.DateAwarded  = new DateTimeOffset(2009, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0));
+        job_m2.LanguageFrom = new Language(3,"French");
+        job_m2.LanguageTo = new Language(4,"Deutch");
+        job_m2.User = new User(1, "Adriana", "rsh45sh46gh4g65h4gf6h4fg6h54f", "dg6dfg45d5sfgd7", "Adriana", "Frunzaa", "afrunza.adrian@yahoo.com", true);
+        //canot create file 
+
+
+
+
+    //assert
+    Assert.IsNotNull(job_m2, "Job object is null");
+            Assert.AreEqual(2, job_m2.JobId, "JobId not changed");
+            Assert.AreEqual("Proect2", job_m2.JobName, "JobName not changed");
+            Assert.AreEqual(new DateTimeOffset(2009, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0)), job_m2.DateCreated, "DateCreated not changed");
+            Assert.AreEqual(4, job_m2.DurationInDays, "DurationInDays not changed");
+            Assert.AreEqual(150, job_m2.Reward, "Reward not changed");
+            Assert.AreEqual(new DateTimeOffset(2009, 5, 1, 8, 6, 32,
+                                 new TimeSpan(1, 0, 0)), job_m2.DateAwarded, "DateCreated not changed");
+            Assert.AreEqual(new Language(3,"French"), job_m2.LanguageFrom, "LanguageFrom not changed");
+            Assert.AreEqual(new Language(3,"Deutch"), job_m2.LanguageTo, "LanguageTo not changed");
+            Assert.AreEqual(new User(1, "Adriana", "rsh45sh46gh4g65h4gf6h4fg6h54f", "dg6dfg45d5sfgd7", "Adriana", "Frunzaa", "afrunza.adrian@yahoo.com", true),job_m2.User,"User not changed");
+        //cannot test file
         }
     }
 }

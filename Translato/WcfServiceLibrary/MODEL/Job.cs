@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 //helpers:
 namespace WcfServiceLibrary.MODEL
 {
-    class Job
+    public class Job
     {   //private attributes
         private int p_JobId;
         private string p_JobName;
