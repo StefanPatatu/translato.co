@@ -15,7 +15,7 @@ namespace WcfServiceLibrary.MODEL
         private DateTimeOffset p_DateSubmitted;
         private bool p_IsAwarded;
         private int p_UserId;
-        private int p_FileId;
+        private int p_UploadId;
         private int p_JobId;
 
         private Submission()
@@ -27,7 +27,7 @@ namespace WcfServiceLibrary.MODEL
             int SubmissionId,
             DateTimeOffset DateSubmitted,
             bool IsAwarded,
-            int UserId,
+            int UploadId,
             int FileId,
             int JobId)
         {
@@ -35,7 +35,7 @@ namespace WcfServiceLibrary.MODEL
             this.DateSubmitted = DateSubmitted;
             this.IsAwarded = IsAwarded;
             this.UserId = UserId;
-            this.FileId = FileId;
+            this.UploadId = FileId;
             this.JobId = JobId;
         }
 
@@ -59,10 +59,10 @@ namespace WcfServiceLibrary.MODEL
             get { return p_UserId; }
             set { p_UserId = value; }
         }
-        public int FileId
+        public int UploadId
         {
-            get { return p_FileId; }
-            set { p_FileId = value; }
+            get { return p_UploadId; }
+            set { p_UploadId = value; }
         }
         public int JobId
         {

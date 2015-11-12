@@ -19,7 +19,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             DateTimeOffset DateSubmitted = DateTimeOffset.Now;
             bool IsAwarded = false;
             int UserId = 5;
-            int FileId = 3;
+            int UploadId = 3;
             int JobId = 4;
 
             //act
@@ -28,7 +28,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
                 DateSubmitted,
                 IsAwarded,
                 UserId,
-                FileId,
+                UploadId,
                 JobId);
 
             //assert
@@ -37,7 +37,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             Assert.IsNotNull(submission_m1.DateSubmitted, "DateSubmitted is null");
             Assert.IsTrue(!submission_m1.IsAwarded, "Wrong IsAwarded");
             Assert.AreEqual(5, submission_m1.UserId, "Wrong UserId");
-            Assert.AreEqual(3, submission_m1.FileId, "Wrong FileId");
+            Assert.AreEqual(3, submission_m1.UploadId, "Wrong UploadId");
             Assert.AreEqual(4, submission_m1.JobId, "Wrong JobId");
 
         }
@@ -52,14 +52,14 @@ namespace WcfServiceLibrary.Tests.MODELTests
             DateTimeOffset DateSubmitted = InitDateSubmitted;
             bool IsAwarded = false;
             int UserId = 5;
-            int FileId = 3;
+            int UploadId = 3;
             int JobId = 4;
             Submission submission_m2 = new Submission(
                 SubmissionId,
                 DateSubmitted,
                 IsAwarded,
                 UserId,
-                FileId,
+                UploadId,
                 JobId);
 
             //act 
@@ -67,7 +67,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             submission_m2.DateSubmitted = submission_m2.DateSubmitted.AddMinutes(32);
             submission_m2.IsAwarded = true;
             submission_m2.UserId = 3;
-            submission_m2.FileId = 8;
+            submission_m2.UploadId = 8;
             submission_m2.JobId = 1;
 
             //assert
@@ -76,7 +76,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             Assert.AreEqual(InitDateSubmitted.AddMinutes(32), submission_m2.DateSubmitted, "DateSubmitted not changed");
             Assert.IsTrue(submission_m2.IsAwarded, "IsAwarded not changed");
             Assert.AreEqual(3, submission_m2.UserId, "UserId not changed");
-            Assert.AreEqual(8, submission_m2.FileId, "FileId not changed");
+            Assert.AreEqual(8, submission_m2.UploadId, "UploadId not changed");
             Assert.AreEqual(1, submission_m2.JobId, "JobId not changed");
         }
     }
