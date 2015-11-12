@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+//author: adrian
+//helpers:
+namespace WcfServiceLibrary.MODEL
+{
+    class Job
+    {   //private attributes
+        private int p_JobId;
+        private string p_JobName;
+        private DateTimeOffset p_DateCreated;
+        private int p_DurationInDays;
+        private decimal p_Reward;
+        private DateTimeOffset p_DateAwarded;
+        private Language p_LanguageFrom, p_LanguageTo;
+        private User p_User;
+        private File p_File;
+
+        //empty constructor
+        private Job()
+        {
+
+        }
+
+        //constructor with parameters
+        public Job(
+            int JobId,
+            string JobName,
+            DateTimeOffset DateCreated,
+            int DurationInDays,
+            decimal Reward,
+            DateTimeOffset DateAwarded,
+            Language LanguageFrom,
+            Language LanguageTo,
+            User User,
+            File File
+            )
+        {
+            this.JobId = JobId;
+            this.JobName = JobName;
+            this.DateCreated = DateCreated;
+            this.DurationInDays = DurationInDays;
+            this.Reward = Reward;
+            this.DateAwarded = DateAwarded;
+            this.LanguageFrom = LanguageFrom;
+            this.LanguageTo = LanguageTo;
+            this.User = User;
+            this.File = File;
+        }
+
+        //gets and sets
+
+
+        public int JobId
+        {
+            get { return p_JobId; }
+            set { p_JobId = value; }
+        }
+        public string JobName
+        {
+            get { return p_JobName; }
+            set { p_JobName = value; }
+        }
+        public DateTimeOffset DateCreated
+        {
+            get { return p_DateCreated; }
+            set { p_DateCreated = value; }
+        }
+        public int DurationInDays
+        {
+            get { return p_DurationInDays; }
+            set { p_DurationInDays = value; }
+        }
+        public decimal Reward
+        {
+            get { return p_Reward; }
+            set { p_Reward = value; }
+        }
+        public DateTimeOffset DateAwarded
+        {
+            get { return p_DateAwarded; }
+            set { p_DateAwarded = value; }
+        }
+        public Language LanguageFrom
+        {
+            get { return p_LanguageFrom; }
+            set { p_LanguageFrom = value; }
+        }
+        public Language LanguageTo
+        {
+            get { return p_LanguageTo; }
+            set { p_LanguageTo = value; }
+        }
+        public User User
+        {
+            get { return p_User; }
+            set { p_User = value; }
+        }
+        public File File
+        {
+            get { return p_File; }
+            set { p_File = value; }
+        }
+
+    }
+}

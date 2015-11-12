@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService1.cs" />
+    <Compile Include="MODEL\Job.cs" />
     <Compile Include="MODEL\Language.cs" />
     <Compile Include="MODEL\Submission.cs" />
     <Compile Include="MODEL\User.cs" />
