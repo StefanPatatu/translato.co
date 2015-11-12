@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B5FC11CA-C3D0-4DE4-9AAA-6B9652DC6DD7}</ProjectGuid>
+    <ProjectGuid>{B58010F5-5572-455E-95FB-ED5A6B172F09}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -24,7 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/d9a9c93d-3936-49e9-92a4-a78b627afec7/resourcegroups/WebClient/providers/microsoft.insights/components/WebClient</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/d9a9c93d-3936-49e9-92a4-a78b627afec7/resourcegroups/Translato.co/providers/microsoft.insights/components/TranslatoCoApplicationInsights</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -123,7 +123,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>19050</DevelopmentServerPort>
+          <DevelopmentServerPort>25944</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:19050/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

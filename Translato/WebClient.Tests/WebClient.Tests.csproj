@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{620DC0C3-7767-4825-AE08-0C674372F8D5}</ProjectGuid>
+    <ProjectGuid>{7B9187BB-522F-46D5-B6F3-6CCA960A5955}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebClient.Tests</RootNamespace>
@@ -48,11 +48,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebClient\WebClient.csproj">
-      <Project>{B5FC11CA-C3D0-4DE4-9AAA-6B9652DC6DD7}</Project>
+      <Project>{B58010F5-5572-455E-95FB-ED5A6B172F09}</Project>
       <Name>WebClient</Name>
     </ProjectReference>
   </ItemGroup>
