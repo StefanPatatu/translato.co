@@ -25,7 +25,7 @@ namespace WcfServiceLibrary.MODEL
             int UploadId,
             string Type,
             Text Text,
-            int File)
+            File File)
         {
             this.UploadId = UploadId;
             this.Type = Type;
@@ -43,12 +43,12 @@ namespace WcfServiceLibrary.MODEL
             get { return p_Type; }
             set { p_Type = value; }
         }
-        public int Text
+        public Text Text
         {
             get { return p_Text; }
             set { p_Text = value; }
         }
-        public int File
+        public File File
         {
             get { return p_File; }
             set { p_File = value; }
