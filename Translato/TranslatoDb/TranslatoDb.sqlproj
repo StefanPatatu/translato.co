@@ -92,4 +92,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="TranslatoDb.publish.xml" />
+  </ItemGroup>
 </Project>
