@@ -17,15 +17,15 @@ namespace WcfServiceLibrary.Tests.MODELTests
             //arrange
             int UploadId = 5;
             string Type = "Hey";
-            Text Text = new Text(3, "'morning");
-            File File = new File(6);
+            Text text = new Text(3, "'morning");
+            File file = new File(6);
 
             //act
             Upload upload_m1 = new Upload(
                 UploadId,
                 Type,
-                Text,
-                File);
+                text,
+                file);
 
             //assert
             Assert.IsNotNull(upload_m1, "Upload object is null");
@@ -41,13 +41,13 @@ namespace WcfServiceLibrary.Tests.MODELTests
             //arrange
             int UploadId = 5;
             string Type = "Hey";
-            Text Text = new Text(3, "'morning");
-            File File = new File(6);
+            Text text = new Text(3, "'morning");
+            File file = new File(6);
             Upload upload_m2 = new Upload(
                 UploadId,
                 Type,
-                Text,
-                File);
+                text,
+                file);
 
             //act
             upload_m2.UploadId = 2;

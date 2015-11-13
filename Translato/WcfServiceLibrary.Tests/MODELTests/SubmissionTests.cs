@@ -18,9 +18,9 @@ namespace WcfServiceLibrary.Tests.MODELTests
             int SubmissionId = 7;
             DateTimeOffset DateSubmitted = DateTimeOffset.Now;
             bool IsAwarded = false;
-            User User = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
-            Upload Upload = new Upload (2, "Text", new Text(2, "sdk"), null);
-            Job Job = new Job (9, "Sunday", 
+            User user = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
+            Upload upload = new Upload (2, "Text", new Text(2, "sdk"), null);
+            Job job = new Job (9, "Sunday", 
                 new DateTimeOffset(2012, 7, 12, 8, 34, 56, new TimeSpan(1, 0, 0)), 
                 2, 
                 12,
@@ -35,9 +35,9 @@ namespace WcfServiceLibrary.Tests.MODELTests
                 SubmissionId,
                 DateSubmitted,
                 IsAwarded,
-                User,
-                Upload,
-                Job);
+                user,
+                upload,
+                job);
 
             //assert
             Assert.IsNotNull(submission_m1, "Submission object is null");
@@ -59,9 +59,9 @@ namespace WcfServiceLibrary.Tests.MODELTests
             int SubmissionId = 7;
             DateTimeOffset DateSubmitted = DateTimeOffset.Now;
             bool IsAwarded = false;
-            User User = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
-            Upload Upload = new Upload(2, "Text", new Text(2, "sdk"), null);
-            Job Job = new Job(9, "Sunday",
+            User user = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
+            Upload upload = new Upload(2, "Text", new Text(2, "sdk"), null);
+            Job job = new Job(9, "Sunday",
                 new DateTimeOffset(2012, 7, 12, 8, 34, 56, new TimeSpan(1, 0, 0)),
                 2,
                 12,
@@ -74,9 +74,9 @@ namespace WcfServiceLibrary.Tests.MODELTests
                 SubmissionId,
                 DateSubmitted,
                 IsAwarded,
-                User,
-                Upload,
-                Job);
+                user,
+                upload,
+                job);
 
             //act 
             submission_m2.SubmissionId = 9;
