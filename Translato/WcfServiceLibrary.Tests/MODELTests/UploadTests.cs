@@ -59,8 +59,9 @@ namespace WcfServiceLibrary.Tests.MODELTests
             Assert.IsNotNull(upload_m2, "Upload object is null");
             Assert.AreEqual(2, upload_m2.UploadId, "UploadId not changed");
             Assert.AreEqual("LoL", upload_m2.Type, "Type not changed");
-            Assert.AreEqual(new Text(2, "'evening"), upload_m2.Text, "Text not changed");
-            Assert.AreEqual(new File(5), upload_m2.File, "File not changed");
+            Assert.AreEqual(2, upload_m2.Text.TextId, "TextId not changed");
+            Assert.AreEqual("'evening", upload_m2.Text.TextData, "TextData not changed");
+            Assert.AreEqual(5, upload_m2.File.FileId, "FileId not changed");
         }
     }
 }

@@ -18,27 +18,35 @@ namespace WcfServiceLibrary.Tests.MODELTests
             int SubmissionId = 7;
             DateTimeOffset DateSubmitted = DateTimeOffset.Now;
             bool IsAwarded = false;
-            int UserId = 5;
-            int UploadId = 3;
-            int JobId = 4;
+            User User = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
+            Upload Upload = new Upload (2, "Text", new Text(2, "sdk"), null);
+            Job Job = new Job (9, "Sunday", 
+                new DateTimeOffset(2012, 7, 12, 8, 34, 56, new TimeSpan(1, 0, 0)), 
+                2, 
+                12,
+                new DateTimeOffset(2012, 7, 17, 3, 23, 12, new TimeSpan(1, 0, 0)), 
+                new Language(5, "Lt"), 
+                new Language (1, "En"), 
+                new User(6, "Broken", "sljfue234a2d", "d35gdf4", "Halo", "Darlbloom", "HD@gmail.com", false), 
+                new Upload(8, "File", null, new File(3)));
 
             //act
             Submission submission_m1 = new Submission(
                 SubmissionId,
                 DateSubmitted,
                 IsAwarded,
-                UserId,
-                UploadId,
-                JobId);
+                User,
+                Upload,
+                Job);
 
             //assert
             Assert.IsNotNull(submission_m1, "Submission object is null");
             Assert.AreEqual(7, submission_m1.SubmissionId, "Wrong SubmissionId");
             Assert.IsNotNull(submission_m1.DateSubmitted, "DateSubmitted is null");
             Assert.IsTrue(!submission_m1.IsAwarded, "Wrong IsAwarded");
-            Assert.AreEqual(5, submission_m1.UserId, "Wrong UserId");
-            Assert.AreEqual(3, submission_m1.UploadId, "Wrong UploadId");
-            Assert.AreEqual(4, submission_m1.JobId, "Wrong JobId");
+            Assert.AreEqual(7, submission_m1.User.UserId, "Wrong User");
+            Assert.AreEqual(2, submission_m1.Upload.UploadId, "Wrong Upload");
+            Assert.AreEqual(9, submission_m1.Job.JobId, "Wrong Job");
 
         }
         [TestMethod]
@@ -49,35 +57,51 @@ namespace WcfServiceLibrary.Tests.MODELTests
             DateTimeOffset InitDateSubmitted = DateTimeOffset.Now;
 
             int SubmissionId = 7;
-            DateTimeOffset DateSubmitted = InitDateSubmitted;
+            DateTimeOffset DateSubmitted = DateTimeOffset.Now;
             bool IsAwarded = false;
-            int UserId = 5;
-            int UploadId = 3;
-            int JobId = 4;
+            User User = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
+            Upload Upload = new Upload(2, "Text", new Text(2, "sdk"), null);
+            Job Job = new Job(9, "Sunday",
+                new DateTimeOffset(2012, 7, 12, 8, 34, 56, new TimeSpan(1, 0, 0)),
+                2,
+                12,
+                new DateTimeOffset(2012, 7, 17, 3, 23, 12, new TimeSpan(1, 0, 0)),
+                new Language(5, "Lt"),
+                new Language(1, "En"),
+                new User(6, "Broken", "sljfue234a2d", "d35gdf4", "Halo", "Darlbloom", "HD@gmail.com", false),
+                new Upload(8, "File", null, new File(3)));
             Submission submission_m2 = new Submission(
                 SubmissionId,
                 DateSubmitted,
                 IsAwarded,
-                UserId,
-                UploadId,
-                JobId);
+                User,
+                Upload,
+                Job);
 
             //act 
             submission_m2.SubmissionId = 9;
             submission_m2.DateSubmitted = submission_m2.DateSubmitted.AddMinutes(32);
             submission_m2.IsAwarded = true;
-            submission_m2.UserId = 3;
-            submission_m2.UploadId = 8;
-            submission_m2.JobId = 1;
+            submission_m2.User = new User(6, "Broken", "sljfue234a2d", "d35gdf4", "Halo", "Darlbloom", "HD@gmail.com", true);
+            submission_m2.Upload = new Upload(4, "File", null, new File(3));
+            submission_m2.Job = new Job(3, "Sunday",
+                new DateTimeOffset(2012, 7, 12, 8, 34, 56, new TimeSpan(1, 0, 0)),
+                2,
+                12,
+                new DateTimeOffset(2012, 7, 17, 3, 23, 12, new TimeSpan(1, 0, 0)),
+                new Language(5, "Lt"),
+                new Language(1, "En"),
+                new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false),
+                new Upload(8, "File", null, new File(3))); ;
 
             //assert
             Assert.IsNotNull(submission_m2);
             Assert.AreEqual(9, submission_m2.SubmissionId, "SubbmissionId not changed");
             Assert.AreEqual(InitDateSubmitted.AddMinutes(32), submission_m2.DateSubmitted, "DateSubmitted not changed");
             Assert.IsTrue(submission_m2.IsAwarded, "IsAwarded not changed");
-            Assert.AreEqual(3, submission_m2.UserId, "UserId not changed");
-            Assert.AreEqual(8, submission_m2.UploadId, "UploadId not changed");
-            Assert.AreEqual(1, submission_m2.JobId, "JobId not changed");
+            Assert.AreEqual(6, submission_m2.User.UserId, "User not changed");
+            Assert.AreEqual(4, submission_m2.Upload.UploadId, "Upload not changed");
+            Assert.AreEqual(3, submission_m2.Job.JobId, "Job not changed");
         }
     }
 }
