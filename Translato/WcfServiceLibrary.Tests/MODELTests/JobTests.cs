@@ -24,10 +24,20 @@ namespace WcfServiceLibrary.Tests.MODELTests
             DateTimeOffset DateAwarded = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
                                  new TimeSpan(1, 0, 0));
             Language LanguageFrom = new Language(1, "English");
-                Language LanguageFromTest = new Language(1, "English");
             Language LanguageTo = new Language(2, "Roumanian");
-            User User = new User(1, "Adrian", "rsh45sh46gh4g65h4gf6h4fg6h54ti", "dg6dfg45d5sfgd6", "Adrian", "Frunza", "frunza.adrian@yahoo.com", false);
-            Upload Upload = new Upload(1, "Joe", new Text(1, "text1"), new File(1));
+            User User = new User(1,
+                "Adrian", 
+                "rsh45sh46gh4g65h4gf6h4fg6h54ti", 
+                "dg6dfg45d5sfgd6", 
+                "Adrian", 
+                "Frunza", 
+                "frunza.adrian@yahoo.com", 
+                false);
+            Upload Upload = new Upload(1, 
+                "Joe", 
+                new Text(1, 
+                "text1"), 
+                new File(1));
 
             //act
              Job job_m1 = new Job(
@@ -51,10 +61,10 @@ namespace WcfServiceLibrary.Tests.MODELTests
             Assert.AreEqual(100, job_m1.Reward, "Wrong Award");
             Assert.AreEqual(DateAwarded, new DateTimeOffset(2008, 5, 1, 8, 6, 32,
                                  new TimeSpan(1, 0, 0)), "Wrong DateAwarded");
-            Assert.AreEqual(new Language(1, "Englis").ToString(), job_m1.LanguageFrom.ToString(), "Wrong Language From");
-            Assert.AreEqual(new Language(2, "Roumanian").ToString(),job_m1.LanguageTo.ToString(), "Wrong Language To");
-            Assert.AreEqual(new User(1, "Adrian", "rsh45sh46gh4g65h4gf6h4fg6h54ti", "dg6dfg45d5sfgd6", "Adrian", "Frunza", "frunza.adrian@yahoo.com", false).ToString(),job_m1.User.ToString(), "Wrong User");
-            Assert.AreEqual(new Upload(1, "Joe", new Text(1, "text1"), new File(1)).ToString(), job_m1.Upload.ToString(), "Wrong Upload");
+            Assert.AreEqual(1, job_m1.LanguageFrom.LanguageId, "Wrong Language From");
+            Assert.AreEqual(2,job_m1.LanguageTo.LanguageId, "Wrong Language To");
+            Assert.AreEqual(1, job_m1.User.UserId, "Wrong User");
+            Assert.AreEqual(1, job_m1.Upload.UploadId, "Wrong Upload");
 
         }
     [TestMethod]
@@ -72,7 +82,14 @@ namespace WcfServiceLibrary.Tests.MODELTests
                              new TimeSpan(1, 0, 0));
         Language LanguageFrom = new Language(1, "English");
         Language LanguageTo = new Language(2, "Roumanian");
-        User User = new User(1, "Adrian", "rsh45sh46gh4g65h4gf6h4fg6h54ti", "dg6dfg45d5sfgd6", "Adrian", "Frunza", "frunza.adrian@yahoo.com", false);
+        User User = new User(1, 
+            "Adrian", 
+            "rsh45sh46gh4g65h4gf6h4fg6h54ti", 
+            "dg6dfg45d5sfgd6", 
+            "Adrian", 
+            "Frunza", 
+            "frunza.adrian@yahoo.com", 
+            false);
             Upload Upload = new Upload(1, "Joe", new Text(1, "text1"), new File(1));
 
 
@@ -101,8 +118,8 @@ namespace WcfServiceLibrary.Tests.MODELTests
                                  new TimeSpan(1, 0, 0));
         job_m2.LanguageFrom = new Language(3,"French");
     job_m2.LanguageTo = new Language(4,"Deutch");
-    job_m2.User = new User(1, "Adriana", "rsh45sh46gh4g65h4gf6h4fg6h54f", "dg6dfg45d5sfgd7", "Adriana", "Frunzaa", "afrunza.adrian@yahoo.com", true);
-            job_m2.Upload = new Upload(2, "Joee", new Text(3, "text2"), new File(5));
+    job_m2.User = new User(5, "Adriana", "rsh45sh46gh4g65h4gf6h4fg6h54f", "dg6dfg45d5sfgd7", "Adriana", "Frunzaa", "afrunza.adrian@yahoo.com", true);
+            job_m2.Upload = new Upload(1, "Joee", new Text(3, "text2"), new File(5));
 
 
 
@@ -117,10 +134,10 @@ namespace WcfServiceLibrary.Tests.MODELTests
             Assert.AreEqual(150, job_m2.Reward, "Reward not changed");
             Assert.AreEqual(new DateTimeOffset(2009, 5, 1, 8, 6, 32,
                                  new TimeSpan(1, 0, 0)), job_m2.DateAwarded, "DateCreated not changed");
-            Assert.AreEqual(new Language(3,"French").ToString(), job_m2.LanguageFrom.ToString(), "LanguageFrom not changed");
-            Assert.AreEqual(new Language(3,"Deutch").ToString(), job_m2.LanguageTo.ToString(), "LanguageTo not changed");
-            Assert.AreEqual(new User(1, "Adriana", "rsh45sh46gh4g65h4gf6h4fg6h54f", "dg6dfg45d5sfgd7", "Adriana", "Frunzaa", "afrunza.adrian@yahoo.com", true).ToString(),job_m2.User.ToString(),"User not changed");
-            Assert.AreEqual(new Upload(2, "Joee", new Text(3, "text2"), new File(5)).ToString(), job_m2.Upload.ToString(), "Wrong Upload");
+            Assert.AreEqual(3, job_m2.LanguageFrom.LanguageId, "LanguageFrom not changed");
+            Assert.AreEqual(4, job_m2.LanguageTo.LanguageId, "LanguageTo not changed");
+            Assert.AreEqual(5,job_m2.User.UserId,"User not changed");
+            Assert.AreEqual(1, job_m2.Upload.UploadId, "Wrong Upload");
         }
     }
 }
