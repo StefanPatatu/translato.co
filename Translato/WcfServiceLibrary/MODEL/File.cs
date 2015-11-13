@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//author: adrian
+//helpers:
 namespace WcfServiceLibrary.MODEL
 {
     public class File

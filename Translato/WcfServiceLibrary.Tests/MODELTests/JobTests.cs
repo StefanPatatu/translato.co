@@ -25,7 +25,8 @@ namespace WcfServiceLibrary.Tests.MODELTests
                                  new TimeSpan(1, 0, 0));
             Language LanguageFrom = new Language(1, "English");
             Language LanguageTo = new Language(2, "Roumanian");
-            User User = new User(1,
+            User User = new User(
+                1,
                 "Adrian", 
                 "rsh45sh46gh4g65h4gf6h4fg6h54ti", 
                 "dg6dfg45d5sfgd6", 
@@ -33,7 +34,8 @@ namespace WcfServiceLibrary.Tests.MODELTests
                 "Frunza", 
                 "frunza.adrian@yahoo.com", 
                 false);
-            Upload Upload = new Upload(1, 
+            Upload Upload = new Upload(
+                1, 
                 "Joe", 
                 new Text(1, 
                 "text1"), 
@@ -90,7 +92,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             "Frunza", 
             "frunza.adrian@yahoo.com", 
             false);
-            Upload Upload = new Upload(1, "Joe", new Text(1, "text1"), new File(1));
+        Upload Upload = new Upload(1, "Joe", new Text(1, "text1"), new File(1));
 
 
             Job job_m2 = new Job(
@@ -108,7 +110,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
     //act
 
 
-    job_m2.JobId = 2;
+         job_m2.JobId = 2;
         job_m2.JobName = "Project2";
         job_m2.DateCreated = new DateTimeOffset(2009, 5, 1, 8, 6, 32,
                                  new TimeSpan(1, 0, 0));
@@ -117,12 +119,17 @@ namespace WcfServiceLibrary.Tests.MODELTests
         job_m2.DateAwarded  = new DateTimeOffset(2009, 5, 1, 8, 6, 32,
                                  new TimeSpan(1, 0, 0));
         job_m2.LanguageFrom = new Language(3,"French");
-    job_m2.LanguageTo = new Language(4,"Deutch");
-    job_m2.User = new User(5, "Adriana", "rsh45sh46gh4g65h4gf6h4fg6h54f", "dg6dfg45d5sfgd7", "Adriana", "Frunzaa", "afrunza.adrian@yahoo.com", true);
-            job_m2.Upload = new Upload(1, "Joee", new Text(3, "text2"), new File(5));
-
-
-
+        job_m2.LanguageTo = new Language(4,"Deutch");
+        job_m2.User = new User(
+            5, 
+            "Adriana", 
+            "rsh45sh46gh4g65h4gf6h4fg6h54f", 
+            "dg6dfg45d5sfgd7", 
+            "Adriana", 
+            "Frunzaa", 
+            "afrunza.adrian@yahoo.com", 
+            true);
+        job_m2.Upload = new Upload(1, "Joee", new Text(3, "text2"), new File(5));
 
             //assert
             Assert.IsNotNull(job_m2, "Job object is null");
