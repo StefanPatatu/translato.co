@@ -45,6 +45,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\AccessTranslatoDb.cs" />
+    <Compile Include="DAL\DbUser.cs" />
+    <Compile Include="DAL\IUser.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="MODEL\File.cs" />
     <Compile Include="MODEL\Job.cs" />
@@ -61,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
