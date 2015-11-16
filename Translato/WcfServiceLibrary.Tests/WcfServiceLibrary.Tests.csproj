@@ -55,6 +55,7 @@
     <Compile Include="DALTests\DbJobsTests.cs" />
     <Compile Include="DALTests\DbLanguagesTests.cs" />
     <Compile Include="DALTests\DbSubmissionsTests.cs" />
+    <Compile Include="DALTests\DbTextsTests.cs" />
     <Compile Include="DALTests\DbUsersTests.cs" />
     <Compile Include="MODELTests\JobTests.cs" />
     <Compile Include="MODELTests\LanguageTests.cs" />
