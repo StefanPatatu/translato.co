@@ -13,7 +13,7 @@ namespace WcfServiceLibrary.Tests.DALTests
     {
         [TestMethod]
         //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void DAL_IUser_insertUser_insertUser_UserIsInserted()
+        public void DAL_IUser_InsertUser_InsertUser_UserIsInserted()
         {
             //arrange
             int UserId = 1;
