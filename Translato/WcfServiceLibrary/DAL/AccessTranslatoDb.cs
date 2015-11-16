@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using G = System.Configuration;   // System.Configuration.dll
-using D = System.Data;            // System.Data.dll
-using C = System.Data.SqlClient;  // System.Data.dll
-using T = System.Text;
-
-namespace WcfServiceLibrary.DAL
+﻿namespace WcfServiceLibrary.DAL
 {
     internal class AccessTranslatoDb
     {
