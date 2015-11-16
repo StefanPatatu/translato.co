@@ -13,7 +13,7 @@ namespace WcfServiceLibrary.MODEL
     {
         private int p_LanguageId;
         private string p_LanguageName;
-        private Language()
+        public Language()
         {
 
         }

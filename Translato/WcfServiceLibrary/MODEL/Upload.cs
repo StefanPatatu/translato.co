@@ -16,7 +16,7 @@ namespace WcfServiceLibrary.MODEL
         private Text p_Text;
         private File p_File;
 
-        private Upload()
+        public Upload()
         {
 
         }

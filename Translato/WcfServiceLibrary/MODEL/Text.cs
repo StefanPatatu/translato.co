@@ -13,7 +13,7 @@ namespace WcfServiceLibrary.MODEL
     {
         private int p_TextId;
         private string p_TextData;
-        private Text()
+        public Text()
         {
 
         }

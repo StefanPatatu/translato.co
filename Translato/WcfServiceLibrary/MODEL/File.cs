@@ -17,7 +17,7 @@ namespace WcfServiceLibrary.MODEL
             get { return p_FileId; }
             set { p_FileId = value; }
         }
-        private File()
+        public File()
         {
 
         }

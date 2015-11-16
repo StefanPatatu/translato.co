@@ -21,7 +21,7 @@ namespace WcfServiceLibrary.MODEL
         private Upload p_Upload;
 
         //empty constructor
-        private Job()
+        public Job()
         {
 
         }

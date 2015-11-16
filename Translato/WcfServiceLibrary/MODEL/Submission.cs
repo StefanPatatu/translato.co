@@ -18,7 +18,7 @@ namespace WcfServiceLibrary.MODEL
         private Upload p_Upload;
         private Job p_Job;
 
-        private Submission()
+        public Submission()
         {
 
         }
