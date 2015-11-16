@@ -19,7 +19,7 @@ namespace WcfServiceLibrary.MODEL
         private string p_LastName;
         private string p_Email;
         private bool p_NewsletterOptOut;
-        private User()
+        public User()
         {
 
         }

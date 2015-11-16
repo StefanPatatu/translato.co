@@ -9,7 +9,7 @@ using WcfServiceLibrary.DAL;
 namespace WcfServiceLibrary.Tests.DALTests
 {
     [TestClass]
-    public class DbUserTests
+    public class DbUsersTests
     {
         [TestMethod]
         //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
@@ -33,10 +33,10 @@ namespace WcfServiceLibrary.Tests.DALTests
                 LastName,
                 Email,
                 NewsletterOptOut);
-            IUser _DbUser = new DbUser();
+            IUsers _DbUsers = new DbUsers();
 
             //act
-            int result = _DbUser.insertUser(user_m1);
+            int result = _DbUsers.insertUser(user_m1);
 
             //assert
             Assert.AreEqual(1, result);

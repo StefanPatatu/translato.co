@@ -46,8 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\AccessTranslatoDb.cs" />
-    <Compile Include="DAL\DbUser.cs" />
-    <Compile Include="DAL\IUser.cs" />
+    <Compile Include="DAL\DbUsers.cs" />
+    <Compile Include="DAL\IUsers.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="MODEL\File.cs" />
     <Compile Include="MODEL\Job.cs" />
@@ -60,7 +60,9 @@
     <Compile Include="Service1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
