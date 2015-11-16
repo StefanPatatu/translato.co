@@ -47,8 +47,14 @@
   <ItemGroup>
     <Compile Include="DAL\AccessTranslatoDb.cs" />
     <Compile Include="DAL\DbJobs.cs" />
+    <Compile Include="DAL\DbLanguages.cs" />
+    <Compile Include="DAL\DbSubmissions.cs" />
+    <Compile Include="DAL\DbTexts.cs" />
     <Compile Include="DAL\DbUsers.cs" />
     <Compile Include="DAL\IJobs.cs" />
+    <Compile Include="DAL\ILanguages.cs" />
+    <Compile Include="DAL\ISubmissions.cs" />
+    <Compile Include="DAL\ITexts.cs" />
     <Compile Include="DAL\IUsers.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="MODEL\File.cs" />

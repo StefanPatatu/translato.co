@@ -14,7 +14,7 @@ namespace WcfServiceLibrary.DAL
         private static SqlCommand sqlCommand = null;
         private static SqlParameter param_JobId = new SqlParameter("@JobId", SqlDbType.Int);
         private static SqlParameter param_JobName = new SqlParameter("@JobName", SqlDbType.NVarChar, 50);
-        private static SqlParameter param_DateCreated = new SqlParameter("@DateCreated", SqlDbType.DateTimeOffset, 0);
+        private static SqlParameter param_DateCreated = new SqlParameter("@DateCreated", SqlDbType.DateTimeOffset);
         private static SqlParameter param_DurationInDays = new SqlParameter("@DurationInDays", SqlDbType.Int);
         private static SqlParameter param_Reward = new SqlParameter("@Reward", SqlDbType.Decimal);
         private static SqlParameter param_DateAwarded = new SqlParameter("@DateAwarded", SqlDbType.DateTimeOffset);
