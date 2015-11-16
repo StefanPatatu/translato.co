@@ -7,7 +7,7 @@
     [FirstName] NVARCHAR(20) NOT NULL,
     [LastName] NVARCHAR(20) NOT NULL,
     [Email] NVARCHAR(50) NOT NULL,
-    [NewsletterOptOut] BIT NOT NULL DEFAULT 1,
+    [NewsletterOptOut] BIT NOT NULL DEFAULT 0,
 	PRIMARY KEY ([UserId]),
 	CONSTRAINT CK_Users_Unique_UserName UNIQUE([UserName]),
 	CONSTRAINT CK_Users_Unique_Email UNIQUE([Email])
