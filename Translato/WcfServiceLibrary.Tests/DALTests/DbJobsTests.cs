@@ -37,7 +37,7 @@ namespace WcfServiceLibrary.Tests.DALTests
                 false);
             Upload Upload = new Upload(
                 1,
-                "Joe",
+                
                 new Text(1,
                 "text1"),
                 new File(1));

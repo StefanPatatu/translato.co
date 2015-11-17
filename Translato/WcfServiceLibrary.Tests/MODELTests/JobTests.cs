@@ -36,7 +36,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
                 false);
             Upload Upload = new Upload(
                 1, 
-                "Joe", 
+                
                 new Text(1, 
                 "text1"), 
                 new File(1));
@@ -92,7 +92,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             "Frunza", 
             "frunza.adrian@yahoo.com", 
             false);
-        Upload Upload = new Upload(1, "Joe", new Text(1, "text1"), new File(1));
+        Upload Upload = new Upload(1,  new Text(1, "text1"), new File(1));
 
 
             Job job_m2 = new Job(
@@ -129,7 +129,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             "Frunzaa", 
             "afrunza.adrian@yahoo.com", 
             true);
-        job_m2.Upload = new Upload(1, "Joee", new Text(3, "text2"), new File(5));
+        job_m2.Upload = new Upload(1, new Text(3, "text2"), new File(5));
 
             //assert
             Assert.IsNotNull(job_m2, "Job object is null");
