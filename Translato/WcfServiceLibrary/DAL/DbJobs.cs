@@ -52,7 +52,7 @@ namespace WcfServiceLibrary.DAL
                 "@LanguageFrom, " +
                 "@LanguageTo, " +
                 "@UserId, " +
-                "@UploadId, " +
+                "@UploadId " +
             ")";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))

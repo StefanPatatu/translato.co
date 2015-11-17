@@ -30,7 +30,7 @@ namespace WcfServiceLibrary.DAL
             int result = -1;
 
             string sqlQuery = "INSERT INTO Texts VALUES (" +
-                "@TextData, " +
+                "@TextData " +
 
             ")";
 

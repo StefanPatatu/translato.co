@@ -30,8 +30,7 @@ namespace WcfServiceLibrary.DAL
             int result = -1;
 
             string sqlQuery = "INSERT INTO Languages VALUES (" +
-                "@LanguageName, " +
-                
+                "@LanguageName " +
             ")";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))

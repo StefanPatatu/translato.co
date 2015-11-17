@@ -41,7 +41,7 @@ namespace WcfServiceLibrary.DAL
                 "@IsAwarded, " +
                 "@UserId, " +
                 "@UploadId, " +
-                "@JobId, " +
+                "@JobId " +
             ")";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
