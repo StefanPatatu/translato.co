@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [dbo].[Uploads]
 (
 	[UploadId] INT IDENTITY(1,1) NOT NULL,
-	[Type] BIT NOT NULL,
 	[TextId] INT NULL,
 	[FileId] INT NULL,
 	PRIMARY KEY ([UploadId]),
