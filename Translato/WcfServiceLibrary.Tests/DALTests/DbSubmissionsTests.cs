@@ -19,7 +19,7 @@ namespace WcfServiceLibrary.Tests.DALTests
             int SubmissionId = 7;
             DateTimeOffset DateSubmitted = DateTimeOffset.Now;
             bool IsAwarded = false;
-            User user = new User(7, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
+            User user = new User(5, "He", "djasfh35ui47h", "asd3k345fs", "Kirin", "Harthorn", "KH@gmail.com", false);
             Upload upload = new Upload(2, "Text", new Text(2, "sdk"), null);
             Job job = new Job(9, "Sunday",
                 new DateTimeOffset(2012, 7, 12, 8, 34, 56, new TimeSpan(1, 0, 0)),
