@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BLLTests\CtrUserTests.cs" />
     <Compile Include="DALTests\DbFilesTests.cs" />
     <Compile Include="DALTests\DbJobsTests.cs" />
     <Compile Include="DALTests\DbLanguagesTests.cs" />

@@ -1,4 +1,7 @@
-﻿namespace WcfServiceLibrary.DAL
+﻿//author: futz
+//helpers:
+
+namespace WcfServiceLibrary.DAL
 {
     internal class AccessTranslatoDb
     {

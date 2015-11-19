@@ -11,6 +11,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary.Tests", "WcfServiceLibrary.Tests\WcfServiceLibrary.Tests.csproj", "{66855C2F-DF5F-47DA-9080-48270F511216}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebClient.csproj", "{B58010F5-5572-455E-95FB-ED5A6B172F09}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93F07356-84E4-4B70-9E84-5D22DB638721} = {93F07356-84E4-4B70-9E84-5D22DB638721}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient.Tests", "WebClient.Tests\WebClient.Tests.csproj", "{7B9187BB-522F-46D5-B6F3-6CCA960A5955}"
 EndProject

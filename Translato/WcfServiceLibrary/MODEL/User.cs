@@ -14,11 +14,11 @@ namespace WcfServiceLibrary.MODEL
         private int p_UserId;
         private string p_UserName;
         private string p_HashedPassword;
-        private string p_PasswordSalt;
         private string p_FirstName;
         private string p_LastName;
         private string p_Email;
         private bool p_NewsletterOptOut;
+        private DateTimeOffset p_CreatedOn;
         public User()
         {
 
@@ -27,20 +27,20 @@ namespace WcfServiceLibrary.MODEL
             int UserId,
             string UserName,
             string HashedPassword,
-            string PasswordSalt,
             string FirstName,
             string LastName,
             string Email,
-            bool NewsletterOptOut)
+            bool NewsletterOptOut,
+            DateTimeOffset CreatedOn)
         {
             this.UserId = UserId;
             this.UserName = UserName;
             this.HashedPassword = HashedPassword;
-            this.PasswordSalt = PasswordSalt;
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Email = Email;
             this.NewsletterOptOut = NewsletterOptOut;
+            this.CreatedOn = CreatedOn;
         }
         public int UserId
         {
@@ -56,11 +56,6 @@ namespace WcfServiceLibrary.MODEL
         {
             get { return p_HashedPassword; }
             set { p_HashedPassword = value; }
-        }
-        public string PasswordSalt
-        {
-            get { return p_PasswordSalt; }
-            set { p_PasswordSalt = value; }
         }
         public string FirstName
         {
@@ -81,6 +76,11 @@ namespace WcfServiceLibrary.MODEL
         {
             get { return p_NewsletterOptOut; }
             set { p_NewsletterOptOut = value; }
+        }
+        public DateTimeOffset CreatedOn
+        {
+            get { return p_CreatedOn; }
+            set { p_CreatedOn = value; }
         }
     }
 }

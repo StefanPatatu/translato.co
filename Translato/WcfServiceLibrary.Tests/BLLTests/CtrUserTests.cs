@@ -1,23 +1,25 @@
 ﻿using System;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
-using WcfServiceLibrary.DAL;
+using WcfServiceLibrary.BLL;
 
 //author: futz
 //helpers:
 
-namespace WcfServiceLibrary.Tests.DALTests
+namespace WcfServiceLibrary.Tests.BLLTests
 {
     [TestClass]
-    public class DbUsersTests
+    public class CtrUserTests
     {
         [TestMethod]
         //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void DAL_IUser_InsertUser_InsertUser_UserIsInserted()
+        public void BLL_IUser_InsertUser_InsertUser_UserIsInserted()
         {
             //arrange
             int UserId = 1;
-            string UserName = "frunza.adrian";
+            string UserName = "frunza_adrian";
             string HashedPassword = "rsh45sh46gh4g65h4gf6h4fg6h54th";
             string FirstName = "Adrian";
             string LastName = "Frunza";
@@ -33,10 +35,10 @@ namespace WcfServiceLibrary.Tests.DALTests
                 Email,
                 NewsletterOptOut,
                 CreatedOn);
-            IUsers _DbUsers = new DbUsers();
+            CtrUser _ctrUser = new CtrUser();
 
             //act
-            int result = _DbUsers.insertUser(user_m1);
+            int result = _ctrUser.insertUser(user_m1);
 
             //assert
             Assert.AreEqual(1, result);
