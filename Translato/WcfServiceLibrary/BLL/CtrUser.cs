@@ -1,4 +1,5 @@
-﻿using WcfServiceLibrary.MODEL;
+﻿using System;
+using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
 
 //author: futz
@@ -60,7 +61,7 @@ namespace WcfServiceLibrary.BLL
                 user.LastName = user.LastName;
                 user.Email = user.Email;
                 user.NewsletterOptOut = user.NewsletterOptOut;
-                user.CreatedOn = user.CreatedOn;
+                user.CreatedOn = DateTimeOffset.Now;
 
                 IUsers _DbUsers = new DbUsers();
 

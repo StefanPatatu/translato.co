@@ -11,7 +11,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
     public class UserTests
     {
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
         public void MODEL_User_PublicConstructor_CreateUser_UserIsCreated()
         {
             //arrange
@@ -49,7 +49,7 @@ namespace WcfServiceLibrary.Tests.MODELTests
             Assert.AreEqual(initDTO, user_m1.CreatedOn, "Wrong CreatedOn");
         }
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
         public void MODEL_User_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
         {
             //arrange

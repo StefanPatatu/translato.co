@@ -28,7 +28,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BLLTests\CtrUserTests.cs" />
+    <Compile Include="BLLTests\PasswordTests.cs" />
     <Compile Include="DALTests\DbFilesTests.cs" />
     <Compile Include="DALTests\DbJobsTests.cs" />
     <Compile Include="DALTests\DbLanguagesTests.cs" />

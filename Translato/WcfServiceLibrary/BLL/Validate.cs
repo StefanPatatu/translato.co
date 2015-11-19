@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
+//author: futz
+//helpers:
+
 namespace WcfServiceLibrary.BLL
 {
     class Validate

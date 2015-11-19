@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.BLL;
@@ -14,8 +12,8 @@ namespace WcfServiceLibrary.Tests.BLLTests
     public class CtrUserTests
     {
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void BLL_IUser_InsertUser_InsertUser_UserIsInserted()
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void BLL_CtrUser_InsertUser_InsertUser_UserIsInserted()
         {
             //arrange
             int UserId = 1;

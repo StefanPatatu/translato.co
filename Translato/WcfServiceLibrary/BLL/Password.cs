@@ -3,9 +3,12 @@ using System.Linq;
 using Microsoft.AspNet.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 
+//author: futz
+//helpers:
+
 namespace WcfServiceLibrary.BLL
 {
-    internal class Password
+    public class Password
     {
         /*
          * Version 3.futz:
@@ -13,7 +16,7 @@ namespace WcfServiceLibrary.BLL
          * Format: { 0x01, prf (UInt32), iter count(UInt32), salt length(UInt32), salt, subkey }
          * (All UInt32s are stored big-endian.)
          */
-        internal static string HashPassword(string password)
+        public static string HashPassword(string password)
         {
             var prf = KeyDerivationPrf.HMACSHA256;
             var rng = RandomNumberGenerator.Create();
@@ -21,9 +24,12 @@ namespace WcfServiceLibrary.BLL
             const int saltSize = 128 / 8;
             const int numBytesRequested = 256 / 8;
 
-            // Produce a version 3 (see comment above) text hash.
+            // Produce a version 3 (see comment above) text hash
             var salt = new byte[saltSize];
             rng.GetBytes(salt);
+            //
+            Console.WriteLine(Convert.ToBase64String(salt));
+            //
             var subkey = KeyDerivation.Pbkdf2(password, salt, prf, iterCount, numBytesRequested);
 
             var outputBytes = new byte[13 + salt.Length + subkey.Length];
@@ -36,7 +42,7 @@ namespace WcfServiceLibrary.BLL
             return Convert.ToBase64String(outputBytes);
         }
 
-        internal static bool VerifyHashedPassword(string hashedPassword, string providedPassword)
+        public static bool VerifyHashedPassword(string hashedPassword, string providedPassword)
         {
             var decodedHashedPassword = Convert.FromBase64String(hashedPassword);
 
