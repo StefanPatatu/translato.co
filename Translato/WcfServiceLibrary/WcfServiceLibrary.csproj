@@ -71,8 +71,8 @@
     <Compile Include="DAL\ITexts.cs" />
     <Compile Include="DAL\IUploads.cs" />
     <Compile Include="DAL\IUsers.cs" />
-    <Compile Include="ITranslatoService.cs" />
     <Compile Include="MODEL\File.cs" />
+    <Compile Include="MODEL\ITranslatoService.cs" />
     <Compile Include="MODEL\Job.cs" />
     <Compile Include="MODEL\Language.cs" />
     <Compile Include="MODEL\Submission.cs" />
