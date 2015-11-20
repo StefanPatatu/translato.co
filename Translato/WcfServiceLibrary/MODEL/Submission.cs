@@ -1,73 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//author: DarkSun
+﻿//author: DarkSun
 //helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 
 namespace WcfServiceLibrary.MODEL
 {
     public class Submission
     {
-        private int p_SubmissionId;
-        private DateTimeOffset p_DateSubmitted;
-        private bool p_IsAwarded;
-        private User p_User;
-        private Upload p_Upload;
-        private Job p_Job;
+        //private attributes
+        int p_submissionId;
+        DateTimeOffset p_dateSubmitted;
+        bool p_isAwarded;
+        User p_user;
+        Upload p_upload;
+        Job p_job;
 
+        //empty constructor
         public Submission()
         {
 
         }
 
+        //full constructor
         public Submission(
-            int SubmissionId,
-            DateTimeOffset DateSubmitted,
-            bool IsAwarded,
-            User User,
-            Upload Upload,
-            Job Job)
+            int submissionId,
+            DateTimeOffset dateSubmitted,
+            bool isAwarded,
+            User user,
+            Upload upload,
+            Job job
+            )
         {
-            this.SubmissionId = SubmissionId;
-            this.DateSubmitted = DateSubmitted;
-            this.IsAwarded = IsAwarded;
-            this.User = User;
-            this.Upload = Upload;
-            this.Job = Job;
+            this.submissionId = submissionId;
+            this.dateSubmitted = dateSubmitted;
+            this.isAwarded = isAwarded;
+            this.user = user;
+            this.upload = upload;
+            this.job = job;
         }
 
-        public int SubmissionId
+        //getters and setters
+        public int submissionId
         {
-            get { return p_SubmissionId; }
-            set { p_SubmissionId = value; }
+            get { return p_submissionId; }
+            set { p_submissionId = value; }
         }
-        public DateTimeOffset DateSubmitted
+        public DateTimeOffset dateSubmitted
         {
-            get { return p_DateSubmitted; }
-            set { p_DateSubmitted = value; }
+            get { return p_dateSubmitted; }
+            set { p_dateSubmitted = value; }
         }
-        public bool IsAwarded
+        public bool isAwarded
         {
-            get { return p_IsAwarded; }
-            set { p_IsAwarded = value; }
+            get { return p_isAwarded; }
+            set { p_isAwarded = value; }
         }
-        public User User
+        public User user
         {
-            get { return p_User; }
-            set { p_User = value; }
+            get { return p_user; }
+            set { p_user = value; }
         }
-        public Upload Upload
+        public Upload upload
         {
-            get { return p_Upload; }
-            set { p_Upload = value; }
+            get { return p_upload; }
+            set { p_upload = value; }
         }
-        public Job Job
+        public Job job
         {
-            get { return p_Job; }
-            set { p_Job = value; }
+            get { return p_job; }
+            set { p_job = value; }
         }
     }
 }

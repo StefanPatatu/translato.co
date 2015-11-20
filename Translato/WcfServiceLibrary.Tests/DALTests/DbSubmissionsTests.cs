@@ -12,7 +12,7 @@
 //    public class DbSubmissionsTests
 //    {
 //        [TestMethod]
-//        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+//        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
 //        public void DAL_ISubmission_InsertSubmission_InsertSubmission_SubmissionIsInserted()
 //        {
 //            //arrange
@@ -31,7 +31,7 @@
 //                new User(6, "Broken", "sljfue234a2d", "d35gdf4", "Halo", "Darlbloom", "HD@gmail.com", false),
 //                new Upload(8,  null, new File(3)));
 
-            
+
 //            Submission submission_m1 = new Submission(
 //                SubmissionId,
 //                DateSubmitted,

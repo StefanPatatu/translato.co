@@ -1,9 +1,9 @@
-﻿using System;
+﻿//author: DarkSun
+//helpers: kool-kat, futz
+//last_checked: futz@20.11.2015
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
-
-//author: DarkSun
-//helper: kool-kat
 
 namespace WcfServiceLibrary.Tests.MODELTests
 {
@@ -11,55 +11,63 @@ namespace WcfServiceLibrary.Tests.MODELTests
     public class UploadTests
     {
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void MODEL_Upload_PublicConstructor_CreateUpload_UploadIsCreated()
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void MODEL_Upload_FullConstructor_CreateTextUpload_TextUploadIsCreated()
         {
             //arrange
-            int UploadId = 5;
-          
-            Text text = new Text(3, "'morning");
-            File file = new File(6);
+            int uploadId = 5;
+
+            Text text = new Text();
+            text.textId = 3;
+            text.textData = "'morning";
+
+            File file = null;
 
             //act
             Upload upload_m1 = new Upload(
-                UploadId,
-                
+                uploadId,
                 text,
-                file);
+                file
+                );
 
             //assert
-            Assert.IsNotNull(upload_m1, "Upload object is null");
-            Assert.AreEqual(5, upload_m1.UploadId, "Wrong UploadId");
-           
-            Assert.IsNotNull(upload_m1.Text, "Text object is null");
-            Assert.IsNotNull(upload_m1.File, "File bject is null");
-                }
+            Assert.IsNotNull(upload_m1, "upload object is null");
+            Assert.AreEqual(5, upload_m1.uploadId, "wrong uploadId");
+
+            Assert.IsNotNull(upload_m1.text, "upload.text object is null");
+            Assert.AreEqual(3, upload_m1.text.textId, "wrong upload.text.textId");
+            Assert.AreEqual("'morning", upload_m1.text.textData, "wrong upload.text.textData");
+
+            Assert.IsNull(upload_m1.file, "upload.file is NOT null");
+        }
+
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void MODEL_Upload_SetAndGetMethods_AttributesAreEdited_AllValuesUpdated ()
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void MODEL_Upload_FullConstructor_CreateFileUpload_FileUploadIsCreated()
         {
             //arrange
-            int UploadId = 5;
-            
-            Text text = new Text(3, "'morning");
-            File file = new File(6);
-            Upload upload_m2 = new Upload(
-                UploadId,
-                
-                text,
-                file);
+            int uploadId = 6;
+
+            Text text = null;
+
+            File file = new File();
+            file.fileId = 2;
 
             //act
-            upload_m2.UploadId = 2;
-            upload_m2.Text = new Text(2, "'evening");
-            upload_m2.File = new File(5);
+            Upload upload_m2 = new Upload(
+                uploadId,
+                text,
+                file
+                );
 
             //assert
-            Assert.IsNotNull(upload_m2, "Upload object is null");
-            Assert.AreEqual(2, upload_m2.UploadId, "UploadId not changed");
-            Assert.AreEqual(2, upload_m2.Text.TextId, "TextId not changed");
-            Assert.AreEqual("'evening", upload_m2.Text.TextData, "TextData not changed");
-            Assert.AreEqual(5, upload_m2.File.FileId, "FileId not changed");
+            Assert.IsNotNull(upload_m2, "upload object is null");
+            Assert.AreEqual(6, upload_m2.uploadId, "wrong uploadId");
+
+            Assert.IsNull(upload_m2.text, "upload.text is NOT null");
+
+            Assert.IsNotNull(upload_m2.file, "upload.file object is null");
+            Assert.AreEqual(2, upload_m2.file.fileId, "wrong upload.file.fileId");            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿//author: futz
 //helpers:
+//last_checked: futz@20.11.2015
 
 namespace WcfServiceLibrary.DAL
 {

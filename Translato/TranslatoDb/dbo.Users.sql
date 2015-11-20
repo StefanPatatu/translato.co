@@ -6,7 +6,7 @@
     [FirstName] NVARCHAR(20) NOT NULL,
     [LastName] NVARCHAR(20) NOT NULL,
     [Email] NVARCHAR(50) NOT NULL,
-    [NewsletterOptOut] BIT NOT NULL DEFAULT 0,
+    [NewsletterOptOut] BIT DEFAULT 0 NOT NULL,
 	[CreatedOn] DATETIMEOFFSET(0) DEFAULT SYSDATETIMEOFFSET() NOT NULL, 
     PRIMARY KEY ([UserId]),
 	CONSTRAINT CK_Users_Unique_UserName UNIQUE([UserName]),

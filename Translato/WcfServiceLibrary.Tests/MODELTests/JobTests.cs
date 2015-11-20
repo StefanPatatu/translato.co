@@ -1,150 +1,121 @@
-﻿//using System;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using WcfServiceLibrary.MODEL;
+﻿//author: adrian
+//helpers: futz
+//last_checked: futz@20.11.2015
 
-////author: adrian
-////helpers:
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WcfServiceLibrary.MODEL;
 
-//namespace WcfServiceLibrary.Tests.MODELTests
-//{
-//    [TestClass]
-//    public class JobTests
-//    {
-//        [TestMethod]
-//        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-//        public void MODEL_Job_PublicConstructor_CreateUser_JobIsCreated()
-//        {
-//            //arrange
-//            int JobId = 1;
-//            string JobName = "Project1";
-//            DateTimeOffset DateCreated = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0));
-//            int DurationInDays = 3;
-//            decimal Reward = 100;
-//            DateTimeOffset DateAwarded = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0));
-//            Language LanguageFrom = new Language(1, "English");
-//            Language LanguageTo = new Language(2, "Roumanian");
-//            User User = new User(
-//                1,
-//                "Adrian", 
-//                "rsh45sh46gh4g65h4gf6h4fg6h54ti", 
-//                "dg6dfg45d5sfgd6", 
-//                "Adrian", 
-//                "Frunza", 
-//                "frunza.adrian@yahoo.com", 
-//                false);
-//            Upload Upload = new Upload(
-//                1, 
-                
-//                new Text(1, 
-//                "text1"), 
-//                new File(1));
+namespace WcfServiceLibrary.Tests.MODELTests
+{
+    [TestClass]
+    public class JobTests
+    {
+        [TestMethod]
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void MODEL_Job_FullConstructor_CreateJob_JobIsCreated()
+        {
+            //arrange
+            DateTimeOffset initDTO = DateTimeOffset.Now;
 
-//            //act
-//             Job job_m1 = new Job(
-//                JobId,
-//                JobName,
-//                DateCreated,
-//                DurationInDays,
-//                Reward,
-//                DateAwarded,
-//                LanguageFrom,
-//                LanguageTo,
-//                User,
-//                Upload);
+            int jobId = 1;
+            string jobName = "Project1";
+            DateTimeOffset dateCreated = initDTO;
+            int durationInDays = 3;
+            decimal reward = 100.99m;
+            DateTimeOffset dateAwarded = initDTO.AddDays(3);
+            Language languageFrom = new Language();
+            Language languageTo = new Language();
+            User user = new User();
+            Upload upload = new Upload();
 
-//        //assert
-//        Assert.IsNotNull(job_m1, "job object is null");
-//            Assert.AreEqual(1, job_m1.JobId, "Wrong JobId");
-//            Assert.AreEqual( DateCreated, new DateTimeOffset(2008, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0)),"Wrong DateCreated"); 
-//            Assert.AreEqual(3, job_m1.DurationInDays, "Wrong DurationInDays");
-//            Assert.AreEqual(100, job_m1.Reward, "Wrong Award");
-//            Assert.AreEqual(DateAwarded, new DateTimeOffset(2008, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0)), "Wrong DateAwarded");
-//            Assert.AreEqual(1, job_m1.LanguageFrom.LanguageId, "Wrong Language From");
-//            Assert.AreEqual(2,job_m1.LanguageTo.LanguageId, "Wrong Language To");
-//            Assert.AreEqual(1, job_m1.User.UserId, "Wrong User");
-//            Assert.AreEqual(1, job_m1.Upload.UploadId, "Wrong Upload");
+            //act
+            Job job_m1 = new Job(
+               jobId,
+               jobName,
+               dateCreated,
+               durationInDays,
+               reward,
+               dateAwarded,
+               languageFrom,
+               languageTo,
+               user,
+               upload
+               );
 
-//        }
-//    [TestMethod]
-//    //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-//    public void MODEL_Job_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
-//    {
-//        //arrange
-//        int JobId = 1;
-//        string JobName = "Project1";
-//        DateTimeOffset DateCreated = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
-//                             new TimeSpan(1, 0, 0));
-//        int DurationInDays = 3;
-//        decimal Reward = 100;
-//        DateTimeOffset DateAwarded = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
-//                             new TimeSpan(1, 0, 0));
-//        Language LanguageFrom = new Language(1, "English");
-//        Language LanguageTo = new Language(2, "Roumanian");
-//        User User = new User(1, 
-//            "Adrian", 
-//            "rsh45sh46gh4g65h4gf6h4fg6h54ti", 
-//            "dg6dfg45d5sfgd6", 
-//            "Adrian", 
-//            "Frunza", 
-//            "frunza.adrian@yahoo.com", 
-//            false);
-//        Upload Upload = new Upload(1,  new Text(1, "text1"), new File(1));
+            //assert
+            Assert.IsNotNull(job_m1, "job object is null");
+            Assert.AreEqual(1, job_m1.jobId, "wrong jobId");
+            Assert.AreEqual("Project1", job_m1.jobName, "wrong jobName");
+            Assert.AreEqual(initDTO, job_m1.dateCreated, "wrong dateCreated");
+            Assert.AreEqual(3, job_m1.durationInDays, "wrong durationInDays");
+            Assert.AreEqual(100.99m, job_m1.reward, "wrong reward");
+            Assert.AreEqual(initDTO.AddDays(3), job_m1.dateAwarded, "wrong dateAwarded");
+            Assert.IsNotNull(job_m1.languageFrom, "job.languageFrom is null");
+            Assert.IsNotNull(job_m1.languageTo, "job.languageTo is null");
+            Assert.IsNotNull(job_m1.user, "job.user is null");
+            Assert.IsNotNull(job_m1.upload, "job.upload is null");
+        }
 
+        [TestMethod]
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void MODEL_Job_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
+        {
+            //arrange
+            DateTimeOffset initDTO = DateTimeOffset.Now;
 
-//            Job job_m2 = new Job(
-//                JobId,
-//                JobName,
-//                DateCreated,
-//                DurationInDays,
-//                Reward,
-//                DateAwarded,
-//                LanguageFrom,
-//                LanguageTo,
-//                User,
-//                Upload);
+            int jobId = 1;
+            string jobName = "Project1";
+            DateTimeOffset dateCreated = initDTO;
+            int durationInDays = 3;
+            decimal reward = 100.99m;
+            DateTimeOffset dateAwarded = initDTO.AddDays(3);
+            Language languageFrom = new Language();
+            Language languageTo = new Language();
+            User user = new User();
+            Upload upload = new Upload();
+            Job job_m2 = new Job(
+                jobId,
+                jobName,
+                dateCreated,
+                durationInDays,
+                reward,
+                dateAwarded,
+                languageFrom,
+                languageTo,
+                user,
+                upload
+                );
 
-//    //act
+            //act
+            Language languageFrom2 = new Language();
+            Language languageTo2 = new Language();
+            User user2 = new User();
+            Upload upload2 = new Upload();
 
+            job_m2.jobId = 2;
+            job_m2.jobName = "Project2";
+            job_m2.dateCreated = initDTO.AddMinutes(32);
+            job_m2.durationInDays = 4;
+            job_m2.reward = 150;
+            job_m2.dateAwarded = initDTO.AddDays(1);
+            job_m2.languageFrom = languageFrom2;
+            job_m2.languageTo = languageTo2;
+            job_m2.user = user2;
+            job_m2.upload = upload2;
 
-//         job_m2.JobId = 2;
-//        job_m2.JobName = "Project2";
-//        job_m2.DateCreated = new DateTimeOffset(2009, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0));
-//        job_m2.DurationInDays = 4;
-//        job_m2.Reward = 150;
-//        job_m2.DateAwarded  = new DateTimeOffset(2009, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0));
-//        job_m2.LanguageFrom = new Language(3,"French");
-//        job_m2.LanguageTo = new Language(4,"Deutch");
-//        job_m2.User = new User(
-//            5, 
-//            "Adriana", 
-//            "rsh45sh46gh4g65h4gf6h4fg6h54f", 
-//            "dg6dfg45d5sfgd7", 
-//            "Adriana", 
-//            "Frunzaa", 
-//            "afrunza.adrian@yahoo.com", 
-//            true);
-//        job_m2.Upload = new Upload(1, new Text(3, "text2"), new File(5));
-
-//            //assert
-//            Assert.IsNotNull(job_m2, "Job object is null");
-//            Assert.AreEqual(2, job_m2.JobId, "JobId not changed");
-//            Assert.AreEqual("Project2", job_m2.JobName, "JobName not changed");
-//            Assert.AreEqual(new DateTimeOffset(2009, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0)), job_m2.DateCreated, "DateCreated not changed");
-//            Assert.AreEqual(4, job_m2.DurationInDays, "DurationInDays not changed");
-//            Assert.AreEqual(150, job_m2.Reward, "Reward not changed");
-//            Assert.AreEqual(new DateTimeOffset(2009, 5, 1, 8, 6, 32,
-//                                 new TimeSpan(1, 0, 0)), job_m2.DateAwarded, "DateCreated not changed");
-//            Assert.AreEqual(3, job_m2.LanguageFrom.LanguageId, "LanguageFrom not changed");
-//            Assert.AreEqual(4, job_m2.LanguageTo.LanguageId, "LanguageTo not changed");
-//            Assert.AreEqual(5,job_m2.User.UserId,"User not changed");
-//            Assert.AreEqual(1, job_m2.Upload.UploadId, "Wrong Upload");
-//        }
-//    }
-//}
+            //assert
+            Assert.IsNotNull(job_m2, "job object is null");
+            Assert.AreEqual(2, job_m2.jobId, "jobId not changed");
+            Assert.AreEqual("Project2", job_m2.jobName, "jobName not changed");
+            Assert.AreEqual(initDTO.AddMinutes(32), job_m2.dateCreated, "dateCreated not changed");
+            Assert.AreEqual(4, job_m2.durationInDays, "durationInDays not changed");
+            Assert.AreEqual(150, job_m2.reward, "reward not changed");
+            Assert.AreEqual(initDTO.AddDays(1), job_m2.dateAwarded, "dateRewarded not changed");
+            Assert.AreNotEqual(languageFrom, job_m2.languageFrom, "job.languageFrom not changed");
+            Assert.AreNotEqual(languageTo, job_m2.languageTo, "job.languageTo not changed");
+            Assert.AreNotEqual(user, job_m2.user, "job.user not changed");
+            Assert.AreNotEqual(upload, job_m2.upload, "job.upload not changed");
+        }
+    }
+}

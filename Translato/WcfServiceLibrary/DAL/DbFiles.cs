@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WcfServiceLibrary.MODEL;
@@ -11,20 +11,18 @@ namespace WcfServiceLibrary.DAL
 {
     public class DbFiles : IFiles
     {
-        private static SqlCommand sqlCommand = null;
-        private static SqlParameter param_TextId = new SqlParameter("@FileId", SqlDbType.Int);
-        
+        //define sql parameters
+        private static SqlParameter param_textId = new SqlParameter("@FileId", SqlDbType.Int);
 
-
+        //
         private static File createFile(IDataReader dbReader)
         {
             File file = new File();
-            file.FileId = Convert.ToInt32(dbReader["TextId"]);
-            
-
+            file.fileId = Convert.ToInt32(dbReader["TextId"]);
             return file;
         }
 
+        //
         public int insertFile(File file)
         {
             int result = -1;
@@ -36,10 +34,6 @@ namespace WcfServiceLibrary.DAL
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-
-                    
-
-
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -55,6 +49,10 @@ namespace WcfServiceLibrary.DAL
                 catch (ArgumentException argEx)
                 {
                     Console.WriteLine(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
                 return result;
             }

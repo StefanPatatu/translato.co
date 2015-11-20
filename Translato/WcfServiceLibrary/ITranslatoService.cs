@@ -1,8 +1,9 @@
-﻿using System.ServiceModel;
-using WcfServiceLibrary.MODEL;
-
-//author: futz
+﻿//author: futz
 //helpers:
+//last_cheked: futz@20.11.2015
+
+using System.ServiceModel;
+using WcfServiceLibrary.MODEL;
 
 namespace WcfServiceLibrary
 {
@@ -10,6 +11,6 @@ namespace WcfServiceLibrary
     public interface ITranslatoService
     {
         [OperationContract]
-        int InsertUser(User user);
+        int insertUser(User user);
     }
 }

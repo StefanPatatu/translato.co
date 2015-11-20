@@ -1,9 +1,9 @@
-﻿using System;
+﻿//author: kristis133
+//helpers:
+//last_checked: futz@20.11.2015
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
-
-//author: kristis133
-//helpers:
 
 namespace WcfServiceLibrary.Tests.MODELTests
 {
@@ -11,42 +11,45 @@ namespace WcfServiceLibrary.Tests.MODELTests
     public class TextTests
     {
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void MODEL_Text_PublicConstructor_CreateText_TextIsCreated()
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void MODEL_Text_FullConstructor_CreateText_TextIsCreated()
         {
             //arrange
-            int TextId = 1;
-            string TextData = "I like Potato Salad";
+            int textId = 1;
+            string textData = "I like Potato Salad";
 
             //act
             Text text_m1 = new Text(
-                 TextId,
-                 TextData);
+                 textId,
+                 textData
+                 );
 
             //assert
-            Assert.IsNotNull(text_m1, "Text object is null");
-            Assert.AreEqual(1, text_m1.TextId, "Wrong TextId");
-            Assert.AreEqual("I like Potato Salad", text_m1.TextData, "Wrong TextData");
+            Assert.IsNotNull(text_m1, "text object is null");
+            Assert.AreEqual(1, text_m1.textId, "wrong textId");
+            Assert.AreEqual("I like Potato Salad", text_m1.textData, "wrong textData");
         }
+
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
         public void MODEL_Text_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
         {
             //arrange
-            int TextId = 1;
-            string TextData = "I like potato salad";
+            int textId = 1;
+            string textData = "I like potato salad";
             Text text_m2 = new Text(
-                TextId,
-                TextData);
+                textId,
+                textData
+                );
 
             //act
-            text_m2.TextId = 2;
-            text_m2.TextData = "I don't like potato salad";
+            text_m2.textId = 2;
+            text_m2.textData = "I don't like potato salad";
 
             //assert
-            Assert.IsNotNull(text_m2, "Text object is null");
-            Assert.AreEqual(2, text_m2.TextId, "TextId not changed");
-            Assert.AreEqual("I don't like potato salad", text_m2.TextData, "TextData not changed");
+            Assert.IsNotNull(text_m2, "text object is null");
+            Assert.AreEqual(2, text_m2.textId, "textId not changed");
+            Assert.AreEqual("I don't like potato salad", text_m2.textData, "textData not changed");
         }
     }
 }

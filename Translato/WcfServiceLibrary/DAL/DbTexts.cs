@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WcfServiceLibrary.MODEL;
@@ -11,27 +11,26 @@ namespace WcfServiceLibrary.DAL
 {
     public class DbTexts : ITexts
     {
-        private static SqlCommand sqlCommand = null;
-        private static SqlParameter param_TextId = new SqlParameter("@TextId", SqlDbType.Int);
-        private static SqlParameter param_TextData = new SqlParameter("@TextData", SqlDbType.NVarChar, 15);
+        //define sql parameters
+        private static SqlParameter param_textId = new SqlParameter("@TextId", SqlDbType.Int);
+        private static SqlParameter param_textData = new SqlParameter("@TextData", SqlDbType.NVarChar, 15);
 
-
+        //
         private static Text createText(IDataReader dbReader)
         {
             Text text = new Text();
-            text.TextId = Convert.ToInt32(dbReader["TextId"]);
-            text.TextData = Convert.ToString(dbReader["TextData"]);
-
+            text.textId = Convert.ToInt32(dbReader["TextId"]);
+            text.textData = Convert.ToString(dbReader["TextData"]);
             return text;
         }
 
+        //
         public int insertText(Text text)
         {
             int result = -1;
 
             string sqlQuery = "INSERT INTO Texts VALUES (" +
                 "@TextData " +
-
             ")";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
@@ -40,10 +39,8 @@ namespace WcfServiceLibrary.DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
 
-                    param_TextData.Value = text.TextData;
-                    sqlCommand.Parameters.Add(param_TextData);
-
-
+                    param_textData.Value = text.textData;
+                    sqlCommand.Parameters.Add(param_textData);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -59,6 +56,10 @@ namespace WcfServiceLibrary.DAL
                 catch (ArgumentException argEx)
                 {
                     Console.WriteLine(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
                 return result;
             }

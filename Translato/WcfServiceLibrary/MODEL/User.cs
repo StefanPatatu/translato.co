@@ -1,86 +1,91 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//author: futz
+﻿//author: futz
 //helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 
 namespace WcfServiceLibrary.MODEL
 {
     public class User
-    {
-        private int p_UserId;
-        private string p_UserName;
-        private string p_HashedPassword;
-        private string p_FirstName;
-        private string p_LastName;
-        private string p_Email;
-        private bool p_NewsletterOptOut;
-        private DateTimeOffset p_CreatedOn;
+    {   
+        //private attributes
+        private int p_userId;
+        private string p_userName;
+        private string p_hashedPassword;
+        private string p_firstName;
+        private string p_lastName;
+        private string p_email;
+        private bool p_newsletterOptOut;
+        private DateTimeOffset p_createdOn;
+        
+        //empty constructor
         public User()
         {
 
         }
+        
+        //full constructor
         public User(
-            int UserId,
-            string UserName,
-            string HashedPassword,
-            string FirstName,
-            string LastName,
-            string Email,
-            bool NewsletterOptOut,
-            DateTimeOffset CreatedOn)
+            int userId,
+            string userName,
+            string hashedPassword,
+            string firstName,
+            string lastName,
+            string email,
+            bool newsletterOptOut,
+            DateTimeOffset createdOn
+            )
         {
-            this.UserId = UserId;
-            this.UserName = UserName;
-            this.HashedPassword = HashedPassword;
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Email = Email;
-            this.NewsletterOptOut = NewsletterOptOut;
-            this.CreatedOn = CreatedOn;
+            this.userId = userId;
+            this.userName = userName;
+            this.hashedPassword = hashedPassword;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.newsletterOptOut = newsletterOptOut;
+            this.createdOn = createdOn;
         }
-        public int UserId
+
+        //getters and setters
+        public int userId
         {
-            get { return p_UserId; }
-            set { p_UserId = value; }
+            get { return p_userId; }
+            set { p_userId = value; }
         }
-        public string UserName
+        public string userName
         {
-            get { return p_UserName; }
-            set { p_UserName = value; }
+            get { return p_userName; }
+            set { p_userName = value; }
         }
-        public string HashedPassword
+        public string hashedPassword
         {
-            get { return p_HashedPassword; }
-            set { p_HashedPassword = value; }
+            get { return p_hashedPassword; }
+            set { p_hashedPassword = value; }
         }
-        public string FirstName
+        public string firstName
         {
-            get { return p_FirstName; }
-            set { p_FirstName = value; }
+            get { return p_firstName; }
+            set { p_firstName = value; }
         }
-        public string LastName
+        public string lastName
         {
-            get { return p_LastName; }
-            set { p_LastName = value; }
+            get { return p_lastName; }
+            set { p_lastName = value; }
         }
-        public string Email
+        public string email
         {
-            get { return p_Email; }
-            set { p_Email = value; }
+            get { return p_email; }
+            set { p_email = value; }
         }
-        public bool NewsletterOptOut
+        public bool newsletterOptOut
         {
-            get { return p_NewsletterOptOut; }
-            set { p_NewsletterOptOut = value; }
+            get { return p_newsletterOptOut; }
+            set { p_newsletterOptOut = value; }
         }
-        public DateTimeOffset CreatedOn
+        public DateTimeOffset createdOn
         {
-            get { return p_CreatedOn; }
-            set { p_CreatedOn = value; }
+            get { return p_createdOn; }
+            set { p_createdOn = value; }
         }
     }
 }

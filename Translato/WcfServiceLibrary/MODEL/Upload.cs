@@ -1,54 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//author: DarkSun
-//helped: kool-kat
+﻿//author: DarkSun
+//helpers: kool-kat
+//last_checked: futz@20.11.2015
 
 namespace WcfServiceLibrary.MODEL
 {
     public class Upload
     {
-        private int p_UploadId;
-        // 1 text 0  file
-       
-        private Text p_Text;
-        private File p_File;
+        //private attributes
+        private int p_uploadId;
+        private Text p_text;
+        private File p_file;
 
+        //empty constructor
         public Upload()
         {
 
         }
 
+        //full constructor
         public Upload(
-            int UploadId,
-       
-            Text Text,
-            File File)
+            int uploadId,
+            Text text,
+            File file
+            )
         {
-            this.UploadId = UploadId;
-          
-            this.Text = Text;
-            this.File = File;
+            this.uploadId = uploadId;
+            this.text = text;
+            this.file = file;
         }
 
-        public int UploadId
+        //getters and setters
+        public int uploadId
         {
-            get { return p_UploadId; }
-            set { p_UploadId = value; }
+            get { return p_uploadId; }
+            set { p_uploadId = value; }
         }
        
-        public Text Text
+        public Text text
         {
-            get { return p_Text; }
-            set { p_Text = value; }
+            get { return p_text; }
+            set { p_text = value; }
         }
-        public File File
+        public File file
         {
-            get { return p_File; }
-            set { p_File = value; }
+            get { return p_file; }
+            set { p_file = value; }
         }
     }
 }

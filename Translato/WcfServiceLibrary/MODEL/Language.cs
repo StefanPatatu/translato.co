@@ -1,38 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//author: kristis133
+﻿//author: kristis133
 //helpers:
+//last_checked: futz@20.11.2015
 
 namespace WcfServiceLibrary.MODEL
 {
     public class Language
     {
-        private int p_LanguageId;
-        private string p_LanguageName;
+        //private attributes
+        private int p_languageId;
+        private string p_languageName;
+
+        //empty constructor
         public Language()
         {
 
         }
+
+        //full constructor
         public Language(
-            int LanguageId,
-            string LanguageName)
+            int languageId,
+            string languageName
+            )
         {
-            this.LanguageId = LanguageId;
-            this.LanguageName = LanguageName;
+            this.languageId = languageId;
+            this.languageName = languageName;
         }
-        public int LanguageId
+
+        //getters and setters
+        public int languageId
         {
-            get { return p_LanguageId; }
-            set { p_LanguageId = value; }
+            get { return p_languageId; }
+            set { p_languageId = value; }
         }
-        public string LanguageName
+        public string languageName
         {
-            get { return p_LanguageName; }
-            set { p_LanguageName = value; }
+            get { return p_languageName; }
+            set { p_languageName = value; }
         }
     }
 }

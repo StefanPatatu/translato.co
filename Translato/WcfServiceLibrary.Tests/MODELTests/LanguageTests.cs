@@ -1,9 +1,9 @@
-﻿using System;
+﻿//author: kristis133
+//helpers:
+//last_checked: futz@20.11.2015
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
-
-//author: kristis133
-//helpers:
 
 namespace WcfServiceLibrary.Tests.MODELTests
 {
@@ -11,42 +11,45 @@ namespace WcfServiceLibrary.Tests.MODELTests
     public class LanguageTests
     {
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
-        public void MODEL_Language_PublicConstructor_CreateLanguage_LanguageIsCreated()
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void MODEL_Language_FullConstructor_CreateLanguage_LanguageIsCreated()
         {
             //arrange
-            int LanguageId = 1;
-            string LanguageName = "Lithuanian";
+            int languageId = 1;
+            string languageName = "Lithuanian";
 
             //act
             Language language_m1 = new Language(
-                 LanguageId,
-                 LanguageName);
+                 languageId,
+                 languageName
+                 );
 
             //assert
-            Assert.IsNotNull(language_m1, "Language object is null");
-            Assert.AreEqual(1, language_m1.LanguageId, "Wrong LanguageId");
-            Assert.AreEqual("Lithuanian", language_m1.LanguageName, "Wrong LanguageName");
+            Assert.IsNotNull(language_m1, "language object is null");
+            Assert.AreEqual(1, language_m1.languageId, "wrong languageId");
+            Assert.AreEqual("Lithuanian", language_m1.languageName, "wrong languageName");
         }
+
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
         public void MODEL_Language_SetAndGetMethods_ModifyAllFieldsValues_AllValuesAreModified()
         {
             //arrange
-            int LanguageId = 1;
-            string LanguageName = "Lithuanian";
+            int languageId = 1;
+            string languageName = "Lithuanian";
             Language language_m2 = new Language(
-                LanguageId,
-                LanguageName);
+                languageId,
+                languageName
+                );
 
             //act
-            language_m2.LanguageId = 2;
-            language_m2.LanguageName = "not.Lithuanian";
+            language_m2.languageId = 2;
+            language_m2.languageName = "Romanian";
 
             //assert
-            Assert.IsNotNull(language_m2, "Language object is null");
-            Assert.AreEqual(2, language_m2.LanguageId, "LanguageId not changed");
-            Assert.AreEqual("not.Lithuanian", language_m2.LanguageName, "LanguageName not changed");
+            Assert.IsNotNull(language_m2, "language object is null");
+            Assert.AreEqual(2, language_m2.languageId, "languageId not changed");
+            Assert.AreEqual("Romanian", language_m2.languageName, "languageName not changed");
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WcfServiceLibrary.MODEL;
@@ -11,20 +11,21 @@ namespace WcfServiceLibrary.DAL
 {
     public class DbUploads : IUploads
     {
-        private static SqlCommand sqlCommand = null;
-        private static SqlParameter param_UploadId = new SqlParameter("@UploadId", SqlDbType.Int);
-        private static SqlParameter param_TextId = new SqlParameter("@TextId", SqlDbType.Int);
-        private static SqlParameter param_FileId = new SqlParameter("@FileId", SqlDbType.Int);
+        //define sql parameters
+        private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
+        private static SqlParameter param_textId = new SqlParameter("@TextId", SqlDbType.Int);
+        private static SqlParameter param_fileId = new SqlParameter("@FileId", SqlDbType.Int);
 
+        //
         private static Upload createUpload(IDataReader dbReader)
         {
             Upload upload = new Upload();
-            upload.UploadId = Convert.ToInt32(dbReader["UploadId"]);
-            upload.Text.TextId = Convert.ToInt32(dbReader["TextId"]);
-           
+            upload.uploadId = Convert.ToInt32(dbReader["UploadId"]);
+            upload.text.textId = Convert.ToInt32(dbReader["TextId"]);
             return upload;
         }
 
+        //
         public int insertUploadText(Upload upload)
         {
             int result = -1;
@@ -40,9 +41,8 @@ namespace WcfServiceLibrary.DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
 
-                    param_TextId.Value = upload.Text.TextId;
-                    sqlCommand.Parameters.Add(param_TextId);
-
+                    param_textId.Value = upload.text.textId;
+                    sqlCommand.Parameters.Add(param_textId);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -59,10 +59,15 @@ namespace WcfServiceLibrary.DAL
                 {
                     Console.WriteLine(argEx.ToString());
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
                 return result;
             }
         }
 
+        //
         public int insertUploadFile(Upload upload)
         {
             int result = -1;
@@ -78,10 +83,8 @@ namespace WcfServiceLibrary.DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
 
-                    
-
-                    param_FileId.Value = upload.File.FileId;
-                    sqlCommand.Parameters.Add(param_FileId);
+                    param_fileId.Value = upload.file.fileId;
+                    sqlCommand.Parameters.Add(param_fileId);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -97,6 +100,10 @@ namespace WcfServiceLibrary.DAL
                 catch (ArgumentException argEx)
                 {
                     Console.WriteLine(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
                 return result;
             }

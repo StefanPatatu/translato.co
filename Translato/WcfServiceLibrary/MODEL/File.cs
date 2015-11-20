@@ -1,30 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//author: adrian
+﻿//author: adrian
 //helpers:
+//last_checked: futz@20.11.2015
+
 namespace WcfServiceLibrary.MODEL
 {
     public class File
-    {
-        private int p_FileId;
-
-        public int FileId
-        {
-            get { return p_FileId; }
-            set { p_FileId = value; }
-        }
+    {   
+        //private attributes
+        private int p_fileId;
+        
+        //empty constructor
         public File()
         {
 
         }
-        public File(int FileId)
+        
+        //full constructor
+        public File(
+            int fileId
+            )
         {
-            this.FileId = FileId;
+            this.fileId = fileId;
         }
 
+        //getters and setters
+        public int fileId
+        {
+            get { return p_fileId; }
+            set { p_fileId = value; }
+        }
     }
 }

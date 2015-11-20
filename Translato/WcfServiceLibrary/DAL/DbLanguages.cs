@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WcfServiceLibrary.MODEL;
@@ -11,20 +11,20 @@ namespace WcfServiceLibrary.DAL
 {
     public class DbLanguages : ILanguages
     {
-        private static SqlCommand sqlCommand = null;
-        private static SqlParameter param_LanguageId = new SqlParameter("@LanguageId", SqlDbType.Int);
-        private static SqlParameter param_LanguageName = new SqlParameter("@LanguageName", SqlDbType.NVarChar,15);
+        //define sql parameters
+        private static SqlParameter param_languageId = new SqlParameter("@LanguageId", SqlDbType.Int);
+        private static SqlParameter param_languageName = new SqlParameter("@LanguageName", SqlDbType.NVarChar,15);
         
-
+        //
         private static Language createLanguage(IDataReader dbReader)
         {
             Language language = new Language();
-            language.LanguageId = Convert.ToInt32(dbReader["LanguageId"]);
-            language.LanguageName = Convert.ToString(dbReader["LanguageName"]);
-            
+            language.languageId = Convert.ToInt32(dbReader["LanguageId"]);
+            language.languageName = Convert.ToString(dbReader["LanguageName"]);
             return language;
         }
 
+        //
         public int insertLanguage(Language language)
         {
             int result = -1;
@@ -39,10 +39,8 @@ namespace WcfServiceLibrary.DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
 
-                    param_LanguageName.Value = language.LanguageName;
-                    sqlCommand.Parameters.Add(param_LanguageName);
-
-                   
+                    param_languageName.Value = language.languageName;
+                    sqlCommand.Parameters.Add(param_languageName);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -58,6 +56,10 @@ namespace WcfServiceLibrary.DAL
                 catch (ArgumentException argEx)
                 {
                     Console.WriteLine(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
                 return result;
             }

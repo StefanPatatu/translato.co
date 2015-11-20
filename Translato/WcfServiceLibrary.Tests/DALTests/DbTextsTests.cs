@@ -12,7 +12,7 @@ namespace WcfServiceLibrary.Tests.DALTests
     public class DbTextsTests
     {
         [TestMethod]
-        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
         public void DAL_IText_InsertText_InsertText_TextIsInserted()
         {
             //arrange

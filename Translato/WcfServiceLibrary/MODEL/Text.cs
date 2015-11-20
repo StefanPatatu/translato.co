@@ -1,38 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//author: kristis133
+﻿//author: kristis133
 //helpers:
+//last_checked: futz@20.11.2015
 
 namespace WcfServiceLibrary.MODEL
 {
     public class Text
     {
-        private int p_TextId;
-        private string p_TextData;
+        //private attributes
+        private int p_textId;
+        private string p_textData;
+
+        //empty constructor
         public Text()
         {
 
         }
+
+        //full constructor
         public Text(
-            int TextId,
-            string TextData)
+            int textId,
+            string textData
+            )
         {
-            this.TextId = TextId;
-            this.TextData = TextData;
+            this.textId = textId;
+            this.textData = textData;
         }
-        public int TextId
+
+        //getters and testers
+        public int textId
         {
-            get { return p_TextId; }
-            set { p_TextId = value; }
+            get { return p_textId; }
+            set { p_textId = value; }
         }
-        public string TextData
+        public string textData
         {
-            get { return p_TextData; }
-            set { p_TextData = value; }
+            get { return p_textData; }
+            set { p_textData = value; }
         }
     }
 }

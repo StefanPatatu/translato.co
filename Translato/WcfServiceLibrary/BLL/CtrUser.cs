@@ -1,9 +1,10 @@
-﻿using System;
+﻿//author: futz
+//helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
-
-//author: futz
-//helpers:
 
 namespace WcfServiceLibrary.BLL
 {
@@ -15,53 +16,54 @@ namespace WcfServiceLibrary.BLL
         {
             int result = -1;
 
-            //validate UserName 
+            //validate userName 
             if (
                 result == 0 ||
-                string.IsNullOrEmpty(user.UserName) ||
-                !Validate.isAlphaNumeric(user.UserName) ||
-                !Validate.hasMinLength(user.UserName, 5) ||
-                !Validate.hasMaxLength(user.UserName, 15)
+                string.IsNullOrEmpty(user.userName) ||
+                !Validate.isAlphaNumeric(user.userName) ||
+                !Validate.hasMinLength(user.userName, 5) ||
+                !Validate.hasMaxLength(user.userName, 15)
                ) { result = 0; }
             //validate password(stored in the HashedPassword field at this point. Will be replaced with hash + salt later)
             if (
                 result == 0 ||
-                !Validate.hasMinLength(user.HashedPassword, 15)
+                !Validate.hasMinLength(user.hashedPassword, 8) ||
+                !Validate.hasMaxLength(user.hashedPassword, 100)
                ) { result = 0; }
-            //validate FirstName 
+            //validate firstName 
             if (
                 result == 0 ||
-                string.IsNullOrEmpty(user.FirstName) ||
-                !Validate.hasMinLength(user.FirstName, 2) ||
-                !Validate.hasMaxLength(user.FirstName, 20)
+                string.IsNullOrEmpty(user.firstName) ||
+                !Validate.hasMinLength(user.firstName, 2) ||
+                !Validate.hasMaxLength(user.firstName, 20)
                )
             { result = 0; }
-            //validate LastName 
+            //validate lastName 
             if (
                 result == 0 ||
-                string.IsNullOrEmpty(user.LastName) ||
-                !Validate.hasMinLength(user.LastName, 2) ||
-                !Validate.hasMaxLength(user.LastName, 20)
+                string.IsNullOrEmpty(user.lastName) ||
+                !Validate.hasMinLength(user.lastName, 2) ||
+                !Validate.hasMaxLength(user.lastName, 20)
                )
             { result = 0; }
             //validate Email 
             if (
                 result == 0 ||
-                string.IsNullOrEmpty(user.Email) ||
-                !Validate.hasMinLength(user.Email, 5) ||
-                !Validate.hasMaxLength(user.Email, 50) ||
-                !user.Email.Contains("@")
+                string.IsNullOrEmpty(user.email) ||
+                !Validate.hasMinLength(user.email, 5) ||
+                !Validate.hasMaxLength(user.email, 50) ||
+                !user.email.Contains("@")
                )
             { result = 0; }
             if (result != 0)//safe to proceed
             {
-                user.UserName = user.UserName;
-                user.HashedPassword = Password.HashPassword(user.HashedPassword);
-                user.FirstName = user.FirstName;
-                user.LastName = user.LastName;
-                user.Email = user.Email;
-                user.NewsletterOptOut = user.NewsletterOptOut;
-                user.CreatedOn = DateTimeOffset.Now;
+                user.userName = user.userName;
+                user.hashedPassword = Password.HashPassword(user.hashedPassword);
+                user.firstName = user.firstName;
+                user.lastName = user.lastName;
+                user.email = user.email;
+                user.newsletterOptOut = user.newsletterOptOut;
+                user.createdOn = DateTimeOffset.Now;
 
                 IUsers _DbUsers = new DbUsers();
 

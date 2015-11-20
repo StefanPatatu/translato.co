@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers:
+//last_checked: futz@20.11.2015
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WcfServiceLibrary.MODEL;
@@ -11,27 +11,28 @@ namespace WcfServiceLibrary.DAL
 {
     public class DbSubmissions : ISubmissions
     {
-        private static SqlCommand sqlCommand = null;
-        private static SqlParameter param_SubmissionId = new SqlParameter("@SubmissionIs", SqlDbType.Int);
-        private static SqlParameter param_DateSubmitted = new SqlParameter("@DateSubmitted", SqlDbType.DateTimeOffset);
-        private static SqlParameter param_IsAwarded = new SqlParameter("@IsAwarded", SqlDbType.Bit);
-        private static SqlParameter param_UserId = new SqlParameter("@UserId", SqlDbType.Int);
-        private static SqlParameter param_UploadId = new SqlParameter("@UploadId", SqlDbType.Int);
-        private static SqlParameter param_JobId = new SqlParameter("@JobId", SqlDbType.Int);
+        //define sql parameters
+        private static SqlParameter param_submissionId = new SqlParameter("@SubmissionIs", SqlDbType.Int);
+        private static SqlParameter param_dateSubmitted = new SqlParameter("@DateSubmitted", SqlDbType.DateTimeOffset);
+        private static SqlParameter param_isAwarded = new SqlParameter("@IsAwarded", SqlDbType.Bit);
+        private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);
+        private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
+        private static SqlParameter param_jobId = new SqlParameter("@JobId", SqlDbType.Int);
 
+        //
         private static Submission createSubmission(IDataReader dbReader)
         {
             Submission submission = new Submission();
-            submission.SubmissionId = Convert.ToInt32(dbReader["SubmissionId"]);
-            submission.DateSubmitted = Convert.ToDateTime(dbReader["DateSubmitted"]);
-            submission.IsAwarded = Convert.ToBoolean(dbReader["IsAwarded"]);
-            submission.User.UserId = Convert.ToInt32(dbReader["UserId"]);
-            submission.Upload.UploadId = Convert.ToInt32(dbReader["UploadId"]);
-            submission.Job.JobId = Convert.ToInt32(dbReader["JobId"]);
-            
+            submission.submissionId = Convert.ToInt32(dbReader["SubmissionId"]);
+            submission.dateSubmitted = Convert.ToDateTime(dbReader["DateSubmitted"]);
+            submission.isAwarded = Convert.ToBoolean(dbReader["IsAwarded"]);
+            submission.user.userId = Convert.ToInt32(dbReader["UserId"]);
+            submission.upload.uploadId = Convert.ToInt32(dbReader["UploadId"]);
+            submission.job.jobId = Convert.ToInt32(dbReader["JobId"]);
             return submission;
         }
 
+        //
         public int insertSubmission(Submission submission)
         {
             int result = -1;
@@ -50,20 +51,20 @@ namespace WcfServiceLibrary.DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
 
-                    param_DateSubmitted.Value = submission.DateSubmitted;
-                    sqlCommand.Parameters.Add(param_DateSubmitted);
+                    param_dateSubmitted.Value = submission.dateSubmitted;
+                    sqlCommand.Parameters.Add(param_dateSubmitted);
 
-                    param_IsAwarded.Value = submission.IsAwarded;
-                    sqlCommand.Parameters.Add(param_IsAwarded);
+                    param_isAwarded.Value = submission.isAwarded;
+                    sqlCommand.Parameters.Add(param_isAwarded);
 
-                    param_UserId.Value = submission.User.UserId;
-                    sqlCommand.Parameters.Add(param_UserId);
+                    param_userId.Value = submission.user.userId;
+                    sqlCommand.Parameters.Add(param_userId);
 
-                    param_UploadId.Value = submission.Upload.UploadId;
-                    sqlCommand.Parameters.Add(param_UploadId);
+                    param_uploadId.Value = submission.upload.uploadId;
+                    sqlCommand.Parameters.Add(param_uploadId);
 
-                    param_JobId.Value = submission.Job.JobId;
-                    sqlCommand.Parameters.Add(param_JobId);
+                    param_jobId.Value = submission.job.jobId;
+                    sqlCommand.Parameters.Add(param_jobId);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -79,6 +80,10 @@ namespace WcfServiceLibrary.DAL
                 catch (ArgumentException argEx)
                 {
                     Console.WriteLine(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
                 return result;
             }

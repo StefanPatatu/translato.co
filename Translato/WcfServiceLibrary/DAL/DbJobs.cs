@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers:
+//last_cheked: futz@20.11.2015
+
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WcfServiceLibrary.MODEL;
@@ -11,38 +11,40 @@ namespace WcfServiceLibrary.DAL
 {
     public class DbJobs : IJobs
     {
-        private static SqlCommand sqlCommand = null;
-        private static SqlParameter param_JobId = new SqlParameter("@JobId", SqlDbType.Int);
-        private static SqlParameter param_JobName = new SqlParameter("@JobName", SqlDbType.NVarChar, 50);
-        private static SqlParameter param_DateCreated = new SqlParameter("@DateCreated", SqlDbType.DateTimeOffset);
-        private static SqlParameter param_DurationInDays = new SqlParameter("@DurationInDays", SqlDbType.Int);
-        private static SqlParameter param_Reward = new SqlParameter("@Reward", SqlDbType.Decimal);
-        private static SqlParameter param_DateAwarded = new SqlParameter("@DateAwarded", SqlDbType.DateTimeOffset);
-        private static SqlParameter param_LanguageFrom = new SqlParameter("@LanguageFrom", SqlDbType.Int);
-        private static SqlParameter param_LanguageTo = new SqlParameter("@LanguageTo", SqlDbType.Int);
-        private static SqlParameter param_UserId = new SqlParameter("@UserId", SqlDbType.Int);
-        private static SqlParameter param_UploadId = new SqlParameter("@UploadId", SqlDbType.Int);
+        //define sql parameters
+        private static SqlParameter param_jobId = new SqlParameter("@JobId", SqlDbType.Int);
+        private static SqlParameter param_jobName = new SqlParameter("@JobName", SqlDbType.NVarChar, 50);
+        private static SqlParameter param_dateCreated = new SqlParameter("@DateCreated", SqlDbType.DateTimeOffset);
+        private static SqlParameter param_durationInDays = new SqlParameter("@DurationInDays", SqlDbType.Int);
+        private static SqlParameter param_reward = new SqlParameter("@Reward", SqlDbType.Decimal);
+        private static SqlParameter param_dateAwarded = new SqlParameter("@DateAwarded", SqlDbType.DateTimeOffset);
+        private static SqlParameter param_languageFrom = new SqlParameter("@LanguageFrom", SqlDbType.Int);
+        private static SqlParameter param_languageTo = new SqlParameter("@LanguageTo", SqlDbType.Int);
+        private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);
+        private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
 
-
+        //
         private static Job createJob(IDataReader dbReader)
         {
             Job job = new Job();
-            job.JobId = Convert.ToInt32(dbReader["JobId"]);
-            job.JobName = Convert.ToString(dbReader["JobName"]);
-            job.DateCreated = Convert.ToDateTime(dbReader["DateCreated"]);
-            job.DurationInDays = Convert.ToInt32(dbReader["DurationInDays"]);
-            job.Reward = Convert.ToDecimal(dbReader["Reward"]);
-            job.DateAwarded = Convert.ToDateTime(dbReader["DateAwarded"]);
-            job.LanguageFrom.LanguageId = Convert.ToInt32(dbReader["LanguageFrom"]);
-            job.LanguageTo.LanguageId = Convert.ToInt32(dbReader["LanguageTo"]);
-            job.User.UserId = Convert.ToInt32(dbReader["UserId"]);
-            job.Upload.UploadId = Convert.ToInt32(dbReader["UploadId"]);
+            job.jobId = Convert.ToInt32(dbReader["JobId"]);
+            job.jobName = Convert.ToString(dbReader["JobName"]);
+            job.dateCreated = Convert.ToDateTime(dbReader["DateCreated"]);
+            job.durationInDays = Convert.ToInt32(dbReader["DurationInDays"]);
+            job.reward = Convert.ToDecimal(dbReader["Reward"]);
+            job.dateAwarded = Convert.ToDateTime(dbReader["DateAwarded"]);
+            job.languageFrom.languageId = Convert.ToInt32(dbReader["LanguageFrom"]);
+            job.languageTo.languageId = Convert.ToInt32(dbReader["LanguageTo"]);
+            job.user.userId = Convert.ToInt32(dbReader["UserId"]);
+            job.upload.uploadId = Convert.ToInt32(dbReader["UploadId"]);
             return job;
         }
 
+        //
         public int insertJob(Job job)
         {
             int result = -1;
+
             string sqlQuery = "INSERT INTO Jobs VALUES (" +
                 "@JobName, " +
                 "@DateCreated, " +
@@ -61,32 +63,32 @@ namespace WcfServiceLibrary.DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
 
-                    param_JobName.Value = job.JobName;
-                    sqlCommand.Parameters.Add(param_JobName);
+                    param_jobName.Value = job.jobName;
+                    sqlCommand.Parameters.Add(param_jobName);
 
-                    param_DateCreated.Value = job.DateCreated;
-                    sqlCommand.Parameters.Add(param_DateCreated);
+                    param_dateCreated.Value = job.dateCreated;
+                    sqlCommand.Parameters.Add(param_dateCreated);
 
-                    param_DurationInDays.Value = job.DurationInDays;
-                    sqlCommand.Parameters.Add(param_DurationInDays);
+                    param_durationInDays.Value = job.durationInDays;
+                    sqlCommand.Parameters.Add(param_durationInDays);
 
-                    param_Reward.Value = job.Reward;
-                    sqlCommand.Parameters.Add(param_Reward);
+                    param_reward.Value = job.reward;
+                    sqlCommand.Parameters.Add(param_reward);
 
-                    param_DateAwarded.Value = job.DateAwarded;
-                    sqlCommand.Parameters.Add(param_DateAwarded);
+                    param_dateAwarded.Value = job.dateAwarded;
+                    sqlCommand.Parameters.Add(param_dateAwarded);
 
-                    param_LanguageFrom.Value = job.LanguageFrom;
-                    sqlCommand.Parameters.Add(param_LanguageFrom);
+                    param_languageFrom.Value = job.languageFrom;
+                    sqlCommand.Parameters.Add(param_languageFrom);
 
-                    param_LanguageTo.Value = job.LanguageTo;
-                    sqlCommand.Parameters.Add(param_LanguageTo);
+                    param_languageTo.Value = job.languageTo;
+                    sqlCommand.Parameters.Add(param_languageTo);
 
-                    param_UserId.Value = job.User.UserId;
-                    sqlCommand.Parameters.Add(param_UserId);
+                    param_userId.Value = job.user.userId;
+                    sqlCommand.Parameters.Add(param_userId);
 
-                    param_UploadId.Value = job.Upload.UploadId;
-                    sqlCommand.Parameters.Add(param_UploadId);
+                    param_uploadId.Value = job.upload.uploadId;
+                    sqlCommand.Parameters.Add(param_uploadId);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
@@ -103,9 +105,12 @@ namespace WcfServiceLibrary.DAL
                 {
                     Console.WriteLine(argEx.ToString());
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
                 return result;
             }
-
         }
     }
-}
+}    

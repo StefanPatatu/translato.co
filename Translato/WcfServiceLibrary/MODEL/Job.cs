@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//author: adrian
+//helpers: DarkSun
+//last_checked: futz@20.11.2015
 
-//author: adrian
-//helpers:
+using System;
+
 namespace WcfServiceLibrary.MODEL
 {
     public class Job
-    {   //private attributes
-        private int p_JobId;
-        private string p_JobName;
-        private DateTimeOffset p_DateCreated;
-        private int p_DurationInDays;
-        private decimal p_Reward;
-        private DateTimeOffset p_DateAwarded;
-        private Language p_LanguageFrom, p_LanguageTo;
-        private User p_User;
-        private Upload p_Upload;
+    {   
+        //private attributes
+        private int p_jobId;
+        private string p_jobName;
+        private DateTimeOffset p_dateCreated;
+        private int p_durationInDays;
+        private decimal p_reward;
+        private DateTimeOffset p_dateAwarded;
+        private Language p_languageFrom;
+        private Language p_languageTo;
+        private User p_user;
+        private Upload p_upload;
 
         //empty constructor
         public Job()
@@ -26,111 +26,82 @@ namespace WcfServiceLibrary.MODEL
 
         }
 
-        //constructor with parameters
+        //full constructor
         public Job(
-            int JobId,
-            string JobName,
-            DateTimeOffset DateCreated,
-            int DurationInDays,
-            decimal Reward,
-            DateTimeOffset DateAwarded,
-            Language LanguageFrom,
-            Language LanguageTo,
-            User User,
-            Upload Upload
+            int jobId,
+            string jobName,
+            DateTimeOffset dateCreated,
+            int durationInDays,
+            decimal reward,
+            DateTimeOffset dateAwarded,
+            Language languageFrom,
+            Language languageTo,
+            User user,
+            Upload upload
             )
         {
-            this.JobId = JobId;
-            this.JobName = JobName;
-            this.DateCreated = DateCreated;
-            this.DurationInDays = DurationInDays;
-            this.Reward = Reward;
-            this.DateAwarded = DateAwarded;
-            this.LanguageFrom = LanguageFrom;
-            this.LanguageTo = LanguageTo;
-            this.User = User;
-            this.Upload = Upload;
+            this.jobId = jobId;
+            this.jobName = jobName;
+            this.dateCreated = dateCreated;
+            this.durationInDays = durationInDays;
+            this.reward = reward;
+            this.dateAwarded = dateAwarded;
+            this.languageFrom = languageFrom;
+            this.languageTo = languageTo;
+            this.user = user;
+            this.upload = upload;
         }
 
-        //constructor without id 
-        public Job(
-            
-            string JobName,
-            DateTimeOffset DateCreated,
-            int DurationInDays,
-            decimal Reward,
-            DateTimeOffset DateAwarded,
-            Language LanguageFrom,
-            Language LanguageTo,
-            User User,
-            Upload Upload
-            )
+        //geters and setters
+        public int jobId
         {
-            
-            this.JobName = JobName;
-            this.DateCreated = DateCreated;
-            this.DurationInDays = DurationInDays;
-            this.Reward = Reward;
-            this.DateAwarded = DateAwarded;
-            this.LanguageFrom = LanguageFrom;
-            this.LanguageTo = LanguageTo;
-            this.User = User;
-            this.Upload = Upload;
+            get { return p_jobId; }
+            set { p_jobId = value; }
         }
-
-        //gets and sets
-
-
-        public int JobId
+        public string jobName
         {
-            get { return p_JobId; }
-            set { p_JobId = value; }
+            get { return p_jobName; }
+            set { p_jobName = value; }
         }
-        public string JobName
+        public DateTimeOffset dateCreated
         {
-            get { return p_JobName; }
-            set { p_JobName = value; }
+            get { return p_dateCreated; }
+            set { p_dateCreated = value; }
         }
-        public DateTimeOffset DateCreated
+        public int durationInDays
         {
-            get { return p_DateCreated; }
-            set { p_DateCreated = value; }
+            get { return p_durationInDays; }
+            set { p_durationInDays = value; }
         }
-        public int DurationInDays
+        public decimal reward
         {
-            get { return p_DurationInDays; }
-            set { p_DurationInDays = value; }
+            get { return p_reward; }
+            set { p_reward = value; }
         }
-        public decimal Reward
+        public DateTimeOffset dateAwarded
         {
-            get { return p_Reward; }
-            set { p_Reward = value; }
+            get { return p_dateAwarded; }
+            set { p_dateAwarded = value; }
         }
-        public DateTimeOffset DateAwarded
+        public Language languageFrom
         {
-            get { return p_DateAwarded; }
-            set { p_DateAwarded = value; }
+            get { return p_languageFrom; }
+            set { p_languageFrom = value; }
         }
-        public Language LanguageFrom
+        public Language languageTo
         {
-            get { return p_LanguageFrom; }
-            set { p_LanguageFrom = value; }
+            get { return p_languageTo; }
+            set { p_languageTo = value; }
         }
-        public Language LanguageTo
+        public User user
         {
-            get { return p_LanguageTo; }
-            set { p_LanguageTo = value; }
+            get { return p_user; }
+            set { p_user = value; }
         }
-        public User User
+        public Upload upload
         {
-            get { return p_User; }
-            set { p_User = value; }
+            get { return p_upload; }
+            set { p_upload = value; }
         }
-        public Upload Upload
-        {
-            get { return p_Upload; }
-            set { p_Upload = value; }
-        }
-
     }
 }

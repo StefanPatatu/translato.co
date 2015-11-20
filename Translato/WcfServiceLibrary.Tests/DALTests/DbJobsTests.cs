@@ -12,7 +12,7 @@
 //    public class DbJobsTests
 //    {
 //        [TestMethod]
-//        //LAYER_Class_nameOfTheMethod_testedScenario_expectedBehaviour
+//        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
 //        public void DAL_IJob_insertJob_insertJob_JobIsInserted()
 //        {
 //            //arrange
@@ -36,7 +36,7 @@
 //                false);
 //            Upload Upload = new Upload(
 //                1,
-                
+
 //                new Text(1,
 //                "text1"),
 //                new File(1));
