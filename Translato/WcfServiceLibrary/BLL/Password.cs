@@ -17,7 +17,7 @@ namespace WcfServiceLibrary.BLL
          * Format: { 0x01, prf (UInt32), iter count(UInt32), salt length(UInt32), salt, subkey }
          * (All UInt32s are stored big-endian.)
          */
-        public static string HashPassword(string password)
+        public static string hashPassword(string password)
         {
             var prf = KeyDerivationPrf.HMACSHA256;
             var rng = RandomNumberGenerator.Create();
@@ -30,23 +30,23 @@ namespace WcfServiceLibrary.BLL
             var subkey = KeyDerivation.Pbkdf2(password, salt, prf, iterCount, numBytesRequested);
             var outputBytes = new byte[13 + salt.Length + subkey.Length];
             outputBytes[0] = 0x01; //format marker
-            WriteNetworkByteOrder(outputBytes, 1, (uint)prf);
-            WriteNetworkByteOrder(outputBytes, 5, iterCount);
-            WriteNetworkByteOrder(outputBytes, 9, saltSize);
+            writeNetworkByteOrder(outputBytes, 1, (uint)prf);
+            writeNetworkByteOrder(outputBytes, 5, iterCount);
+            writeNetworkByteOrder(outputBytes, 9, saltSize);
             Buffer.BlockCopy(salt, 0, outputBytes, 13, salt.Length);
             Buffer.BlockCopy(subkey, 0, outputBytes, 13 + saltSize, subkey.Length);
             return Convert.ToBase64String(outputBytes);
         }
-        public static bool VerifyHashedPassword(string hashedPassword, string providedPassword)
+        public static bool verifyHashedPassword(string hashedPassword, string providedPassword)
         {
             var decodedHashedPassword = Convert.FromBase64String(hashedPassword);
             //wrong version
             if (decodedHashedPassword[0] != 0x01)
                 return false;
             //read header information
-            var prf = (KeyDerivationPrf)ReadNetworkByteOrder(decodedHashedPassword, 1);
-            var iterCount = (int)ReadNetworkByteOrder(decodedHashedPassword, 5);
-            var saltLength = (int)ReadNetworkByteOrder(decodedHashedPassword, 9);
+            var prf = (KeyDerivationPrf)readNetworkByteOrder(decodedHashedPassword, 1);
+            var iterCount = (int)readNetworkByteOrder(decodedHashedPassword, 5);
+            var saltLength = (int)readNetworkByteOrder(decodedHashedPassword, 9);
             //read the salt: must be >= 128 bits
             if (saltLength < 128 / 8)
             {
@@ -66,14 +66,14 @@ namespace WcfServiceLibrary.BLL
             var actualSubkey = KeyDerivation.Pbkdf2(providedPassword, salt, prf, iterCount, subkeyLength);
             return actualSubkey.SequenceEqual(expectedSubkey);
         }
-        private static void WriteNetworkByteOrder(byte[] buffer, int offset, uint value)
+        private static void writeNetworkByteOrder(byte[] buffer, int offset, uint value)
         {
             buffer[offset + 0] = (byte)(value >> 24);
             buffer[offset + 1] = (byte)(value >> 16);
             buffer[offset + 2] = (byte)(value >> 8);
             buffer[offset + 3] = (byte)(value >> 0);
         }
-        private static uint ReadNetworkByteOrder(byte[] buffer, int offset)
+        private static uint readNetworkByteOrder(byte[] buffer, int offset)
         {
             return ((uint)(buffer[offset + 0]) << 24)
                 | ((uint)(buffer[offset + 1]) << 16)

@@ -11,8 +11,8 @@ namespace WcfServiceLibrary
     {
         public int insertUser(User user)
         {
-            CtrUser _ctrUser = new CtrUser();
-            return _ctrUser.insertUser(user);
+            CtrUser _CtrUser = new CtrUser();
+            return _CtrUser.insertUser(user);
         }
     }
 }

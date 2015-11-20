@@ -1,10 +1,10 @@
-﻿using System;
+﻿//author: adrian
+//helpers: futz
+//last_checked: futz@20.11.2015
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
-
-//author: adrian
-//helpers:
 
 namespace WcfServiceLibrary.Tests.DALTests
 {
@@ -16,11 +16,9 @@ namespace WcfServiceLibrary.Tests.DALTests
         public void DAL_IFile_InsertFile_InsertFile_FileIsInserted()
         {
             //arrange
-            int FileId = 5;
-            
-
+            int fileId = 5;
             File file_m1 = new File(
-                FileId
+                fileId
                 );
             IFiles _DbFiles = new DbFiles();
 
@@ -28,8 +26,7 @@ namespace WcfServiceLibrary.Tests.DALTests
             int result = _DbFiles.insertFile(file_m1);
 
             //assert
-            Assert.AreEqual(1, result);
-
+            Assert.AreEqual(1, result, "file not inserted into the database");
         }
     }
 }

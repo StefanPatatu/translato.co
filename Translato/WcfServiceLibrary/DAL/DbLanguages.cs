@@ -33,11 +33,12 @@ namespace WcfServiceLibrary.DAL
                 "@LanguageName " +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_languageName.Value = language.languageName;
                     sqlCommand.Parameters.Add(param_languageName);

@@ -29,11 +29,12 @@ namespace WcfServiceLibrary.DAL
 
             string sqlQuery = "INSERT INTO Files DEFAULT VALUES";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();

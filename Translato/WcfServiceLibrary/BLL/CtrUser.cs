@@ -58,7 +58,7 @@ namespace WcfServiceLibrary.BLL
             if (result != 0)//safe to proceed
             {
                 user.userName = user.userName;
-                user.hashedPassword = Password.HashPassword(user.hashedPassword);
+                user.hashedPassword = Password.hashPassword(user.hashedPassword);
                 user.firstName = user.firstName;
                 user.lastName = user.lastName;
                 user.email = user.email;

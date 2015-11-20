@@ -35,11 +35,12 @@ namespace WcfServiceLibrary.DAL
                 "NULL" +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_textId.Value = upload.text.textId;
                     sqlCommand.Parameters.Add(param_textId);
@@ -77,7 +78,7 @@ namespace WcfServiceLibrary.DAL
                 "@FileId" +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {

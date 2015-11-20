@@ -51,11 +51,12 @@ namespace WcfServiceLibrary.DAL
                 "@CreatedOn" +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_userName.Value = user.userName;
                     sqlCommand.Parameters.Add(param_userName);
@@ -80,6 +81,8 @@ namespace WcfServiceLibrary.DAL
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
+
+                    sqlCommand.Parameters.Clear();
                 }
                 catch (InvalidOperationException ioEx)
                 {

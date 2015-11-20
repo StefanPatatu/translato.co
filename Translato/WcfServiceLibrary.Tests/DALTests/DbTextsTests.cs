@@ -1,10 +1,10 @@
-﻿using System;
+﻿//author: adrian
+//helpers:
+//last_checked: futz@20.11.2015 - to do
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
-
-//author: adrian
-//helpers:
 
 namespace WcfServiceLibrary.Tests.DALTests
 {
@@ -16,20 +16,19 @@ namespace WcfServiceLibrary.Tests.DALTests
         public void DAL_IText_InsertText_InsertText_TextIsInserted()
         {
             //arrange
-            int TextId = 1;
-            string TextData = "Romana";
-
+            int textId = 1;
+            string textData = "some long text here to be translated";
             Text text_m1 = new Text(
-                TextId,
-                TextData);
+                textId,
+                textData
+                );
             ITexts _DbTexts = new DbTexts();
 
             //act
             int result = _DbTexts.insertText(text_m1);
 
             //assert
-            Assert.AreEqual(1, result);
-
+            Assert.AreEqual(1, result, "text not inserted into the database");
         }
     }
 }

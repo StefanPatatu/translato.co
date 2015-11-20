@@ -33,11 +33,12 @@ namespace WcfServiceLibrary.DAL
                 "@TextData " +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_textData.Value = text.textData;
                     sqlCommand.Parameters.Add(param_textData);

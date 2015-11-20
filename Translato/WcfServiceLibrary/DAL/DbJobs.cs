@@ -57,11 +57,12 @@ namespace WcfServiceLibrary.DAL
                 "@UploadId " +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_jobName.Value = job.jobName;
                     sqlCommand.Parameters.Add(param_jobName);

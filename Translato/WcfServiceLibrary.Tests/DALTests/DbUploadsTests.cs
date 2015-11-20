@@ -1,43 +1,43 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WcfServiceLibrary.MODEL;
-using WcfServiceLibrary.DAL;
+﻿////author: adrian
+////helpers: futz
+////last_checked: 
 
-//author: adrian
-//helpers:
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using WcfServiceLibrary.MODEL;
+//using WcfServiceLibrary.DAL;
 
-namespace WcfServiceLibrary.Tests.DALTests
-{
-    [TestClass]
-    public class DbUploadsTests
-    {
-        [TestMethod]
-        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
-        public void DAL_IUpload_InsertUpload_InsertUpload_UploadIsInserted()
-        {
-            //arrange
-            int UploadId = 7;
+//namespace WcfServiceLibrary.Tests.DALTests
+//{
+//    [TestClass]
+//    public class DbUploadsTests
+//    {
+//        [TestMethod]
+//        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
+//        public void DAL_IUpload_InsertUpload_InsertUpload_UploadIsInserted()
+//        {
+//            //arrange
+//            int UploadId = 7;
           
-            Text Text = new Text(8, "Another text to be transalted");
-           // File File = new File(10);
+//            Text Text = new Text(8, "Another text to be transalted");
+//           // File File = new File(10);
             
-                ITexts _DbTexts = new DbTexts();
-                _DbTexts.insertText(Text);
+//                ITexts _DbTexts = new DbTexts();
+//                _DbTexts.insertText(Text);
 
-          //  IFiles _DbFiles = new DbFiles();
-            //_DbFiles.insertFile(File);
+//          //  IFiles _DbFiles = new DbFiles();
+//            //_DbFiles.insertFile(File);
 
 
 
-            Upload upload_m1 = new Upload(UploadId, Text, null);
-            IUploads _DbUploads = new DbUploads();
+//            Upload upload_m1 = new Upload(UploadId, Text, null);
+//            IUploads _DbUploads = new DbUploads();
 
-            //act
-            int result = _DbUploads.insertUploadText(upload_m1);
+//            //act
+//            int result = _DbUploads.insertUploadText(upload_m1);
 
-            //assert
-            Assert.AreEqual(1, result);
+//            //assert
+//            Assert.AreEqual(1, result);
 
-        }
-    }
-}
+//        }
+//    }
+//}

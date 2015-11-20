@@ -45,11 +45,12 @@ namespace WcfServiceLibrary.DAL
                 "@JobId " +
             ")";
 
-            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.SQLConnectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_dateSubmitted.Value = submission.dateSubmitted;
                     sqlCommand.Parameters.Add(param_dateSubmitted);

@@ -61,6 +61,7 @@
     <Compile Include="DALTests\DbTextsTests.cs" />
     <Compile Include="DALTests\DbUploadsTests.cs" />
     <Compile Include="DALTests\DbUsersTests.cs" />
+    <Compile Include="MODELTests\FileTests.cs" />
     <Compile Include="MODELTests\JobTests.cs" />
     <Compile Include="MODELTests\LanguageTests.cs" />
     <Compile Include="MODELTests\SubmissionTests.cs" />
