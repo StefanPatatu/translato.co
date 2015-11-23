@@ -2,7 +2,7 @@
 (
 	[UserId] INT IDENTITY(1,1) NOT NULL,
     [UserName] VARCHAR(15) NOT NULL,
-    [HashedPassword] CHAR(1024) NOT NULL,
+    [HashedPassword] CHAR(100) NOT NULL,
     [FirstName] NVARCHAR(20) NOT NULL,
     [LastName] NVARCHAR(20) NOT NULL,
     [Email] NVARCHAR(50) NOT NULL,

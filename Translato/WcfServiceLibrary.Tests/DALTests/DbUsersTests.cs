@@ -19,7 +19,7 @@ namespace WcfServiceLibrary.Tests.DALTests
             //arrange
             int userId = 1;
             string userName = "frunzaadrian";
-            string hashedPassword = "rsh45sh46gh4g65h4gf6h4fg6h54th";
+            string hashedPassword = "AQAAAAEAAE4gAAAAEO0vLc+HnnYb3qETcQ5lK0wvc8nBlSVuv/Jx3+4xnOZwZW8uw5jEMCc49ufHD1ysqA==";
             string firstName = "Adrian";
             string lastName = "Frunza";
             string email = "frunza.adrian@email.com";

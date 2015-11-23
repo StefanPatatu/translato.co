@@ -14,7 +14,7 @@ namespace WcfServiceLibrary.DAL
         //define sql parameters
         private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);
         private static SqlParameter param_userName = new SqlParameter("@UserName", SqlDbType.VarChar, 15);
-        private static SqlParameter param_hashedPassword = new SqlParameter("@HashedPassword", SqlDbType.Char, 1024);
+        private static SqlParameter param_hashedPassword = new SqlParameter("@HashedPassword", SqlDbType.Char, 100);
         private static SqlParameter param_firstName = new SqlParameter("@FirstName", SqlDbType.NVarChar, 20);
         private static SqlParameter param_lastName = new SqlParameter("@LastName", SqlDbType.NVarChar, 20);
         private static SqlParameter param_email = new SqlParameter("@Email", SqlDbType.NVarChar, 50);
