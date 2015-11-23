@@ -57,6 +57,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\CtrText.cs" />
     <Compile Include="BLL\CtrUser.cs" />
     <Compile Include="BLL\Password.cs" />
     <Compile Include="BLL\Validate.cs" />

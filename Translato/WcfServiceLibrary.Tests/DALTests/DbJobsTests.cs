@@ -1,10 +1,10 @@
-﻿//using System;
+﻿////author: adrian
+////helpers:
+
+//using System;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
 //using WcfServiceLibrary.MODEL;
 //using WcfServiceLibrary.DAL;
-
-////author: adrian
-////helpers:
 
 //namespace WcfServiceLibrary.Tests.DALTests
 //{
@@ -17,15 +17,21 @@
 //        {
 //            //arrange
 //            int JobId = 1;
-//            string JobName = "Project1";
+//            string JobName = "Job1";
 //            DateTimeOffset DateCreated = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
 //                                 new TimeSpan(1, 0, 0));
 //            int DurationInDays = 3;
 //            decimal Reward = 100;
 //            DateTimeOffset DateAwarded = new DateTimeOffset(2008, 5, 1, 8, 6, 32,
 //                                 new TimeSpan(1, 0, 0));
-//            Language LanguageFrom = new Language(1, "English");
-//            Language LanguageTo = new Language(2, "Roumanian");
+
+//            int LanguageFromId = 1;
+//            string LanguageFromText = "Lithuanian";
+//            int LanguageToId = 2;
+//            string LanguageToText = "Romanian";
+//            Language LanguageFrom = new Language(LanguageFromId, LanguageFromText);
+//            Language LanguageTo = new Language(LanguageToId, LanguageToText);
+
 //            User User = new User(
 //                1,
 //                "Adrian",
