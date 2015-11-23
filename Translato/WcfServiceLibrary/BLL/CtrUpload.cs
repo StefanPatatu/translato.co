@@ -31,7 +31,7 @@ namespace WcfServiceLibrary.BLL
                 {
                     using (TransactionScope trScope = new TransactionScope())
                     {
-                        result = _DbUploads.insertUploadFile(upload);
+                        result = _DbUploads.insertUploadText(upload);
 
                         trScope.Complete();
                     }
