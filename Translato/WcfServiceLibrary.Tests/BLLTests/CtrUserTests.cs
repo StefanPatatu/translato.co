@@ -18,7 +18,7 @@ namespace WcfServiceLibrary.Tests.BLLTests
         {
             //arrange
             int userId = 1;
-            string userName = "frunzaadrian21";
+            string userName = "frunza_adria1";
             string hashedPassword = "rsh45sh4g6gh4g65h4gf6h4fg6h54th";
             string firstName = "Adrian";
             string lastName = "Frunza";
