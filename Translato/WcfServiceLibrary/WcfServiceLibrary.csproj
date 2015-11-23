@@ -58,8 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\CtrFile.cs" />
+    <Compile Include="BLL\CtrJob.cs" />
     <Compile Include="BLL\CtrLanguage.cs" />
+    <Compile Include="BLL\CtrSubmission.cs" />
     <Compile Include="BLL\CtrText.cs" />
+    <Compile Include="BLL\CtrUpload.cs" />
     <Compile Include="BLL\CtrUser.cs" />
     <Compile Include="BLL\Password.cs" />
     <Compile Include="BLL\Validate.cs" />
