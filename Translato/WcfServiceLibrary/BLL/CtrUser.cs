@@ -20,7 +20,7 @@ namespace WcfServiceLibrary.BLL
             if (
                 result == 0 ||
                 string.IsNullOrEmpty(user.userName) ||
-                !Validate.isAlphaNumeric(user.userName) ||
+                !Validate.isAlphaNumericWithUnderscore(user.userName) ||
                 !Validate.hasMinLength(user.userName, 5) ||
                 !Validate.hasMaxLength(user.userName, 15)
                ) { result = 0; }
