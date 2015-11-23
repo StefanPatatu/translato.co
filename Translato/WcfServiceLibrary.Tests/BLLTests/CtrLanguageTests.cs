@@ -18,7 +18,7 @@ namespace WcfServiceLibrary.Tests.BLLTests
         {
             //arrange
             int languageId = 1;
-            string languageName = "Spanish";
+            string languageName = "Spanishtt";
 
             Language language_m1 = new Language(
                 languageId,

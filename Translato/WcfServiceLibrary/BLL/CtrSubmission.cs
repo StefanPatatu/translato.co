@@ -3,6 +3,7 @@
 //last_checked:
 
 using System;
+using System.Transactions;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
 
@@ -55,7 +56,27 @@ namespace WcfServiceLibrary.BLL
             {
                 ISubmissions _DbSubmissions = new DbSubmissions();
 
-                result = _DbSubmissions.insertSubmission(submission);
+                try
+                {
+                    using (TransactionScope trScope = new TransactionScope())
+                    {
+                        result = _DbSubmissions.insertSubmission(submission);
+
+                        trScope.Complete();
+                    }
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    Console.WriteLine(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    Console.WriteLine(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             else
             {

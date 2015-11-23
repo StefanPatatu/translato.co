@@ -3,6 +3,7 @@
 //last_checked:
 
 using System;
+using System.Transactions;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
 
@@ -26,7 +27,27 @@ namespace WcfServiceLibrary.BLL
             {
                 IUploads _DbUploads = new DbUploads();
 
-                result = _DbUploads.insertUploadText(upload);
+                try
+                {
+                    using (TransactionScope trScope = new TransactionScope())
+                    {
+                        result = _DbUploads.insertUploadFile(upload);
+
+                        trScope.Complete();
+                    }
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    Console.WriteLine(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    Console.WriteLine(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             else
             {
@@ -48,7 +69,27 @@ namespace WcfServiceLibrary.BLL
             {
                 IUploads _DbUploads = new DbUploads();
 
-                result = _DbUploads.insertUploadFile(upload);
+                try
+                {
+                    using (TransactionScope trScope = new TransactionScope())
+                    {
+                        result = _DbUploads.insertUploadFile(upload);
+
+                        trScope.Complete();
+                    }
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    Console.WriteLine(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    Console.WriteLine(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             else
             {

@@ -3,6 +3,7 @@
 //last_checked:
 
 using System;
+using System.Transactions;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
 
@@ -22,7 +23,27 @@ namespace WcfServiceLibrary.BLL
             {
                 IFiles _DbFiles = new DbFiles();
 
-                result = _DbFiles.insertFile(file);
+                try
+                {
+                    using (TransactionScope trScope = new TransactionScope())
+                    {
+                        result = _DbFiles.insertFile(file);
+
+                        trScope.Complete();
+                    }
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    Console.WriteLine(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    Console.WriteLine(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             else
             {

@@ -3,6 +3,7 @@
 //last_checked:
 
 using System;
+using System.Transactions;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
 
@@ -73,7 +74,27 @@ namespace WcfServiceLibrary.BLL
             {
                 IJobs _DbJobs = new DbJobs();
 
-                result = _DbJobs.insertJob(job);
+                try
+                {
+                    using (TransactionScope trScope = new TransactionScope())
+                    {
+                        result = _DbJobs.insertJob(job);
+
+                        trScope.Complete();
+                    }
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    Console.WriteLine(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    Console.WriteLine(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             else
             {
