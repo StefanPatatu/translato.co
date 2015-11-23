@@ -16,7 +16,7 @@ namespace WcfServiceLibrary.BLL
         {
             int result = -1;
 
-            //validate JobName
+            //validate jobName
             if (
                 result == 0 ||
                 !Validate.isAlphaNumericWithUnderscore(job.jobName) ||
@@ -26,14 +26,14 @@ namespace WcfServiceLibrary.BLL
               )
             { result = 0; }
 
-            //validate DateCreated
+            //validate dateCreated
             if (
                 result == 0 ||
                 job.dateCreated.Equals(null)
                 )
             { result = 0; }
 
-            //validate DurationInDays
+            //validate durationInDays
             if (
                 result == 0 ||
                 job.durationInDays<1 ||
@@ -41,28 +41,28 @@ namespace WcfServiceLibrary.BLL
                 )
             { result = 0; }
 
-            //validate LanguageFrom
+            //validate languageFrom
             if (
                 result == 0 ||
                 job.languageFrom.Equals(null)
                 )
             { result = 0; }
 
-            //validate LanguageTo
+            //validate languageTo
             if (
                 result == 0 ||
                 job.languageTo.Equals(null)
                 )
             { result = 0; }
 
-            //validate User
+            //validate user
             if (
                 result == 0 ||
                 job.user.Equals(null)
                 )
             { result = 0; }
 
-            //validate Upload
+            //validate upload
             if (
                 result == 0 ||
                 job.upload.Equals(null)

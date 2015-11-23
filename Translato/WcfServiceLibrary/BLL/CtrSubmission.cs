@@ -16,35 +16,35 @@ namespace WcfServiceLibrary.BLL
         {
             int result = -1;
 
-            //validate DateSubmitted
+            //validate dateSubmitted
             if (
                 result == 0 ||
                 submission.dateSubmitted.Equals(null)
               )
             { result = 0; }
 
-            //validate IsAwarded
+            //validate isAwarded
             if (
                 result == 0 ||
                 submission.isAwarded.Equals(null)
                 )
             { result = 0; }
 
-            //validate UserId
+            //validate userId
             if (
                 result == 0 ||
                 submission.user.Equals(null)
                 )
             { result = 0; }
 
-            //validate UploadId
+            //validate uploadId
             if (
                 result == 0 ||
                 submission.upload.Equals(null)
                 )
             { result = 0; }
 
-            //validate JobId
+            //validate jobId
             if (
                 result == 0 ||
                 submission.job.Equals(null)
