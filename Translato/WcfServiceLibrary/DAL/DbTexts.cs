@@ -13,7 +13,7 @@ namespace WcfServiceLibrary.DAL
     {
         //define sql parameters
         private static SqlParameter param_textId = new SqlParameter("@TextId", SqlDbType.Int);
-        private static SqlParameter param_textData = new SqlParameter("@TextData", SqlDbType.NVarChar, 15);
+        private static SqlParameter param_textData = new SqlParameter("@TextData", SqlDbType.NVarChar, 40000);
 
         //
         private static Text createText(IDataReader dbReader)
