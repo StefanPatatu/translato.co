@@ -16,7 +16,7 @@ namespace WcfServiceLibrary.BLL
         {
             int result = -1;
 
-            //validate TextData
+            //validate textData
             if (
                 result == 0 ||
                 string.IsNullOrEmpty(text.textData) ||

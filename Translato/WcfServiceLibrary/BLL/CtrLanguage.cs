@@ -16,7 +16,7 @@ namespace WcfServiceLibrary.BLL
         {
             int result = -1;
 
-            //validate LanguageName
+            //validate languageName
             if (
                 result == 0 ||
                 string.IsNullOrEmpty(language.languageName) ||
