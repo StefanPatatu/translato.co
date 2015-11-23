@@ -3,6 +3,7 @@
 //last_checked: futz@20.11.2015
 
 using System;
+using System.Transactions;
 using WcfServiceLibrary.MODEL;
 using WcfServiceLibrary.DAL;
 
@@ -67,7 +68,27 @@ namespace WcfServiceLibrary.BLL
 
                 IUsers _DbUsers = new DbUsers();
 
-                result = _DbUsers.insertUser(user);
+                try
+                {
+                    using (TransactionScope trScope = new TransactionScope())
+                    {
+                        result = _DbUsers.insertUser(user);
+
+                        trScope.Complete();
+                    } 
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    Console.WriteLine(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    Console.WriteLine(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
             else
             {
