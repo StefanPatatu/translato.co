@@ -8,11 +8,24 @@ namespace WcfServiceLibrary.BLL
 {
     internal class Validate
     {
-
         //isAlphaNumeric: true | false
         internal static bool isAlphaNumeric(string stringToCheck)
         {
+            Regex regex = new Regex(@"^[a-zA-Z0-9]*$");
+            return regex.IsMatch(stringToCheck);
+        }
+
+        //isAlphaNumericWithUnderscore: true | false
+        internal static bool isAlphaNumericWithUnderscore(string stringToCheck)
+        {
             Regex regex = new Regex(@"^[a-zA-Z0-9_]*$");
+            return regex.IsMatch(stringToCheck);
+        }
+
+        //isAllLetters: true | false
+        internal static bool isAllLetters(string stringToCheck)
+        {
+            Regex regex = new Regex(@"^[a-zA-Z]*$");
             return regex.IsMatch(stringToCheck);
         }
 
