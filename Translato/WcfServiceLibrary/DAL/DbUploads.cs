@@ -47,6 +47,8 @@ namespace WcfServiceLibrary.DAL
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
+
+                    sqlCommand.Parameters.Clear();
                 }
                 catch (InvalidOperationException ioEx)
                 {
@@ -83,12 +85,15 @@ namespace WcfServiceLibrary.DAL
                 try
                 {
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
 
                     param_fileId.Value = upload.file.fileId;
                     sqlCommand.Parameters.Add(param_fileId);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
+
+                    sqlCommand.Parameters.Clear();
                 }
                 catch (InvalidOperationException ioEx)
                 {

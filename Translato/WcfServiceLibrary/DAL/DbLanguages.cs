@@ -45,6 +45,8 @@ namespace WcfServiceLibrary.DAL
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
+
+                    sqlCommand.Parameters.Clear();
                 }
                 catch (InvalidOperationException ioEx)
                 {
