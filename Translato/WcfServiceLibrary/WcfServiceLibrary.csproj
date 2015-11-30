@@ -66,6 +66,7 @@
     <Compile Include="BLL\CtrUpload.cs" />
     <Compile Include="BLL\CtrUser.cs" />
     <Compile Include="BLL\Password.cs" />
+    <Compile Include="BLL\TransactionScopeBuilder.cs" />
     <Compile Include="BLL\Validate.cs" />
     <Compile Include="DAL\AccessTranslatoDb.cs" />
     <Compile Include="DAL\DbFiles.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="DAL\ITexts.cs" />
     <Compile Include="DAL\IUploads.cs" />
     <Compile Include="DAL\IUsers.cs" />
+    <Compile Include="DEBUG\Log.cs" />
     <Compile Include="ITranslatoService.cs" />
     <Compile Include="MODEL\File.cs" />
     <Compile Include="MODEL\Job.cs" />

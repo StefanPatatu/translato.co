@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@20.11.2015
+//last_checked: futz@30.11.2015
 
 using System;
 using System.Transactions;
@@ -37,16 +37,14 @@ namespace WcfServiceLibrary.BLL
                 string.IsNullOrEmpty(user.firstName) ||
                 !Validate.hasMinLength(user.firstName, 2) ||
                 !Validate.hasMaxLength(user.firstName, 20)
-               )
-            { result = 0; }
+               ) { result = 0; }
             //validate lastName 
             if (
                 result == 0 ||
                 string.IsNullOrEmpty(user.lastName) ||
                 !Validate.hasMinLength(user.lastName, 2) ||
                 !Validate.hasMaxLength(user.lastName, 20)
-               )
-            { result = 0; }
+               ) { result = 0; }
             //validate Email 
             if (
                 result == 0 ||
@@ -54,8 +52,7 @@ namespace WcfServiceLibrary.BLL
                 !Validate.hasMinLength(user.email, 5) ||
                 !Validate.hasMaxLength(user.email, 50) ||
                 !user.email.Contains("@")
-               )
-            { result = 0; }
+               ) { result = 0; }
             if (result != 0)//safe to proceed
             {
                 user.userName = user.userName;
@@ -70,7 +67,7 @@ namespace WcfServiceLibrary.BLL
 
                 try
                 {
-                    using (TransactionScope trScope = new TransactionScope())
+                    using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
                         result = _DbUsers.insertUser(user);
 
@@ -79,15 +76,15 @@ namespace WcfServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    Console.WriteLine(taEx.ToString());
+                    DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    Console.WriteLine(aEx.ToString());
+                    DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    DEBUG.Log.Add(ex.ToString());
                 }
             }
             else
@@ -96,5 +93,9 @@ namespace WcfServiceLibrary.BLL
             }
             return result;
         }
+
+        //returns
+        //returns
+       // public 
     }
 }

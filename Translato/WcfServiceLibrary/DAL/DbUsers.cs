@@ -86,19 +86,19 @@ namespace WcfServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    Console.WriteLine(ioEx.ToString());
+                    DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    Console.WriteLine(sqlEx.ToString());
+                    DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    Console.WriteLine(argEx.ToString());
+                    DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    DEBUG.Log.Add(ex.ToString());
                 }
                 return result;
             }

@@ -29,7 +29,7 @@ namespace WcfServiceLibrary.BLL
 
                 try
                 {
-                    using (TransactionScope trScope = new TransactionScope())
+                    using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
                         result = _DbUploads.insertUploadText(upload);
 
@@ -38,15 +38,15 @@ namespace WcfServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    Console.WriteLine(taEx.ToString());
+                    DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    Console.WriteLine(aEx.ToString());
+                    DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    DEBUG.Log.Add(ex.ToString());
                 }
             }
             else
@@ -71,7 +71,7 @@ namespace WcfServiceLibrary.BLL
 
                 try
                 {
-                    using (TransactionScope trScope = new TransactionScope())
+                    using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
                         result = _DbUploads.insertUploadFile(upload);
 
@@ -80,15 +80,15 @@ namespace WcfServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    Console.WriteLine(taEx.ToString());
+                    DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    Console.WriteLine(aEx.ToString());
+                    DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    DEBUG.Log.Add(ex.ToString());
                 }
             }
             else

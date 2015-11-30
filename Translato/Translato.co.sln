@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient.Tests", "WebClient.Tests\WebClient.Tests.csproj", "{7B9187BB-522F-46D5-B6F3-6CCA960A5955}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VictorTest", "VictorTest\VictorTest.csproj", "{F83AFFAB-098D-490D-B92A-877835845CCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{7B9187BB-522F-46D5-B6F3-6CCA960A5955}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{7B9187BB-522F-46D5-B6F3-6CCA960A5955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B9187BB-522F-46D5-B6F3-6CCA960A5955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83AFFAB-098D-490D-B92A-877835845CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83AFFAB-098D-490D-B92A-877835845CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83AFFAB-098D-490D-B92A-877835845CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83AFFAB-098D-490D-B92A-877835845CCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

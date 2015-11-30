@@ -21,14 +21,13 @@ namespace WcfServiceLibrary.BLL
             if (
                 result == 0 ||
                 submission.dateSubmitted.Equals(null)
-              )
-            { result = 0; }
+               ) { result = 0; }
 
             //validate isAwarded
             if (
                 result == 0 ||
                 submission.isAwarded.Equals(null)
-                )
+               )
             { result = 0; }
 
             //validate userId
@@ -58,7 +57,7 @@ namespace WcfServiceLibrary.BLL
 
                 try
                 {
-                    using (TransactionScope trScope = new TransactionScope())
+                    using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
                         result = _DbSubmissions.insertSubmission(submission);
 
@@ -67,15 +66,15 @@ namespace WcfServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    Console.WriteLine(taEx.ToString());
+                    DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    Console.WriteLine(aEx.ToString());
+                    DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    DEBUG.Log.Add(ex.ToString());
                 }
             }
             else
