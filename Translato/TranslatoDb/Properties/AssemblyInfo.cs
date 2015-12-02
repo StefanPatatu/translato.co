@@ -4,12 +4,12 @@
 // set of attributes. Change these attribute values to modify the information
 // associated with the SQLCLR assembly.
 [assembly: AssemblyTitle("TranslatoDb")]
-[assembly: AssemblyDescription("Translato.co Database")]
+[assembly: AssemblyDescription("TranslatoCo_Database")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Translato.co")]
-[assembly: AssemblyProduct("Translato.co Database")]
+[assembly: AssemblyProduct("TranslatoCo_Database")]
 [assembly: AssemblyCopyright("Copyright © 2015 Translato.co")]
-[assembly: AssemblyTrademark("Translato.co")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:
