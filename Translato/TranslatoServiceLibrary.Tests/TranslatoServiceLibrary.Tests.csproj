@@ -73,6 +73,12 @@
     <Compile Include="MODELTests\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TranslatoServiceLibrary\TranslatoServiceLibrary.csproj">
+      <Project>{93f07356-84e4-4b70-9e84-5d22db638721}</Project>
+      <Name>TranslatoServiceLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

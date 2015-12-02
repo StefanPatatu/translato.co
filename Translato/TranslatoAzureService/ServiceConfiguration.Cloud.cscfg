@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="TranslatoAzureService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="TranslatoAzureServiceWebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=translatoazureservice;AccountKey=eVL6wTQxhqsC/TErDNi0P5DnpdMml7222W3B32FBRbR1gcepMWC4LFSLzRanaMOEC1izZq0p16U6ryvrNgfbFg==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

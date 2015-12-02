@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebClient.ServiceReference1;
+using WebClient.TranslatoAzureService;
 
 namespace WebClient
 {
@@ -26,14 +26,14 @@ namespace WebClient
             bool NewsletterOptOut = CBNewsletterOptOut.Checked;
 
             User user = new User();
-            user.UserName = UserName;
-            user.HashedPassword = Password;
-            user.FirstName = FirstName;
-            user.LastName = LastName;
-            user.Email = Email;
-            user.NewsletterOptOut = NewsletterOptOut;
+            user.userName = UserName;
+            user.hashedPassword = Password;
+            user.firstName = FirstName;
+            user.lastName = LastName;
+            user.email = Email;
+            user.newsletterOptOut = NewsletterOptOut;
 
-            int result = tsc.InsertUser(user);
+            int result = tsc.insertUser(user);
             string output;
             if (result == 1)
             {

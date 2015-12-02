@@ -9,8 +9,8 @@
     <ProjectGuid>{93F07356-84E4-4B70-9E84-5D22DB638721}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WcfServiceLibrary</RootNamespace>
-    <AssemblyName>WcfServiceLibrary</AssemblyName>
+    <RootNamespace>TranslatoServiceLibrary</RootNamespace>
+    <AssemblyName>TranslatoServiceLibrary</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>

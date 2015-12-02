@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebClient.ServiceReference1 {
+namespace WebClient.TranslatoAzureService {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary.MODEL")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/TranslatoServiceLibrary.MODEL")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -23,28 +23,28 @@ namespace WebClient.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTimeOffset CreatedOnField;
+        private System.DateTimeOffset createdOnField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
+        private string emailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
+        private string firstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HashedPasswordField;
+        private string hashedPasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
+        private string lastNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool NewsletterOptOutField;
+        private bool newsletterOptOutField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserIdField;
+        private int userIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
+        private string userNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -57,105 +57,105 @@ namespace WebClient.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTimeOffset CreatedOn {
+        public System.DateTimeOffset createdOn {
             get {
-                return this.CreatedOnField;
+                return this.createdOnField;
             }
             set {
-                if ((this.CreatedOnField.Equals(value) != true)) {
-                    this.CreatedOnField = value;
-                    this.RaisePropertyChanged("CreatedOn");
+                if ((this.createdOnField.Equals(value) != true)) {
+                    this.createdOnField = value;
+                    this.RaisePropertyChanged("createdOn");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
+        public string email {
             get {
-                return this.EmailField;
+                return this.emailField;
             }
             set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
+                if ((object.ReferenceEquals(this.emailField, value) != true)) {
+                    this.emailField = value;
+                    this.RaisePropertyChanged("email");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
+        public string firstName {
             get {
-                return this.FirstNameField;
+                return this.firstNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
+                if ((object.ReferenceEquals(this.firstNameField, value) != true)) {
+                    this.firstNameField = value;
+                    this.RaisePropertyChanged("firstName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string HashedPassword {
+        public string hashedPassword {
             get {
-                return this.HashedPasswordField;
+                return this.hashedPasswordField;
             }
             set {
-                if ((object.ReferenceEquals(this.HashedPasswordField, value) != true)) {
-                    this.HashedPasswordField = value;
-                    this.RaisePropertyChanged("HashedPassword");
+                if ((object.ReferenceEquals(this.hashedPasswordField, value) != true)) {
+                    this.hashedPasswordField = value;
+                    this.RaisePropertyChanged("hashedPassword");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
+        public string lastName {
             get {
-                return this.LastNameField;
+                return this.lastNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
+                if ((object.ReferenceEquals(this.lastNameField, value) != true)) {
+                    this.lastNameField = value;
+                    this.RaisePropertyChanged("lastName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool NewsletterOptOut {
+        public bool newsletterOptOut {
             get {
-                return this.NewsletterOptOutField;
+                return this.newsletterOptOutField;
             }
             set {
-                if ((this.NewsletterOptOutField.Equals(value) != true)) {
-                    this.NewsletterOptOutField = value;
-                    this.RaisePropertyChanged("NewsletterOptOut");
+                if ((this.newsletterOptOutField.Equals(value) != true)) {
+                    this.newsletterOptOutField = value;
+                    this.RaisePropertyChanged("newsletterOptOut");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserId {
+        public int userId {
             get {
-                return this.UserIdField;
+                return this.userIdField;
             }
             set {
-                if ((this.UserIdField.Equals(value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
+                if ((this.userIdField.Equals(value) != true)) {
+                    this.userIdField = value;
+                    this.RaisePropertyChanged("userId");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
+        public string userName {
             get {
-                return this.UserNameField;
+                return this.userNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
+                if ((object.ReferenceEquals(this.userNameField, value) != true)) {
+                    this.userNameField = value;
+                    this.RaisePropertyChanged("userName");
                 }
             }
         }
@@ -171,23 +171,23 @@ namespace WebClient.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITranslatoService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TranslatoAzureService.ITranslatoService")]
     public interface ITranslatoService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITranslatoService/InsertUser", ReplyAction="http://tempuri.org/ITranslatoService/InsertUserResponse")]
-        int InsertUser(WebClient.ServiceReference1.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITranslatoService/insertUser", ReplyAction="http://tempuri.org/ITranslatoService/insertUserResponse")]
+        int insertUser(WebClient.TranslatoAzureService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITranslatoService/InsertUser", ReplyAction="http://tempuri.org/ITranslatoService/InsertUserResponse")]
-        System.Threading.Tasks.Task<int> InsertUserAsync(WebClient.ServiceReference1.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITranslatoService/insertUser", ReplyAction="http://tempuri.org/ITranslatoService/insertUserResponse")]
+        System.Threading.Tasks.Task<int> insertUserAsync(WebClient.TranslatoAzureService.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITranslatoServiceChannel : WebClient.ServiceReference1.ITranslatoService, System.ServiceModel.IClientChannel {
+    public interface ITranslatoServiceChannel : WebClient.TranslatoAzureService.ITranslatoService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TranslatoServiceClient : System.ServiceModel.ClientBase<WebClient.ServiceReference1.ITranslatoService>, WebClient.ServiceReference1.ITranslatoService {
+    public partial class TranslatoServiceClient : System.ServiceModel.ClientBase<WebClient.TranslatoAzureService.ITranslatoService>, WebClient.TranslatoAzureService.ITranslatoService {
         
         public TranslatoServiceClient() {
         }
@@ -208,12 +208,12 @@ namespace WebClient.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public int InsertUser(WebClient.ServiceReference1.User user) {
-            return base.Channel.InsertUser(user);
+        public int insertUser(WebClient.TranslatoAzureService.User user) {
+            return base.Channel.insertUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> InsertUserAsync(WebClient.ServiceReference1.User user) {
-            return base.Channel.InsertUserAsync(user);
+        public System.Threading.Tasks.Task<int> insertUserAsync(WebClient.TranslatoAzureService.User user) {
+            return base.Channel.insertUserAsync(user);
         }
     }
 }
