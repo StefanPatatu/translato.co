@@ -4,8 +4,6 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary", "WcfServiceLibrary\WcfServiceLibrary.csproj", "{93F07356-84E4-4B70-9E84-5D22DB638721}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication", "WindowsFormsApplication\WindowsFormsApplication.csproj", "{A5358204-1710-451A-A4DD-7D9C35459FA8}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TranslatoDb", "TranslatoDb\TranslatoDb.sqlproj", "{1044EFF1-941B-49B8-8EC2-1F492C58008B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary.Tests", "WcfServiceLibrary.Tests\WcfServiceLibrary.Tests.csproj", "{66855C2F-DF5F-47DA-9080-48270F511216}"
@@ -29,10 +27,6 @@ Global
 		{93F07356-84E4-4B70-9E84-5D22DB638721}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{93F07356-84E4-4B70-9E84-5D22DB638721}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93F07356-84E4-4B70-9E84-5D22DB638721}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5358204-1710-451A-A4DD-7D9C35459FA8}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{A5358204-1710-451A-A4DD-7D9C35459FA8}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{A5358204-1710-451A-A4DD-7D9C35459FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5358204-1710-451A-A4DD-7D9C35459FA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1044EFF1-941B-49B8-8EC2-1F492C58008B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{1044EFF1-941B-49B8-8EC2-1F492C58008B}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{1044EFF1-941B-49B8-8EC2-1F492C58008B}.Debug|Any CPU.Deploy.0 = Release|Any CPU
