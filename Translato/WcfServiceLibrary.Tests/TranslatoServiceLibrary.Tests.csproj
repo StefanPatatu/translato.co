@@ -74,9 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WcfServiceLibrary\WcfServiceLibrary.csproj">
+    <ProjectReference Include="..\WcfServiceLibrary\TranslatoServiceLibrary.csproj">
       <Project>{93f07356-84e4-4b70-9e84-5d22db638721}</Project>
-      <Name>WcfServiceLibrary</Name>
+      <Name>TranslatoServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
