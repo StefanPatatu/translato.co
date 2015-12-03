@@ -93,8 +93,10 @@
     <Compile Include="MODEL\Upload.cs" />
     <Compile Include="MODEL\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SRV\IServiceInsertText.cs" />
     <Compile Include="SRV\IServiceInsertUser.cs" />
     <Compile Include="SRV\IServiceLoginUser.cs" />
+    <Compile Include="SRV\ServiceInsertText.cs" />
     <Compile Include="SRV\ServiceInsertUser.cs" />
     <Compile Include="SRV\ServiceLoginUser.cs" />
   </ItemGroup>

@@ -11,13 +11,13 @@ namespace TranslatoWebsite
         }
         protected void loginUser(object sender, EventArgs e)
         {
-            ServiceLoginUserClient tsc = new ServiceLoginUserClient();
+            ServiceLoginUserClient sluc = new ServiceLoginUserClient();
 
             string userNameOrEmail = TBX_User_name_or_Email.Text;
             string password = TBX_Password.Text;
             bool stayLoggedIn = CBX_Stay_logged_in.Checked;
 
-            bool success = tsc.loginUser(userNameOrEmail, password);
+            bool success = sluc.loginUser(userNameOrEmail, password);
 
             string output;
             if (success)

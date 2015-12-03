@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@30.11.2015
+//last_checked: futz@03.12.2015
 
 using System;
 using System.Transactions;
@@ -92,18 +92,17 @@ namespace TranslatoServiceLibrary.BLL
                 }
             }
             else { result = 0; }
-
             return result;
         }
 
-        //returns "MODEL.User object" if successful
+        //returns "MODEL.User" object if successful
         //returns "null" if not
         public User findUserById(int userId)
         {
             int result = -1;
             User user = null;
 
-            //validate id
+            //validate userId
             if (
                 result == 0 ||
                 string.IsNullOrWhiteSpace(userId.ToString()) ||
@@ -146,7 +145,7 @@ namespace TranslatoServiceLibrary.BLL
             else { return user; }
         }
 
-        //returns "MODEL.User object" if successful
+        //returns "MODEL.User" object if successful
         //returns "null" if not
         public User findUserByUserName(string userName)
         {
@@ -198,7 +197,7 @@ namespace TranslatoServiceLibrary.BLL
             else { return user; }
         }
 
-        //returns "MODEL.User object" if successful
+        //returns "MODEL.User" object if successful
         //returns "null" if not
         public User findUserByEmail(string email)
         {

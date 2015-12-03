@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@20.11.2015
+//last_cheked: futz@03.12.2015
 
 using System;
 using System.Data;
@@ -21,7 +21,7 @@ namespace TranslatoServiceLibrary.DAL
         private static SqlParameter param_newsletterOptOut = new SqlParameter("@NewsletterOptOut", SqlDbType.Bit);
         private static SqlParameter param_createdOn = new SqlParameter("@CreatedOn", SqlDbType.DateTimeOffset);
 
-        //
+        //dbReader
         private static User createUser(IDataReader dbReader)
         {
             User user = new User();
@@ -36,7 +36,8 @@ namespace TranslatoServiceLibrary.DAL
             return user;
         }
 
-        //
+        //returns "1" if successful
+        //returns "0" if not
         public int insertUser(User user)
         {
             int result = 0;
@@ -103,25 +104,30 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
+                    result = 0;
                     DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
+                    result = 0;
                     DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
+                    result = 0;
                     DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
+                    result = 0;
                     DEBUG.Log.Add(ex.ToString());
                 }
                 return result;
             }
         }
 
-        //
+        //returns "MODEL.User" object if successful
+        //returns "null" if not
         public User findUserById(int userId)
         {
             string sqlQuery = "SELECT * FROM Users WHERE " +
@@ -152,25 +158,30 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
+                    user = null;
                     DEBUG.Log.Add(ex.ToString());
                 }
                 return user;
             }
         }
 
-        //
+        //returns "MODEL.User" object if successful
+        //returns "null" if not
         public User findUserByUserName(string userName)
         {
             string sqlQuery = "SELECT * FROM Users WHERE " +
@@ -201,25 +212,30 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
+                    user = null;
                     DEBUG.Log.Add(ex.ToString());
                 }
                 return user;
             }
         }
 
-        //
+        //returns "MODEL.User" object if successful
+        //returns "null" if not
         public User findUserByEmail(string email)
         {
             string sqlQuery = "SELECT * FROM Users WHERE " +
@@ -250,18 +266,22 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
+                    user = null;
                     DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
+                    user = null;
                     DEBUG.Log.Add(ex.ToString());
                 }
                 return user;

@@ -11,7 +11,7 @@ namespace TranslatoWebsite
         }
         protected void registerUser(object sender, EventArgs e)
         {
-            ServiceInsertUserClient tsc = new ServiceInsertUserClient();
+            ServiceInsertUserClient siuc = new ServiceInsertUserClient();
 
             string userName = TBX_User_name.Text;
             string password = TBX_Password.Text;
@@ -28,7 +28,7 @@ namespace TranslatoWebsite
             user.email = email;
             user.newsletterOptOut = newsletterOptOut;
 
-            int result = tsc.insertUser(user);
+            int result = siuc.insertUser(user);
 
             string output;
             if (result == 1)

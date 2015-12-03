@@ -157,8 +157,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Login.aspx" />
-    <Content Include="Register.aspx" />
+    <Content Include="Tests-F8197B934C69BA4E812BBBD9ED674\InsertText.aspx" />
+    <Content Include="Tests-F8197B934C69BA4E812BBBD9ED674\Login.aspx" />
+    <Content Include="Tests-F8197B934C69BA4E812BBBD9ED674\Register.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -193,6 +194,16 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <None Include="Service References\ServiceInsertText\ServiceInsertText.wsdl" />
+    <None Include="Service References\ServiceInsertText\ServiceInsertText.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInsertText\ServiceInsertText1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInsertText\ServiceInsertText2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceInsertUser\ServiceInsertUser.wsdl" />
     <None Include="Service References\ServiceInsertUser\ServiceInsertUser.xsd">
       <SubType>Designer</SubType>
@@ -217,6 +228,13 @@
     <None Include="Service References\ServiceInsertUser\configuration91.svcinfo" />
     <None Include="Service References\ServiceInsertUser\configuration.svcinfo" />
     <None Include="Service References\ServiceInsertUser\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceInsertText\ServiceInsertText.disco" />
+    <None Include="Service References\ServiceInsertText\configuration91.svcinfo" />
+    <None Include="Service References\ServiceInsertText\configuration.svcinfo" />
+    <None Include="Service References\ServiceInsertText\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -270,11 +288,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="Tests-F8197B934C69BA4E812BBBD9ED674\InsertText.aspx.cs">
+      <DependentUpon>InsertText.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tests-F8197B934C69BA4E812BBBD9ED674\InsertText.aspx.designer.cs">
+      <DependentUpon>InsertText.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tests-F8197B934C69BA4E812BBBD9ED674\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
+    <Compile Include="Tests-F8197B934C69BA4E812BBBD9ED674\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,12 +308,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Register.aspx.cs">
+    <Compile Include="Tests-F8197B934C69BA4E812BBBD9ED674\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Register.aspx.designer.cs">
+    <Compile Include="Tests-F8197B934C69BA4E812BBBD9ED674\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceInsertText\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ServiceInsertUser\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -326,6 +356,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceInsertText\" />
     <WCFMetadataStorage Include="Service References\ServiceInsertUser\" />
     <WCFMetadataStorage Include="Service References\ServiceLoginUser\" />
   </ItemGroup>
