@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers:
-//last_checked: futz@20.11.2015
+//last_checked: futz@03.12.2015
 
 using System;
 using System.Data;
@@ -27,7 +27,7 @@ namespace TranslatoServiceLibrary.DAL
         //
         public int insertText(Text text)
         {
-            int result = -1;
+            int result = 0;
 
             string sqlQuery = "INSERT INTO Texts VALUES (" +
                 "@TextData " +
@@ -40,13 +40,18 @@ namespace TranslatoServiceLibrary.DAL
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
                     sqlCommand.Parameters.Clear();
 
+                    if (sqlCommand.Parameters.Contains(param_textData)) sqlCommand.Parameters.Remove(param_textData);
                     param_textData.Value = text.textData;
                     sqlCommand.Parameters.Add(param_textData);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Connection.Close();
 
                     sqlCommand.Parameters.Clear();
+                    if (sqlCommand.Parameters.Contains(param_textData)) sqlCommand.Parameters.Remove(param_textData);
+
+                    sqlCommand.Dispose();
                 }
                 catch (InvalidOperationException ioEx)
                 {
