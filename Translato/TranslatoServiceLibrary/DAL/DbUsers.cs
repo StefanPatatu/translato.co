@@ -58,31 +58,48 @@ namespace TranslatoServiceLibrary.DAL
                     SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
                     sqlCommand.Parameters.Clear();
 
+                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
                     param_userName.Value = user.userName;
                     sqlCommand.Parameters.Add(param_userName);
 
+                    if (sqlCommand.Parameters.Contains(param_hashedPassword)) sqlCommand.Parameters.Remove(param_hashedPassword);
                     param_hashedPassword.Value = user.hashedPassword;
                     sqlCommand.Parameters.Add(param_hashedPassword);
 
+                    if (sqlCommand.Parameters.Contains(param_firstName)) sqlCommand.Parameters.Remove(param_firstName);
                     param_firstName.Value = user.firstName;
                     sqlCommand.Parameters.Add(param_firstName);
 
+                    if (sqlCommand.Parameters.Contains(param_lastName)) sqlCommand.Parameters.Remove(param_lastName);
                     param_lastName.Value = user.lastName;
                     sqlCommand.Parameters.Add(param_lastName);
 
+                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
                     param_email.Value = user.email;
                     sqlCommand.Parameters.Add(param_email);
 
+                    if (sqlCommand.Parameters.Contains(param_newsletterOptOut)) sqlCommand.Parameters.Remove(param_newsletterOptOut);
                     param_newsletterOptOut.Value = user.newsletterOptOut;
                     sqlCommand.Parameters.Add(param_newsletterOptOut);
 
+                    if (sqlCommand.Parameters.Contains(param_createdOn)) sqlCommand.Parameters.Remove(param_createdOn);
                     param_createdOn.Value = user.createdOn;
                     sqlCommand.Parameters.Add(param_createdOn);
 
                     sqlCommand.Connection.Open();
                     result = sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Connection.Close();
 
                     sqlCommand.Parameters.Clear();
+                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
+                    if (sqlCommand.Parameters.Contains(param_hashedPassword)) sqlCommand.Parameters.Remove(param_hashedPassword);
+                    if (sqlCommand.Parameters.Contains(param_firstName)) sqlCommand.Parameters.Remove(param_firstName);
+                    if (sqlCommand.Parameters.Contains(param_lastName)) sqlCommand.Parameters.Remove(param_lastName);
+                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
+                    if (sqlCommand.Parameters.Contains(param_newsletterOptOut)) sqlCommand.Parameters.Remove(param_newsletterOptOut);
+                    if (sqlCommand.Parameters.Contains(param_createdOn)) sqlCommand.Parameters.Remove(param_createdOn);
+
+                    sqlCommand.Dispose();
                 }
                 catch (InvalidOperationException ioEx)
                 {

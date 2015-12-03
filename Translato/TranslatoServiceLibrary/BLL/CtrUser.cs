@@ -13,7 +13,6 @@ namespace TranslatoServiceLibrary.BLL
     {
         //returns 1 if successful
         //returns 0 if error
-        //returns -1 if caught exception
         public int insertUser(User user)
         {
             int result = -1;
@@ -77,17 +76,14 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = -1;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = -1;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = -1;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
