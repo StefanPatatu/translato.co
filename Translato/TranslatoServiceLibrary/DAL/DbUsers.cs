@@ -32,14 +32,14 @@ namespace TranslatoServiceLibrary.DAL
             user.lastName = Convert.ToString(dbReader["LastName"]);
             user.email = Convert.ToString(dbReader["Email"]);
             user.newsletterOptOut = Convert.ToBoolean(dbReader["NewsletterOptOut"]);
-            user.createdOn = Convert.ToDateTime(dbReader["CreatedOn"]);
+            user.createdOn = (DateTimeOffset)dbReader["CreatedOn"];
             return user;
         }
 
         //
         public int insertUser(User user)
         {
-            int result = -1;
+            int result = 0;
 
             string sqlQuery = "INSERT INTO Users VALUES (" +
                 "@UserName, " +
@@ -118,6 +118,153 @@ namespace TranslatoServiceLibrary.DAL
                     DEBUG.Log.Add(ex.ToString());
                 }
                 return result;
+            }
+        }
+
+        //
+        public User findUserById(int userId)
+        {
+            string sqlQuery = "SELECT * FROM Users WHERE " +
+                "UserId = @UserId";
+
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
+            {
+                User user = new User();
+                IDataReader dbReader;
+
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
+
+                    if (sqlCommand.Parameters.Contains(param_userId)) sqlCommand.Parameters.Remove(param_userId);
+                    param_userId.Value = userId;
+                    sqlCommand.Parameters.Add(param_userId);
+
+                    sqlCommand.Connection.Open();
+                    dbReader = sqlCommand.ExecuteReader();
+                    if (dbReader.Read()) { user = createUser(dbReader); }
+                    else { user = null; }
+                    sqlCommand.Connection.Close();
+
+                    sqlCommand.Parameters.Clear();
+                    if (sqlCommand.Parameters.Contains(param_userId)) sqlCommand.Parameters.Remove(param_userId);
+                }
+                catch (InvalidOperationException ioEx)
+                {
+                    DEBUG.Log.Add(ioEx.ToString());
+                }
+                catch (SqlException sqlEx)
+                {
+                    DEBUG.Log.Add(sqlEx.ToString());
+                }
+                catch (ArgumentException argEx)
+                {
+                    DEBUG.Log.Add(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    DEBUG.Log.Add(ex.ToString());
+                }
+                return user;
+            }
+        }
+
+        //
+        public User findUserByUserName(string userName)
+        {
+            string sqlQuery = "SELECT * FROM Users WHERE " +
+                "UserName = @UserName";
+
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
+            {
+                User user = new User();
+                IDataReader dbReader;
+
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
+
+                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
+                    param_userName.Value = userName;
+                    sqlCommand.Parameters.Add(param_userName);
+
+                    sqlCommand.Connection.Open();
+                    dbReader = sqlCommand.ExecuteReader();
+                    if (dbReader.Read()) { user = createUser(dbReader); }
+                    else { user = null; }
+                    sqlCommand.Connection.Close();
+
+                    sqlCommand.Parameters.Clear();
+                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
+                }
+                catch (InvalidOperationException ioEx)
+                {
+                    DEBUG.Log.Add(ioEx.ToString());
+                }
+                catch (SqlException sqlEx)
+                {
+                    DEBUG.Log.Add(sqlEx.ToString());
+                }
+                catch (ArgumentException argEx)
+                {
+                    DEBUG.Log.Add(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    DEBUG.Log.Add(ex.ToString());
+                }
+                return user;
+            }
+        }
+
+        //
+        public User findUserByEmail(string email)
+        {
+            string sqlQuery = "SELECT * FROM Users WHERE " +
+                "Email = @Email";
+
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
+            {
+                User user = new User();
+                IDataReader dbReader;
+
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                    sqlCommand.Parameters.Clear();
+
+                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
+                    param_email.Value = email;
+                    sqlCommand.Parameters.Add(param_email);
+
+                    sqlCommand.Connection.Open();
+                    dbReader = sqlCommand.ExecuteReader();
+                    if (dbReader.Read()) { user = createUser(dbReader); }
+                    else { user = null; }
+                    sqlCommand.Connection.Close();
+
+                    sqlCommand.Parameters.Clear();
+                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
+                }
+                catch (InvalidOperationException ioEx)
+                {
+                    DEBUG.Log.Add(ioEx.ToString());
+                }
+                catch (SqlException sqlEx)
+                {
+                    DEBUG.Log.Add(sqlEx.ToString());
+                }
+                catch (ArgumentException argEx)
+                {
+                    DEBUG.Log.Add(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    DEBUG.Log.Add(ex.ToString());
+                }
+                return user;
             }
         }
     }

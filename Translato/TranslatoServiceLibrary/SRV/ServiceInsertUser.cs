@@ -1,13 +1,13 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@20.11.2015
+//last_cheked: futz@03.12.2015
 
-using TranslatoServiceLibrary.MODEL;
 using TranslatoServiceLibrary.BLL;
+using TranslatoServiceLibrary.MODEL;
 
-namespace TranslatoServiceLibrary
+namespace TranslatoServiceLibrary.SRV
 {
-    public class TranslatoService : ITranslatoService
+    public class ServiceInsertUser : IServiceInsertUser
     {
         public int insertUser(User user)
         {

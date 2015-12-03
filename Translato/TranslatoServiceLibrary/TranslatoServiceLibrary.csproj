@@ -66,6 +66,7 @@
     <Compile Include="BLL\CtrUpload.cs" />
     <Compile Include="BLL\CtrUser.cs" />
     <Compile Include="BLL\Password.cs" />
+    <Compile Include="BLL\Security.cs" />
     <Compile Include="BLL\TransactionScopeBuilder.cs" />
     <Compile Include="BLL\Validate.cs" />
     <Compile Include="DAL\AccessTranslatoDb.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="DAL\IUploads.cs" />
     <Compile Include="DAL\IUsers.cs" />
     <Compile Include="DEBUG\Log.cs" />
-    <Compile Include="ITranslatoService.cs" />
     <Compile Include="MODEL\File.cs" />
     <Compile Include="MODEL\Job.cs" />
     <Compile Include="MODEL\Language.cs" />
@@ -93,7 +93,10 @@
     <Compile Include="MODEL\Upload.cs" />
     <Compile Include="MODEL\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TranslatoService.cs" />
+    <Compile Include="SRV\IServiceInsertUser.cs" />
+    <Compile Include="SRV\IServiceLoginUser.cs" />
+    <Compile Include="SRV\ServiceInsertUser.cs" />
+    <Compile Include="SRV\ServiceLoginUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

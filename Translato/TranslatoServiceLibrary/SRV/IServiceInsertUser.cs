@@ -1,16 +1,16 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@20.11.2015
+//last_cheked: futz@03.12.2015
 
 using System.ServiceModel;
 using TranslatoServiceLibrary.MODEL;
 
-namespace TranslatoServiceLibrary
+namespace TranslatoServiceLibrary.SRV
 {
     [ServiceContract]
-    public interface ITranslatoService
+    public interface IServiceInsertUser
     {
-        [OperationContract]
+        [OperationContract(Name = "insertUser")]
         int insertUser(User user);
     }
 }

@@ -10,25 +10,25 @@
 namespace TranslatoWebsite {
     
     
-    public partial class Register {
+    public partial class Login {
         
         /// <summary>
-        /// register control.
+        /// login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm register;
+        protected global::System.Web.UI.HtmlControls.HtmlForm login;
         
         /// <summary>
-        /// TBX_User_name control.
+        /// TBX_User_name_or_Email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBX_User_name;
+        protected global::System.Web.UI.WebControls.TextBox TBX_User_name_or_Email;
         
         /// <summary>
         /// TBX_Password control.
@@ -40,49 +40,22 @@ namespace TranslatoWebsite {
         protected global::System.Web.UI.WebControls.TextBox TBX_Password;
         
         /// <summary>
-        /// TBX_First_name control.
+        /// CBX_Stay_logged_in control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBX_First_name;
+        protected global::System.Web.UI.WebControls.CheckBox CBX_Stay_logged_in;
         
         /// <summary>
-        /// TBX_Last_name control.
+        /// BTN_Login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBX_Last_name;
-        
-        /// <summary>
-        /// TBX_Email_address control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBX_Email_address;
-        
-        /// <summary>
-        /// CBX_Unsubscribe control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBX_Unsubscribe;
-        
-        /// <summary>
-        /// BTN_Register control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_Register;
+        protected global::System.Web.UI.WebControls.Button BTN_Login;
         
         /// <summary>
         /// LBL_Output_text control.

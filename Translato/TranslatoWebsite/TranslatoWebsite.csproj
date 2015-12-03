@@ -34,10 +34,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -151,7 +152,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\TranslatoWebsite.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -187,10 +193,30 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <None Include="Service References\TranslatoAzureService\TranslatoService.disco" />
-    <None Include="Service References\TranslatoAzureService\configuration91.svcinfo" />
-    <None Include="Service References\TranslatoAzureService\configuration.svcinfo" />
-    <None Include="Service References\TranslatoAzureService\Reference.svcmap">
+    <None Include="Service References\ServiceInsertUser\ServiceInsertUser.wsdl" />
+    <None Include="Service References\ServiceInsertUser\ServiceInsertUser.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInsertUser\ServiceInsertUser1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInsertUser\ServiceInsertUser2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceInsertUser\ServiceInsertUser3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceLoginUser\ServiceLoginUser.disco" />
+    <None Include="Service References\ServiceLoginUser\configuration91.svcinfo" />
+    <None Include="Service References\ServiceLoginUser\configuration.svcinfo" />
+    <None Include="Service References\ServiceLoginUser\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceInsertUser\ServiceInsertUser.disco" />
+    <None Include="Service References\ServiceInsertUser\configuration91.svcinfo" />
+    <None Include="Service References\ServiceInsertUser\configuration.svcinfo" />
+    <None Include="Service References\ServiceInsertUser\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -203,17 +229,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <None Include="Service References\TranslatoAzureService\TranslatoService.wsdl" />
-    <None Include="Service References\TranslatoAzureService\TranslatoService.xsd">
+    <None Include="Service References\ServiceLoginUser\ServiceLoginUser.wsdl" />
+    <None Include="Service References\ServiceLoginUser\ServiceLoginUser.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TranslatoAzureService\TranslatoService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TranslatoAzureService\TranslatoService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TranslatoAzureService\TranslatoService3.xsd">
+    <None Include="Service References\ServiceLoginUser\ServiceLoginUser1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -250,7 +270,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,7 +290,12 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Service References\TranslatoAzureService\Reference.cs">
+    <Compile Include="Service References\ServiceInsertUser\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceLoginUser\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -289,7 +326,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\TranslatoAzureService\" />
+    <WCFMetadataStorage Include="Service References\ServiceInsertUser\" />
+    <WCFMetadataStorage Include="Service References\ServiceLoginUser\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

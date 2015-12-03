@@ -49,16 +49,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Profiles" />
+    <Folder Include="ServiceInsertUserContent\" />
+    <Folder Include="ServiceInsertUserContent\bin" />
     <Folder Include="TranslatoAzureServiceWebRoleContent\" />
     <Folder Include="TranslatoAzureServiceWebRoleContent\bin" />
   </ItemGroup>
   <ItemGroup>
+    <DiagnosticsConfiguration Include="ServiceInsertUserContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="TranslatoAzureServiceWebRoleContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
     <PublishProfile Include="Profiles\TranslatoAzureServiceProduction.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ServiceInsertUserContent\bin\install.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ServiceInsertUserContent\bin\NDP452-KB2901954-Web.exe">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="TranslatoAzureServiceWebRoleContent\bin\install.cmd">
       <SubType>Content</SubType>
     </Content>

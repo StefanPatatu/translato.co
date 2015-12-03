@@ -1,5 +1,5 @@
 ﻿using System;
-using TranslatoWebsite.TranslatoAzureService;
+using TranslatoWebsite.ServiceInsertUser;
 
 namespace TranslatoWebsite
 {
@@ -11,9 +11,9 @@ namespace TranslatoWebsite
         }
         protected void registerUser(object sender, EventArgs e)
         {
-            TranslatoServiceClient tsc = new TranslatoServiceClient();
+            ServiceInsertUserClient tsc = new ServiceInsertUserClient();
 
-            string userName = TBX_Username.Text;
+            string userName = TBX_User_name.Text;
             string password = TBX_Password.Text;
             string firstName = TBX_First_name.Text;
             string lastName = TBX_Last_name.Text;

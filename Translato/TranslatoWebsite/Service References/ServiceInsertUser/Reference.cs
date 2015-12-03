@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TranslatoWebsite.TranslatoAzureService {
+namespace TranslatoWebsite.ServiceInsertUser {
     using System.Runtime.Serialization;
     using System;
     
@@ -171,48 +171,48 @@ namespace TranslatoWebsite.TranslatoAzureService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TranslatoAzureService.ITranslatoService")]
-    public interface ITranslatoService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceInsertUser.IServiceInsertUser")]
+    public interface IServiceInsertUser {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITranslatoService/insertUser", ReplyAction="http://tempuri.org/ITranslatoService/insertUserResponse")]
-        int insertUser(TranslatoWebsite.TranslatoAzureService.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceInsertUser/insertUser", ReplyAction="http://tempuri.org/IServiceInsertUser/insertUserResponse")]
+        int insertUser(TranslatoWebsite.ServiceInsertUser.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITranslatoService/insertUser", ReplyAction="http://tempuri.org/ITranslatoService/insertUserResponse")]
-        System.Threading.Tasks.Task<int> insertUserAsync(TranslatoWebsite.TranslatoAzureService.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceInsertUser/insertUser", ReplyAction="http://tempuri.org/IServiceInsertUser/insertUserResponse")]
+        System.Threading.Tasks.Task<int> insertUserAsync(TranslatoWebsite.ServiceInsertUser.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITranslatoServiceChannel : TranslatoWebsite.TranslatoAzureService.ITranslatoService, System.ServiceModel.IClientChannel {
+    public interface IServiceInsertUserChannel : TranslatoWebsite.ServiceInsertUser.IServiceInsertUser, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TranslatoServiceClient : System.ServiceModel.ClientBase<TranslatoWebsite.TranslatoAzureService.ITranslatoService>, TranslatoWebsite.TranslatoAzureService.ITranslatoService {
+    public partial class ServiceInsertUserClient : System.ServiceModel.ClientBase<TranslatoWebsite.ServiceInsertUser.IServiceInsertUser>, TranslatoWebsite.ServiceInsertUser.IServiceInsertUser {
         
-        public TranslatoServiceClient() {
+        public ServiceInsertUserClient() {
         }
         
-        public TranslatoServiceClient(string endpointConfigurationName) : 
+        public ServiceInsertUserClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public TranslatoServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public ServiceInsertUserClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TranslatoServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ServiceInsertUserClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TranslatoServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ServiceInsertUserClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public int insertUser(TranslatoWebsite.TranslatoAzureService.User user) {
+        public int insertUser(TranslatoWebsite.ServiceInsertUser.User user) {
             return base.Channel.insertUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> insertUserAsync(TranslatoWebsite.TranslatoAzureService.User user) {
+        public System.Threading.Tasks.Task<int> insertUserAsync(TranslatoWebsite.ServiceInsertUser.User user) {
             return base.Channel.insertUserAsync(user);
         }
     }

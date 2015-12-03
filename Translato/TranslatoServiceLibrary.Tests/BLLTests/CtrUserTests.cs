@@ -13,8 +13,8 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
     public class CtrUserTests
     {
         [TestMethod]
-        //LAYER_Class_NameOfTheMethod_TestedScenario_ExpectedBehaviour
-        public void BLL_CtrUser_InsertUser_InsertUser_UserIsInserted()
+        //LAYER_Class_nameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void BLL_CtrUser_insertUser_InsertUser_UserIsInserted()
         {
             //arrange
             int userId = 1;
@@ -42,6 +42,21 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
 
             //assert
             Assert.AreEqual(1, result, "user not inserted");
+        }
+
+        [TestMethod]
+        //LAYER_Class_nameOfTheMethod_TestedScenario_ExpectedBehaviour
+        public void BLL_CtrUser_findUserById_FindExistingUserById_UserObjectIsReturned()
+        {
+            //arrange
+            int userId = 17; //change to a valid one before running the test
+            CtrUser _CtrUser = new CtrUser();
+
+            //act
+            User user = _CtrUser.findUserById(userId);
+
+            //assert
+            Assert.IsNotNull(user);
         }
     }
 }

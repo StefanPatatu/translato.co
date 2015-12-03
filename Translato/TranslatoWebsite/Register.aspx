@@ -10,7 +10,7 @@
     <form id="register" runat="server">
     <div>
         <p>Username:</p>
-        <asp:TextBox ID="TBX_Username" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TBX_User_name" runat="server"></asp:TextBox>
         <p>Password:</p>
         <asp:TextBox ID="TBX_Password" runat="server"></asp:TextBox>
         <p>First name:</p>
