@@ -7,7 +7,7 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.SRV
 {
-    public class ServiceInsertUser : IServiceInsertUser
+    internal sealed class ServiceInsertUser : IServiceInsertUser
     {
         public int insertUser(User user)
         {

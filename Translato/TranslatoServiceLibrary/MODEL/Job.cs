@@ -27,7 +27,7 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //full constructor
-        public Job(
+        internal Job(
             int jobId,
             string jobName,
             DateTimeOffset dateCreated,
@@ -93,7 +93,7 @@ namespace TranslatoServiceLibrary.MODEL
             get { return p_languageTo; }
             set { p_languageTo = value; }
         }
-        public User user
+        internal User user
         {
             get { return p_user; }
             set { p_user = value; }

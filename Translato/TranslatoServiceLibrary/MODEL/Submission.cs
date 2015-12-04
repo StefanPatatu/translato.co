@@ -23,7 +23,7 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //full constructor
-        public Submission(
+        internal Submission(
             int submissionId,
             DateTimeOffset dateSubmitted,
             bool isAwarded,
@@ -56,7 +56,7 @@ namespace TranslatoServiceLibrary.MODEL
             get { return p_isAwarded; }
             set { p_isAwarded = value; }
         }
-        public User user
+        internal User user
         {
             get { return p_user; }
             set { p_user = value; }

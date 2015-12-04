@@ -6,7 +6,7 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public interface IUsers
+    internal interface IUsers
     {
         //returns "1" if successful
         //returns "0" if not

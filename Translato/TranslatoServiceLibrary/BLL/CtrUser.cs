@@ -9,11 +9,11 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class CtrUser
+    internal sealed class CtrUser
     {
         //returns "1" if successful
         //returns "0" if not
-        public int insertUser(User user)
+        internal int insertUser(User user)
         {
             int result = -1;
 
@@ -97,7 +97,7 @@ namespace TranslatoServiceLibrary.BLL
 
         //returns "MODEL.User" object if successful
         //returns "null" if not
-        public User findUserById(int userId)
+        internal User findUserById(int userId)
         {
             int result = -1;
             User user = null;
@@ -147,7 +147,7 @@ namespace TranslatoServiceLibrary.BLL
 
         //returns "MODEL.User" object if successful
         //returns "null" if not
-        public User findUserByUserName(string userName)
+        internal User findUserByUserName(string userName)
         {
             int result = -1;
             User user = null;
@@ -199,7 +199,7 @@ namespace TranslatoServiceLibrary.BLL
 
         //returns "MODEL.User" object if successful
         //returns "null" if not
-        public User findUserByEmail(string email)
+        internal User findUserByEmail(string email)
         {
             int result = -1;
             User user = null;
@@ -251,7 +251,7 @@ namespace TranslatoServiceLibrary.BLL
 
         //returns "true" if successful
         //returns "false" if not
-        public bool loginUser(string userNameOrEmail, string HRpassword)
+        internal bool loginUser(string userNameOrEmail, string HRpassword)
         {
             //check if userName
             bool isUsername = false; 

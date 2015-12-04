@@ -8,7 +8,7 @@ using TranslatoServiceLibrary.MODEL;
 namespace TranslatoServiceLibrary.SRV
 {
     [ServiceContract]
-    public interface IServiceInsertUser
+    internal interface IServiceInsertUser
     {
         [OperationContract(Name = "insertUser")]
         int insertUser(User user);

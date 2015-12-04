@@ -9,7 +9,7 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public class DbUsers : IUsers
+    internal sealed class DbUsers : IUsers
     {
         //define sql parameters
         private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);

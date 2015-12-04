@@ -3,9 +3,12 @@
 //last_checked: futz@04.12.2015
 
 using System;
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
+
 {
+    [DataContract]
     internal sealed class User
     {   
         //private attributes
@@ -47,41 +50,49 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and setters
+        [DataMember]
         internal int userId
         {
             get { return p_userId; }
             set { p_userId = value; }
         }
+        [DataMember]
         internal string userName
         {
             get { return p_userName; }
             set { p_userName = value; }
         }
+        [DataMember]
         internal string hashedPassword
         {
             get { return p_hashedPassword; }
             set { p_hashedPassword = value; }
         }
+        [DataMember]
         internal string firstName
         {
             get { return p_firstName; }
             set { p_firstName = value; }
         }
+        [DataMember]
         internal string lastName
         {
             get { return p_lastName; }
             set { p_lastName = value; }
         }
+        [DataMember]
         internal string email
         {
             get { return p_email; }
             set { p_email = value; }
         }
+        [DataMember]
         internal bool newsletterOptOut
         {
             get { return p_newsletterOptOut; }
             set { p_newsletterOptOut = value; }
         }
+        [DataMember]
         internal DateTimeOffset createdOn
         {
             get { return p_createdOn; }
