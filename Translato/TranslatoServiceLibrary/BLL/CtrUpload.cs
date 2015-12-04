@@ -1,19 +1,20 @@
 ﻿//author: adrian
-//helpers:
-//last_checked:
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Transactions;
-using TranslatoServiceLibrary.MODEL;
 using TranslatoServiceLibrary.DAL;
+using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class CtrUpload
+    internal sealed class CtrUpload
     {
-        //returns 1 if successful
-        //returns 0 if failure of any kind
-        public int insertUploadText(Upload upload)
+        //returns "1" if successful
+        //returns "0" if failure of any kind
+        //todo@futz
+        internal int insertUploadText(Upload upload)
         {
             int result = -1;
 
@@ -55,7 +56,11 @@ namespace TranslatoServiceLibrary.BLL
             }
             return result;
         }
-        public int insertUploadFile(Upload upload)
+
+        //returns "1" if successful
+        //returns "0" if failure of any kind
+        //todo@futz
+        internal int insertUploadFile(Upload upload)
         {
             int result = -1;
 

@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@03.12.2015
+//last_cheked: futz@04.12.2015
 
 using System;
 using System.Data;

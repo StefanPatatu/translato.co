@@ -6,16 +6,16 @@ using System;
 
 namespace TranslatoServiceLibrary.DEBUG
 {
-    internal class Log
+    internal static class Log
     {
         private static System.IO.StringWriter writer = new System.IO.StringWriter();
 
-        public static void Add(string line)
+        internal static void Add(string line)
         {
             writer.WriteLineAsync(line);
         }
 
-        public static void OutputDebugLogToConsole()
+        internal static void OutputDebugLogToConsole()
         {
             Console.WriteLine(writer.ToString());
         }

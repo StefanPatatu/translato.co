@@ -1,13 +1,15 @@
 ﻿//author: adrian
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public interface IJobs
+    internal interface IJobs
     {
+        //returns
+        //returns
         int insertJob(Job job);
     }
 }

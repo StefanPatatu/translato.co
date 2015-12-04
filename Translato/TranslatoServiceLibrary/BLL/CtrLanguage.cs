@@ -1,19 +1,20 @@
 ﻿//author: adrian
-//helpers:
-//last_checked:
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Transactions;
-using TranslatoServiceLibrary.MODEL;
 using TranslatoServiceLibrary.DAL;
+using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class CtrLanguage
+    internal sealed class CtrLanguage
     {
-        //returns 1 if successful
-        //returns 0 if failure of any kind
-        public int insertLanguage(Language language)
+        //returns "1" if successful
+        //returns "0" if failure of any kind
+        //todo@futz
+        internal int insertLanguage(Language language)
         {
             int result = -1;
 

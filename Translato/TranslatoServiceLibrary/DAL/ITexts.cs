@@ -1,12 +1,12 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@03.12.2015
+//last_checked: futz@04.12.2015
 
 using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public interface ITexts
+    internal interface ITexts
     {
         //returns "1" if successful
         //returns "0" if not

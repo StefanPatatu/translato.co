@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@03.12.2015
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Transactions;
@@ -56,7 +56,7 @@ namespace TranslatoServiceLibrary.BLL
             if (result != 0)//safe to proceed
             {
                 user.userName = user.userName;
-                user.hashedPassword = Password.hashPassword(user.hashedPassword);
+                user.hashedPassword = Security.hashPassword(user.hashedPassword);
                 user.firstName = user.firstName;
                 user.lastName = user.lastName;
                 user.email = user.email;

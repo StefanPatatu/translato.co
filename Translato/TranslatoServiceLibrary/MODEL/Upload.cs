@@ -1,10 +1,13 @@
 ﻿//author: DarkSun
-//helpers: kool-kat
-//last_checked: futz@20.11.2015
+//helpers: kool-kat, futz
+//last_checked: futz@04.12.2015
+
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class Upload
+    [DataContract]
+    internal sealed class Upload
     {
         //private attributes
         private int p_uploadId;
@@ -12,13 +15,13 @@ namespace TranslatoServiceLibrary.MODEL
         private File p_file;
 
         //empty constructor
-        public Upload()
+        internal Upload()
         {
 
         }
 
         //full constructor
-        public Upload(
+        internal Upload(
             int uploadId,
             Text text,
             File file
@@ -30,18 +33,20 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and setters
-        public int uploadId
+        [DataMember]
+        internal int uploadId
         {
             get { return p_uploadId; }
             set { p_uploadId = value; }
         }
-       
-        public Text text
+        [DataMember]
+        internal Text text
         {
             get { return p_text; }
             set { p_text = value; }
         }
-        public File file
+        [DataMember]
+        internal File file
         {
             get { return p_file; }
             set { p_file = value; }

@@ -1,19 +1,20 @@
 ﻿//author: adrian
-//helpers:
-//last_checked:
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Transactions;
-using TranslatoServiceLibrary.MODEL;
 using TranslatoServiceLibrary.DAL;
+using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class CtrSubmission
+    internal sealed class CtrSubmission
     {
-        //returns 1 if successful
-        //returns 0 if failure of any kind
-        public int insertSubmission(Submission submission)
+        //returns "1" if successful
+        //returns "0" if failure of any kind
+        //todo@futz
+        internal int insertSubmission(Submission submission)
         {
             int result = -1;
 

@@ -1,6 +1,6 @@
 ﻿//author: adrian
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Data;
@@ -9,13 +9,13 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public class DbLanguages : ILanguages
+    internal sealed class DbLanguages : ILanguages
     {
         //define sql parameters
         private static SqlParameter param_languageId = new SqlParameter("@LanguageId", SqlDbType.Int);
         private static SqlParameter param_languageName = new SqlParameter("@LanguageName", SqlDbType.NVarChar,15);
         
-        //
+        //dbReader
         private static Language createLanguage(IDataReader dbReader)
         {
             Language language = new Language();
@@ -24,7 +24,9 @@ namespace TranslatoServiceLibrary.DAL
             return language;
         }
 
-        //
+        //returns
+        //returns
+        //todo@futz
         public int insertLanguage(Language language)
         {
             int result = -1;

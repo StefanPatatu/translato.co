@@ -1,23 +1,26 @@
 ﻿//author: kristis133
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
+
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class Text
+    [DataContract]
+    internal sealed class Text
     {
         //private attributes
         private int p_textId;
         private string p_textData;
 
         //empty constructor
-        public Text()
+        internal Text()
         {
 
         }
 
         //full constructor
-        public Text(
+        internal Text(
             int textId,
             string textData
             )
@@ -27,12 +30,14 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and testers
-        public int textId
+        [DataMember]
+        internal int textId
         {
             get { return p_textId; }
             set { p_textId = value; }
         }
-        public string textData
+        [DataMember]
+        internal string textData
         {
             get { return p_textData; }
             set { p_textData = value; }

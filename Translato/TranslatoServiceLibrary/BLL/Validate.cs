@@ -1,12 +1,12 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@20.11.2015
+//last_checked: futz@04.12.2015
 
 using System.Text.RegularExpressions;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    internal class Validate
+    internal static class Validate
     {
         //isAllNumbers: true | false
         internal static bool isAllNumbers(string stringToCheck)

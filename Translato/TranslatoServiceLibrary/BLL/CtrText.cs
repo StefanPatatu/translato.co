@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@03.12.2015
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Transactions;
@@ -9,11 +9,11 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class CtrText
+    internal sealed class CtrText
     {
         //returns "1" if successful
         //returns "0" if not
-        public int insertText(Text text)
+        internal int insertText(Text text)
         {
             int result = -1;
 
@@ -62,7 +62,7 @@ namespace TranslatoServiceLibrary.BLL
 
         //returns "MODEL.Text" object if successful
         //returns "null" if not
-        public Text findTextById(int textId)
+        internal Text findTextById(int textId)
         {
             int result = -1;
             Text text = null;

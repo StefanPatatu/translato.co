@@ -1,23 +1,25 @@
 ﻿//author: DarkSun
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class Submission
+    [DataContract]
+    internal sealed class Submission
     {
         //private attributes
-        int p_submissionId;
-        DateTimeOffset p_dateSubmitted;
-        bool p_isAwarded;
-        User p_user;
-        Upload p_upload;
-        Job p_job;
+        private int p_submissionId;
+        private DateTimeOffset p_dateSubmitted;
+        private bool p_isAwarded;
+        private User p_user;
+        private Upload p_upload;
+        private Job p_job;
 
         //empty constructor
-        public Submission()
+        internal Submission()
         {
 
         }
@@ -41,32 +43,38 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and setters
-        public int submissionId
+        [DataMember]
+        internal int submissionId
         {
             get { return p_submissionId; }
             set { p_submissionId = value; }
         }
-        public DateTimeOffset dateSubmitted
+        [DataMember]
+        internal DateTimeOffset dateSubmitted
         {
             get { return p_dateSubmitted; }
             set { p_dateSubmitted = value; }
         }
-        public bool isAwarded
+        [DataMember]
+        internal bool isAwarded
         {
             get { return p_isAwarded; }
             set { p_isAwarded = value; }
         }
+        [DataMember]
         internal User user
         {
             get { return p_user; }
             set { p_user = value; }
         }
-        public Upload upload
+        [DataMember]
+        internal Upload upload
         {
             get { return p_upload; }
             set { p_upload = value; }
         }
-        public Job job
+        [DataMember]
+        internal Job job
         {
             get { return p_job; }
             set { p_job = value; }

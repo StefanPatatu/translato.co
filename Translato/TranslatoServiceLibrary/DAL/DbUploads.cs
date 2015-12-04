@@ -1,6 +1,6 @@
 ﻿//author: adrian
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Data;
@@ -9,14 +9,14 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public class DbUploads : IUploads
+    internal sealed class DbUploads : IUploads
     {
         //define sql parameters
         private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
         private static SqlParameter param_textId = new SqlParameter("@TextId", SqlDbType.Int);
         private static SqlParameter param_fileId = new SqlParameter("@FileId", SqlDbType.Int);
 
-        //
+        //dbReader
         private static Upload createUpload(IDataReader dbReader)
         {
             Upload upload = new Upload();
@@ -25,7 +25,9 @@ namespace TranslatoServiceLibrary.DAL
             return upload;
         }
 
-        //
+        //returns
+        //returns
+        //todo@futz
         public int insertUploadText(Upload upload)
         {
             int result = -1;
@@ -70,7 +72,9 @@ namespace TranslatoServiceLibrary.DAL
             }
         }
 
-        //
+        //returns
+        //returns
+        //todo@futz
         public int insertUploadFile(Upload upload)
         {
             int result = -1;

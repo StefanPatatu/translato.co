@@ -1,14 +1,14 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@30.11.2015
+//last_checked: futz@04.12.2015
 
 using System.Transactions;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class TransactionScopeBuilder
+    internal static class TransactionScopeBuilder
     {
-        public static TransactionScope CreateSerializable()
+        internal static TransactionScope CreateSerializable()
         {
             var options = new TransactionOptions
             {

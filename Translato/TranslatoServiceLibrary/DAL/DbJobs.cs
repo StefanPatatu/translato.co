@@ -1,6 +1,6 @@
 ﻿//author: adrian
-//helpers:
-//last_cheked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Data;
@@ -9,7 +9,7 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public class DbJobs : IJobs
+    internal sealed class DbJobs : IJobs
     {
         //define sql parameters
         private static SqlParameter param_jobId = new SqlParameter("@JobId", SqlDbType.Int);
@@ -23,7 +23,7 @@ namespace TranslatoServiceLibrary.DAL
         private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);
         private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
 
-        //
+        //dbReader
         private static Job createJob(IDataReader dbReader)
         {
             Job job = new Job();
@@ -40,7 +40,9 @@ namespace TranslatoServiceLibrary.DAL
             return job;
         }
 
-        //
+        //returns
+        //returns
+        //todo@futz
         public int insertJob(Job job)
         {
             int result = -1;

@@ -1,12 +1,12 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@03.12.2015
+//last_cheked: futz@04.12.2015
 
 using TranslatoServiceLibrary.BLL;
 
 namespace TranslatoServiceLibrary.SRV
 {
-    public class ServiceLoginUser : IServiceLoginUser
+    internal sealed class ServiceLoginUser : IServiceLoginUser
     {
         public bool loginUser(string userNameOrEmail, string HRpassword)
         {

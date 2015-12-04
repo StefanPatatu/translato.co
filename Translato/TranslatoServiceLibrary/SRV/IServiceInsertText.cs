@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@03.12.2015
+//last_cheked: futz@04.12.2015
 
 using System.ServiceModel;
 using TranslatoServiceLibrary.MODEL;
@@ -8,7 +8,7 @@ using TranslatoServiceLibrary.MODEL;
 namespace TranslatoServiceLibrary.SRV
 {
     [ServiceContract]
-    public interface IServiceInsertText
+    internal interface IServiceInsertText
     {
         [OperationContract(Name = "insertText")]
         int insertText(Text text);

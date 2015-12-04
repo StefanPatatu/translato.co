@@ -1,22 +1,25 @@
 ﻿//author: adrian
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
+
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class File
+    [DataContract]
+    internal sealed class File
     {   
         //private attributes
         private int p_fileId;
         
         //empty constructor
-        public File()
+        internal File()
         {
 
         }
         
         //full constructor
-        public File(
+        internal File(
             int fileId
             )
         {
@@ -24,7 +27,8 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and setters
-        public int fileId
+        [DataMember]
+        internal int fileId
         {
             get { return p_fileId; }
             set { p_fileId = value; }

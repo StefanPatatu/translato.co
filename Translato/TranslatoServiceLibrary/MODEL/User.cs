@@ -6,7 +6,6 @@ using System;
 using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
-
 {
     [DataContract]
     internal sealed class User

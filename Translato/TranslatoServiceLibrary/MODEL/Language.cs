@@ -1,23 +1,26 @@
 ﻿//author: kristis133
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@04.12.2015
+
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class Language
+    [DataContract]
+    internal sealed class Language
     {
         //private attributes
         private int p_languageId;
         private string p_languageName;
 
         //empty constructor
-        public Language()
+        internal Language()
         {
 
         }
 
         //full constructor
-        public Language(
+        internal Language(
             int languageId,
             string languageName
             )
@@ -27,12 +30,14 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and setters
-        public int languageId
+        [DataMember]
+        internal int languageId
         {
             get { return p_languageId; }
             set { p_languageId = value; }
         }
-        public string languageName
+        [DataMember]
+        internal string languageName
         {
             get { return p_languageName; }
             set { p_languageName = value; }

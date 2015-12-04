@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@03.12.2015
+//last_checked: futz@04.12.2015
 
 using System;
 using System.Data;
@@ -9,7 +9,7 @@ using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
 {
-    public class DbSubmissions : ISubmissions
+    internal sealed class DbSubmissions : ISubmissions
     {
         //define sql parameters
         private static SqlParameter param_submissionId = new SqlParameter("@SubmissionIs", SqlDbType.Int);
@@ -32,7 +32,9 @@ namespace TranslatoServiceLibrary.DAL
             return submission;
         }
 
-        //
+        //returns
+        //returns
+        //todo@futz
         public int insertSubmission(Submission submission)
         {
             int result = -1;

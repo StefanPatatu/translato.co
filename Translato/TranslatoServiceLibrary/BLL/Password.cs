@@ -1,15 +1,15 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@20.11.2015
+//last_checked: futz@04.12.2015
 
+using Microsoft.AspNet.Cryptography.KeyDerivation;
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using Microsoft.AspNet.Cryptography.KeyDerivation;
 
 namespace TranslatoServiceLibrary.BLL
 {
-    public class Password
+    internal static class Password
     {
         /*
          * Version 3.futz:
@@ -17,7 +17,7 @@ namespace TranslatoServiceLibrary.BLL
          * Format: { 0x01, prf (UInt32), iter count(UInt32), salt length(UInt32), salt, subkey }
          * (All UInt32s are stored big-endian.)
          */
-        public static string hashPassword(string password)
+        internal static string hashPassword(string password)
         {
             var prf = KeyDerivationPrf.HMACSHA256;
             var rng = RandomNumberGenerator.Create();
@@ -37,7 +37,7 @@ namespace TranslatoServiceLibrary.BLL
             Buffer.BlockCopy(subkey, 0, outputBytes, 13 + saltSize, subkey.Length);
             return Convert.ToBase64String(outputBytes);
         }
-        public static bool verifyHashedPassword(string hashedPassword, string providedPassword)
+        internal static bool verifyHashedPassword(string hashedPassword, string providedPassword)
         {
             var decodedHashedPassword = Convert.FromBase64String(hashedPassword);
             //wrong version

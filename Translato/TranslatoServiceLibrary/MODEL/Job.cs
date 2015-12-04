@@ -1,12 +1,14 @@
 ﻿//author: adrian
-//helpers: DarkSun
-//last_checked: futz@20.11.2015
+//helpers: DarkSun, futz
+//last_checked: futz@04.12.2015
 
 using System;
+using System.Runtime.Serialization;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class Job
+    [DataContract]
+    internal sealed class Job
     {   
         //private attributes
         private int p_jobId;
@@ -21,7 +23,7 @@ namespace TranslatoServiceLibrary.MODEL
         private Upload p_upload;
 
         //empty constructor
-        public Job()
+        internal Job()
         {
 
         }
@@ -53,52 +55,62 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //geters and setters
-        public int jobId
+        [DataMember]
+        internal int jobId
         {
             get { return p_jobId; }
             set { p_jobId = value; }
         }
-        public string jobName
+        [DataMember]
+        internal string jobName
         {
             get { return p_jobName; }
             set { p_jobName = value; }
         }
-        public DateTimeOffset dateCreated
+        [DataMember]
+        internal DateTimeOffset dateCreated
         {
             get { return p_dateCreated; }
             set { p_dateCreated = value; }
         }
-        public int durationInDays
+        [DataMember]
+        internal int durationInDays
         {
             get { return p_durationInDays; }
             set { p_durationInDays = value; }
         }
-        public decimal reward
+        [DataMember]
+        internal decimal reward
         {
             get { return p_reward; }
             set { p_reward = value; }
         }
-        public DateTimeOffset dateAwarded
+        [DataMember]
+        internal DateTimeOffset dateAwarded
         {
             get { return p_dateAwarded; }
             set { p_dateAwarded = value; }
         }
-        public Language languageFrom
+        [DataMember]
+        internal Language languageFrom
         {
             get { return p_languageFrom; }
             set { p_languageFrom = value; }
         }
-        public Language languageTo
+        [DataMember]
+        internal Language languageTo
         {
             get { return p_languageTo; }
             set { p_languageTo = value; }
         }
+        [DataMember]
         internal User user
         {
             get { return p_user; }
             set { p_user = value; }
         }
-        public Upload upload
+        [DataMember]
+        internal Upload upload
         {
             get { return p_upload; }
             set { p_upload = value; }
