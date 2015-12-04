@@ -1,12 +1,12 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@03.12.2015
+//last_checked: futz@04.12.2015
 
 using System;
 
 namespace TranslatoServiceLibrary.DEBUG
 {
-    public class Log
+    internal class Log
     {
         private static System.IO.StringWriter writer = new System.IO.StringWriter();
 

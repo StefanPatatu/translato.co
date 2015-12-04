@@ -6,8 +6,8 @@
     <ProjectGuid>{66855C2F-DF5F-47DA-9080-48270F511216}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WcfServiceLibrary.Tests</RootNamespace>
-    <AssemblyName>WcfServiceLibrary.Tests</AssemblyName>
+    <RootNamespace>TranslatoServiceLibrary.Tests</RootNamespace>
+    <AssemblyName>TranslatoServiceLibrary.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

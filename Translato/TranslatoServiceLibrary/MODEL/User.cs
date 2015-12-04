@@ -1,12 +1,12 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@20.11.2015
+//last_checked: futz@04.12.2015
 
 using System;
 
 namespace TranslatoServiceLibrary.MODEL
 {
-    public class User
+    internal sealed class User
     {   
         //private attributes
         private int p_userId;
@@ -19,13 +19,13 @@ namespace TranslatoServiceLibrary.MODEL
         private DateTimeOffset p_createdOn;
         
         //empty constructor
-        public User()
+        internal User()
         {
 
         }
         
         //full constructor
-        public User(
+        internal User(
             int userId,
             string userName,
             string hashedPassword,
@@ -47,42 +47,42 @@ namespace TranslatoServiceLibrary.MODEL
         }
 
         //getters and setters
-        public int userId
+        internal int userId
         {
             get { return p_userId; }
             set { p_userId = value; }
         }
-        public string userName
+        internal string userName
         {
             get { return p_userName; }
             set { p_userName = value; }
         }
-        public string hashedPassword
+        internal string hashedPassword
         {
             get { return p_hashedPassword; }
             set { p_hashedPassword = value; }
         }
-        public string firstName
+        internal string firstName
         {
             get { return p_firstName; }
             set { p_firstName = value; }
         }
-        public string lastName
+        internal string lastName
         {
             get { return p_lastName; }
             set { p_lastName = value; }
         }
-        public string email
+        internal string email
         {
             get { return p_email; }
             set { p_email = value; }
         }
-        public bool newsletterOptOut
+        internal bool newsletterOptOut
         {
             get { return p_newsletterOptOut; }
             set { p_newsletterOptOut = value; }
         }
-        public DateTimeOffset createdOn
+        internal DateTimeOffset createdOn
         {
             get { return p_createdOn; }
             set { p_createdOn = value; }

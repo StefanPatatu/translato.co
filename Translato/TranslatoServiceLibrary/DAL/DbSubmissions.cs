@@ -1,6 +1,6 @@
 ﻿//author: adrian
-//helpers:
-//last_checked: futz@20.11.2015
+//helpers: futz
+//last_checked: futz@03.12.2015
 
 using System;
 using System.Data;
@@ -19,12 +19,12 @@ namespace TranslatoServiceLibrary.DAL
         private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
         private static SqlParameter param_jobId = new SqlParameter("@JobId", SqlDbType.Int);
 
-        //
+        //dbReader
         private static Submission createSubmission(IDataReader dbReader)
         {
             Submission submission = new Submission();
             submission.submissionId = Convert.ToInt32(dbReader["SubmissionId"]);
-            submission.dateSubmitted = Convert.ToDateTime(dbReader["DateSubmitted"]);
+            submission.dateSubmitted = (DateTimeOffset)dbReader["DateSubmitted"];
             submission.isAwarded = Convert.ToBoolean(dbReader["IsAwarded"]);
             submission.user.userId = Convert.ToInt32(dbReader["UserId"]);
             submission.upload.uploadId = Convert.ToInt32(dbReader["UploadId"]);
