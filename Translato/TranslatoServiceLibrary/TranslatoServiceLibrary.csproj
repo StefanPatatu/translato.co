@@ -65,6 +65,7 @@
     <Compile Include="BLL\CtrText.cs" />
     <Compile Include="BLL\CtrUpload.cs" />
     <Compile Include="BLL\CtrUser.cs" />
+    <Compile Include="BLL\ERR.cs" />
     <Compile Include="BLL\Password.cs" />
     <Compile Include="BLL\Security.cs" />
     <Compile Include="BLL\TransactionScopeBuilder.cs" />
