@@ -8,12 +8,14 @@ namespace TranslatoServiceLibrary.DAL
 {
     internal interface IUploads
     {
-        //returns
+        //returns 0 
         //returns
         int insertUploadText(Upload upload);
 
         //returns
         //returns
         int insertUploadFile(Upload upload);
+        Upload findUploadByTextId(int textId);
+        Upload findUploadById(int uploadId);
     }
 }
