@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@04.12.2015
+//last_checked: futz@07.12.2015
 
 using System;
 using System.Transactions;
@@ -11,49 +11,50 @@ namespace TranslatoServiceLibrary.BLL
 {
     internal sealed class CtrUser
     {
-        //returns "1" if successful
-        //returns "0" if not
+        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         internal int insertUser(User user)
         {
-            int result = -1;
+            int returnCode = (int)CODE.ZERO;
+            int result = (int)CODE.MINUS_ONE;
 
             //validate userName 
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(user.userName) ||
                 !Validate.isAlphaNumericWithUnderscore(user.userName) ||
                 !Validate.hasMinLength(user.userName, 5) ||
                 !Validate.hasMaxLength(user.userName, 15)
-               ) { result = 0; }
+               ) { returnCode = (int)CODE.CTRUSER_INSERTUSER_INVALID_USERNAME; result = (int)CODE.ZERO; }
             //validate password(stored in the HashedPassword field at this point. Will be replaced with hash + salt later)
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 !Validate.hasMinLength(user.hashedPassword, 8) ||
                 !Validate.hasMaxLength(user.hashedPassword, 100)
-               ) { result = 0; }
+               ) { returnCode = (int)CODE.CTRUSER_INSERTUSER_INVALID_PASSWORD; result = (int)CODE.ZERO; }
             //validate firstName 
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(user.firstName) ||
                 !Validate.hasMinLength(user.firstName, 2) ||
                 !Validate.hasMaxLength(user.firstName, 20)
-               ) { result = 0; }
+               ) { returnCode = (int)CODE.CTRUSER_INSERTUSER_INVALID_FIRSTNAME; result = (int)CODE.ZERO; }
             //validate lastName 
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(user.lastName) ||
                 !Validate.hasMinLength(user.lastName, 2) ||
                 !Validate.hasMaxLength(user.lastName, 20)
-               ) { result = 0; }
+               ) { returnCode = (int)CODE.CTRUSER_INSERTUSER_INVALID_LASTNAME; result = (int)CODE.ZERO; }
             //validate email 
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(user.email) ||
                 !Validate.hasMinLength(user.email, 5) ||
                 !Validate.hasMaxLength(user.email, 50) ||
                 !user.email.Contains("@")
-               ) { result = 0; }
-            if (result != 0)//safe to proceed
+               ) { returnCode = (int)CODE.CTRUSER_INSERTUSER_INVALID_EMAIL; result = (int)CODE.ZERO; }
+            if (returnCode == (int)CODE.ZERO || result != (int)CODE.ZERO)//safe to proceed
             {
                 user.userName = user.userName;
                 user.hashedPassword = Security.hashPassword(user.hashedPassword);
@@ -69,7 +70,7 @@ namespace TranslatoServiceLibrary.BLL
                 {
                     using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
-                        result = _DbUsers.insertUser(user);
+                        returnCode = _DbUsers.insertUser(user);
 
                         trScope.Complete();
                         trScope.Dispose();
@@ -77,39 +78,39 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.CTRUSER_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.CTRUSER_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.CTRUSER_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
-            else { result = 0; }
-            return result;
+            else {  }
+            return returnCode;
         }
 
-        //returns "MODEL.User" object if successful
+        //returns "MODEL.User" object if successful/found
         //returns "null" if not
         internal User findUserById(int userId)
         {
-            int result = -1;
+            int result = (int)CODE.MINUS_ONE;
             User user = null;
 
             //validate userId
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(userId.ToString()) ||
                 !Validate.isAllNumbers(userId.ToString()) ||
                 !Validate.isBiggerThan(userId, 0)
-               ) { result = 0; }
-            if (result != 0)//safe to proceed
+               ) { result = (int)CODE.ZERO; }
+            if (result != (int)CODE.ZERO)//safe to proceed
             {
                 IUsers _DbUsers = new DbUsers();
 
@@ -125,43 +126,42 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
-            else { result = 0; }
+            else { result = (int)CODE.ZERO; }
 
-            if (result == 0 || user == null) { return null; }
+            if (result == (int)CODE.ZERO || user == null) { return null; }
             else { return user; }
         }
 
-        //returns "MODEL.User" object if successful
+        //returns "MODEL.User" object if successful/found
         //returns "null" if not
         internal User findUserByUserName(string userName)
         {
-            int result = -1;
+            int result = (int)CODE.MINUS_ONE;
             User user = null;
 
             //validate userName
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(userName) ||
                 !Validate.isAlphaNumericWithUnderscore(userName) ||
                 !Validate.hasMinLength(userName, 5) ||
                 !Validate.hasMaxLength(userName, 15)
-               )
-            { result = 0; }
-            if (result != 0)//safe to proceed
+               ) { result = (int)CODE.ZERO; }
+            if (result != (int)CODE.ZERO)//safe to proceed
             {
                 IUsers _DbUsers = new DbUsers();
 
@@ -177,43 +177,42 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
-            else { result = 0; }
+            else { result = (int)CODE.ZERO; }
 
-            if (result == 0 || user == null) { return null; }
+            if (result == (int)CODE.ZERO || user == null) { return null; }
             else { return user; }
         }
 
-        //returns "MODEL.User" object if successful
+        //returns "MODEL.User" object if successful/found
         //returns "null" if not
         internal User findUserByEmail(string email)
         {
-            int result = -1;
+            int result = (int)CODE.MINUS_ONE;
             User user = null;
 
             //validate email 
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(email) ||
                 !Validate.hasMinLength(email, 5) ||
                 !Validate.hasMaxLength(email, 50) ||
                 !email.Contains("@")
-               )
-            { result = 0; }
-            if (result != 0)//safe to proceed
+               ) { result = (int)CODE.ZERO; }
+            if (result != (int)CODE.ZERO)//safe to proceed
             {
                 IUsers _DbUsers = new DbUsers();
 
@@ -229,30 +228,31 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
-            else { result = 0; }
+            else { result = (int)CODE.ZERO; }
 
-            if (result == 0 || user == null) { return null; }
+            if (result == (int)CODE.ZERO || user == null) { return null; }
             else { return user; }
         }
 
-        //returns "true" if successful
-        //returns "false" if not
-        internal bool loginUser(string userNameOrEmail, string HRpassword)
+        //returns "CODE.CTRUSER_LOGINUSER_SUCCESS" if successful
+        //returns "CODE.CTRUSER_LOGINUSER_FAILURE" if not
+        internal int loginUser(string userNameOrEmail, string HRpassword)
         {
+            int returnCode;
             //check if userName
             bool isUsername = false; 
             if (
@@ -260,8 +260,7 @@ namespace TranslatoServiceLibrary.BLL
                 Validate.isAlphaNumericWithUnderscore(userNameOrEmail) &&
                 Validate.hasMinLength(userNameOrEmail, 5) &&
                 Validate.hasMaxLength(userNameOrEmail, 15)
-               )
-            { isUsername = true; }
+               ) { isUsername = true; }
             //check if email
             bool isEmail = false;
             if (
@@ -269,8 +268,7 @@ namespace TranslatoServiceLibrary.BLL
                 Validate.hasMinLength(userNameOrEmail, 5) &&
                 Validate.hasMaxLength(userNameOrEmail, 50) &&
                 userNameOrEmail.Contains("@")
-               )
-            { isEmail = true; }
+               ) { isEmail = true; }
 
             //authenticate by case
             bool isTheSamePassword = false;
@@ -310,7 +308,9 @@ namespace TranslatoServiceLibrary.BLL
             {//means it matches none
                 isTheSamePassword = false;
             }
-            return isTheSamePassword;         
+            if (isTheSamePassword) returnCode = (int)CODE.CTRUSER_LOGINUSER_SUCCESS;
+            else returnCode = (int)CODE.CTRUSER_LOGINUSER_FAILURE;
+            return returnCode;         
         }
     }
 }

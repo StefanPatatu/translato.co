@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@05.12.2015
+//last_cheked: futz@07.12.2015
 
 using System.ServiceModel;
 
@@ -10,6 +10,6 @@ namespace TranslatoServiceLibrary.SRV
     internal interface IServiceLoginUser
     {
         [OperationContract(Name = "loginUser")]
-        bool loginUser(string publicKey, string privateKey, string userNameOrEmail, string HRpassword);
+        ServiceLoginUser.ReturnedObject loginUser(string publicKey, string privateKey, string userNameOrEmail, string HRpassword);
     }
 }

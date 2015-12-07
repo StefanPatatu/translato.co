@@ -1,10 +1,11 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@04.12.2015
+//last_cheked: futz@07.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
@@ -36,13 +37,13 @@ namespace TranslatoServiceLibrary.DAL
             return user;
         }
 
-        //returns "1" if successful
-        //returns "0" if not
+        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertUser(User user)
         {
-            int result = 0;
+            int returnCode = (int)CODE.ZERO;
 
-            string sqlQuery = "INSERT INTO Users VALUES (" +
+            string sqlQuery = "INSERT INTO Users OUTPUT INSERTED.UserId VALUES (" +
                 "@UserName, " +
                 "@HashedPassword, " +
                 "@FirstName, " +
@@ -88,7 +89,7 @@ namespace TranslatoServiceLibrary.DAL
                     sqlCommand.Parameters.Add(param_createdOn);
 
                     sqlCommand.Connection.Open();
-                    result = sqlCommand.ExecuteNonQuery();
+                    returnCode = (int)sqlCommand.ExecuteScalar();
                     sqlCommand.Connection.Close();
 
                     sqlCommand.Parameters.Clear();
@@ -104,25 +105,25 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
                     DEBUG.Log.Add(ex.ToString());
                 }
-                return result;
+                return returnCode;
             }
         }
 

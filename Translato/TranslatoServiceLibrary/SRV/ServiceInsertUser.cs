@@ -1,7 +1,8 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@05.12.2015
+//last_cheked: futz@07.12.2015
 
+using System.Runtime.Serialization;
 using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
 
@@ -9,17 +10,40 @@ namespace TranslatoServiceLibrary.SRV
 {
     internal sealed class ServiceInsertUser : IServiceInsertUser
     {
-        public int insertUser(string publicKey, string privateKey, User user)
+        public ReturnedObject insertUser(string publicKey, string privateKey, User user)
         {
+            ReturnedObject returnedObject = new ReturnedObject();
             if (Security.authorizeClient(publicKey, privateKey))
             {
                 CtrUser _CtrUser = new CtrUser();
-                return _CtrUser.insertUser(user);
+                returnedObject.code =  _CtrUser.insertUser(user);
             }
             else
             {
-                return (int)ERR.CLIENT_NOT_AUTHORIZED;
-            } 
+                returnedObject.code = (int)CODE.CLIENT_NOT_AUTHORIZED;
+            }
+            return returnedObject; 
+        }
+
+        [DataContract]
+        internal sealed class ReturnedObject
+        {
+            //private attributes
+            private int p_code;
+
+            //empty constructor
+            internal ReturnedObject()
+            {
+
+            }
+
+            //getters and setters
+            [DataMember]
+            internal int code
+            {
+                get { return p_code; }
+                set { p_code = value; }
+            }
         }
     }
 }

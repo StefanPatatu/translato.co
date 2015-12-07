@@ -1,10 +1,11 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@07.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
@@ -24,13 +25,13 @@ namespace TranslatoServiceLibrary.DAL
             return text;
         }
 
-        //returns "1" if successful
-        //returns "0" if not
+        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertText(Text text)
         {
-            int result = 0;
+            int returnCode = (int)CODE.ZERO;
 
-            string sqlQuery = "INSERT INTO Texts VALUES (" +
+            string sqlQuery = "INSERT INTO Texts OUTPUT INSERTED.TextId VALUES (" +
                 "@TextData " +
             ")";
 
@@ -46,7 +47,7 @@ namespace TranslatoServiceLibrary.DAL
                     sqlCommand.Parameters.Add(param_textData);
 
                     sqlCommand.Connection.Open();
-                    result = sqlCommand.ExecuteNonQuery();
+                    returnCode = (int)sqlCommand.ExecuteScalar();
                     sqlCommand.Connection.Close();
 
                     sqlCommand.Parameters.Clear();
@@ -56,25 +57,25 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(ex.ToString());
                 }
-                return result;
+                return returnCode;
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Files]
 (
-	[FileId] INT IDENTITY(1,1) NOT NULL,
+	[FileId] INT IDENTITY(1000000,1) NOT NULL,
 	PRIMARY KEY ([FileId])
 )

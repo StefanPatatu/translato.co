@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@07.12.2015
 
 using TranslatoServiceLibrary.MODEL;
 
@@ -8,8 +8,8 @@ namespace TranslatoServiceLibrary.DAL
 {
     internal interface ITexts
     {
-        //returns "1" if successful
-        //returns "0" if not
+        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         int insertText(Text text);
 
         //returns "MODEL.Text" object if successful

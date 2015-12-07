@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@05.12.2015
+//last_cheked: futz@07.12.2015
 
 using System.ServiceModel;
 using TranslatoServiceLibrary.MODEL;
@@ -11,6 +11,6 @@ namespace TranslatoServiceLibrary.SRV
     internal interface IServiceInsertUser
     {
         [OperationContract(Name = "insertUser")]
-        int insertUser(string publicKey, string privateKey, User user);
+        ServiceInsertUser.ReturnedObject insertUser(string publicKey, string privateKey, User user);
     }
 }

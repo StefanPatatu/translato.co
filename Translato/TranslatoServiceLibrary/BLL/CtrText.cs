@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@07.12.2015
 
 using System;
 using System.Transactions;
@@ -11,20 +11,21 @@ namespace TranslatoServiceLibrary.BLL
 {
     internal sealed class CtrText
     {
-        //returns "1" if successful
-        //returns "0" if not
+        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         internal int insertText(Text text)
         {
-            int result = -1;
+            int returnCode = (int)CODE.ZERO;
+            int result = (int)CODE.MINUS_ONE;
 
             //validate textData
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(text.textData) ||
                 !Validate.hasMinLength(text.textData, 1) ||
                 !Validate.hasMaxLength(text.textData, 40000)
-                ) { result = 0; }
-            if (result != 0)//safe to proceed
+                ) {returnCode = (int)CODE.CTRTEXT_INSERTTEXT_INVALID_TEXTDATA; result = (int)CODE.ZERO; }
+            if (returnCode == (int)CODE.ZERO || result != (int)CODE.ZERO)//safe to proceed
             {
                 text.textData = text.textData;
 
@@ -34,7 +35,7 @@ namespace TranslatoServiceLibrary.BLL
                 {
                     using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
-                        result = _DbTexts.insertText(text);
+                        returnCode = _DbTexts.insertText(text);
 
                         trScope.Complete();
                         trScope.Dispose();
@@ -42,39 +43,39 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
-            else { result = 0; }
-            return result;
+            else { }
+            return returnCode;
         }
 
-        //returns "MODEL.Text" object if successful
+        //returns "MODEL.Text" object if successful/found
         //returns "null" if not
         internal Text findTextById(int textId)
         {
-            int result = -1;
+            int result = (int)CODE.MINUS_ONE;
             Text text = null;
 
             //validate textId
             if (
-                result == 0 ||
+                result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(textId.ToString()) ||
                 !Validate.isAllNumbers(textId.ToString()) ||
                 !Validate.isBiggerThan(textId, 0)
-               ) { result = 0; }
-            if (result != 0)//safe to proceed
+               ) { result = (int)CODE.ZERO; }
+            if (result != (int)CODE.ZERO)//safe to proceed
             {
                 ITexts _DbTexts = new DbTexts();
 
@@ -90,23 +91,23 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
+                    result = (int)CODE.ZERO;
                     DEBUG.Log.Add(ex.ToString());
                 }
             }
-            else { result = 0; }
+            else { result = (int)CODE.ZERO; }
 
-            if (result == 0 || text == null) { return null; }
+            if (result == (int)CODE.ZERO || text == null) { return null; }
             else { return text; }
         }
     }
