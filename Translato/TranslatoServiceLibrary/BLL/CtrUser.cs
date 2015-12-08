@@ -6,12 +6,13 @@ using System;
 using System.Transactions;
 using TranslatoServiceLibrary.DAL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.BLL
 {
     internal sealed class CtrUser
     {
-        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
         //returns [int < TRANSLATO_DATABASE_SEED] if not
         internal int insertUser(User user)
         {
@@ -54,7 +55,7 @@ namespace TranslatoServiceLibrary.BLL
                 !Validate.hasMaxLength(user.email, 50) ||
                 !user.email.Contains("@")
                ) { returnCode = (int)CODE.CTRUSER_INSERTUSER_INVALID_EMAIL; result = (int)CODE.ZERO; }
-            if (returnCode == (int)CODE.ZERO || result != (int)CODE.ZERO)//safe to proceed
+            if (returnCode == (int)CODE.ZERO && result != (int)CODE.ZERO)//safe to proceed
             {
                 user.userName = user.userName;
                 user.hashedPassword = Security.hashPassword(user.hashedPassword);
@@ -79,17 +80,17 @@ namespace TranslatoServiceLibrary.BLL
                 catch (TransactionAbortedException taEx)
                 {
                     returnCode = (int)CODE.CTRUSER_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     returnCode = (int)CODE.CTRUSER_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.CTRUSER_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else {  }
@@ -127,17 +128,17 @@ namespace TranslatoServiceLibrary.BLL
                 catch (TransactionAbortedException taEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else { result = (int)CODE.ZERO; }
@@ -178,17 +179,17 @@ namespace TranslatoServiceLibrary.BLL
                 catch (TransactionAbortedException taEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else { result = (int)CODE.ZERO; }
@@ -229,17 +230,17 @@ namespace TranslatoServiceLibrary.BLL
                 catch (TransactionAbortedException taEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else { result = (int)CODE.ZERO; }

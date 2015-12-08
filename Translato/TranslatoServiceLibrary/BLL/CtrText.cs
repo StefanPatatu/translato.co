@@ -1,17 +1,18 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@07.12.2015
+//last_checked: futz@08.12.2015
 
 using System;
 using System.Transactions;
 using TranslatoServiceLibrary.DAL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.BLL
 {
     internal sealed class CtrText
     {
-        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
         //returns [int < TRANSLATO_DATABASE_SEED] if not
         internal int insertText(Text text)
         {
@@ -25,7 +26,7 @@ namespace TranslatoServiceLibrary.BLL
                 !Validate.hasMinLength(text.textData, 1) ||
                 !Validate.hasMaxLength(text.textData, 40000)
                 ) {returnCode = (int)CODE.CTRTEXT_INSERTTEXT_INVALID_TEXTDATA; result = (int)CODE.ZERO; }
-            if (returnCode == (int)CODE.ZERO || result != (int)CODE.ZERO)//safe to proceed
+            if (returnCode == (int)CODE.ZERO && result != (int)CODE.ZERO)//safe to proceed
             {
                 text.textData = text.textData;
 
@@ -44,17 +45,17 @@ namespace TranslatoServiceLibrary.BLL
                 catch (TransactionAbortedException taEx)
                 {
                     returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else { }
@@ -92,17 +93,17 @@ namespace TranslatoServiceLibrary.BLL
                 catch (TransactionAbortedException taEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     result = (int)CODE.ZERO;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else { result = (int)CODE.ZERO; }

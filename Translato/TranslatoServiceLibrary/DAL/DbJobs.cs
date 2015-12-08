@@ -100,19 +100,19 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return result;
             }

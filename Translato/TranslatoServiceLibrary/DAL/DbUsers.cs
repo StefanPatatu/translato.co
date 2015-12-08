@@ -1,26 +1,38 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@07.12.2015
+//last_cheked: futz@08.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.DAL
 {
     internal sealed class DbUsers : IUsers
     {
         //define sql parameters
-        private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);
-        private static SqlParameter param_userName = new SqlParameter("@UserName", SqlDbType.VarChar, 15);
-        private static SqlParameter param_hashedPassword = new SqlParameter("@HashedPassword", SqlDbType.Char, 100);
-        private static SqlParameter param_firstName = new SqlParameter("@FirstName", SqlDbType.NVarChar, 20);
-        private static SqlParameter param_lastName = new SqlParameter("@LastName", SqlDbType.NVarChar, 20);
-        private static SqlParameter param_email = new SqlParameter("@Email", SqlDbType.NVarChar, 50);
-        private static SqlParameter param_newsletterOptOut = new SqlParameter("@NewsletterOptOut", SqlDbType.Bit);
-        private static SqlParameter param_createdOn = new SqlParameter("@CreatedOn", SqlDbType.DateTimeOffset);
+        private SqlParameter param_userId;
+        private SqlParameter param_userName;
+        private SqlParameter param_hashedPassword;
+        private SqlParameter param_firstName;
+        private SqlParameter param_lastName;
+        private SqlParameter param_email;
+        private SqlParameter param_newsletterOptOut;
+        private SqlParameter param_createdOn;
+        //regenerate sql parameters
+        private void regenSqlParams()
+        {
+            param_userId = new SqlParameter("@UserId", SqlDbType.Int);
+            param_userName = new SqlParameter("@UserName", SqlDbType.VarChar, 15);
+            param_hashedPassword = new SqlParameter("@HashedPassword", SqlDbType.Char, 100);
+            param_firstName = new SqlParameter("@FirstName", SqlDbType.NVarChar, 20);
+            param_lastName = new SqlParameter("@LastName", SqlDbType.NVarChar, 20);
+            param_email = new SqlParameter("@Email", SqlDbType.NVarChar, 50);
+            param_newsletterOptOut = new SqlParameter("@NewsletterOptOut", SqlDbType.Bit);
+            param_createdOn = new SqlParameter("@CreatedOn", SqlDbType.DateTimeOffset);
+        }
 
         //dbReader
         private static User createUser(IDataReader dbReader)
@@ -37,7 +49,7 @@ namespace TranslatoServiceLibrary.DAL
             return user;
         }
 
-        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
         //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertUser(User user)
         {
@@ -57,71 +69,56 @@ namespace TranslatoServiceLibrary.DAL
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_userName.Value = user.userName;
+                        sqlCommand.Parameters.Add(param_userName);
 
-                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
-                    param_userName.Value = user.userName;
-                    sqlCommand.Parameters.Add(param_userName);
+                        param_hashedPassword.Value = user.hashedPassword;
+                        sqlCommand.Parameters.Add(param_hashedPassword);
 
-                    if (sqlCommand.Parameters.Contains(param_hashedPassword)) sqlCommand.Parameters.Remove(param_hashedPassword);
-                    param_hashedPassword.Value = user.hashedPassword;
-                    sqlCommand.Parameters.Add(param_hashedPassword);
+                        param_firstName.Value = user.firstName;
+                        sqlCommand.Parameters.Add(param_firstName);
 
-                    if (sqlCommand.Parameters.Contains(param_firstName)) sqlCommand.Parameters.Remove(param_firstName);
-                    param_firstName.Value = user.firstName;
-                    sqlCommand.Parameters.Add(param_firstName);
+                        param_lastName.Value = user.lastName;
+                        sqlCommand.Parameters.Add(param_lastName);
 
-                    if (sqlCommand.Parameters.Contains(param_lastName)) sqlCommand.Parameters.Remove(param_lastName);
-                    param_lastName.Value = user.lastName;
-                    sqlCommand.Parameters.Add(param_lastName);
+                        param_email.Value = user.email;
+                        sqlCommand.Parameters.Add(param_email);
 
-                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
-                    param_email.Value = user.email;
-                    sqlCommand.Parameters.Add(param_email);
+                        param_newsletterOptOut.Value = user.newsletterOptOut;
+                        sqlCommand.Parameters.Add(param_newsletterOptOut);
 
-                    if (sqlCommand.Parameters.Contains(param_newsletterOptOut)) sqlCommand.Parameters.Remove(param_newsletterOptOut);
-                    param_newsletterOptOut.Value = user.newsletterOptOut;
-                    sqlCommand.Parameters.Add(param_newsletterOptOut);
+                        param_createdOn.Value = user.createdOn;
+                        sqlCommand.Parameters.Add(param_createdOn);
 
-                    if (sqlCommand.Parameters.Contains(param_createdOn)) sqlCommand.Parameters.Remove(param_createdOn);
-                    param_createdOn.Value = user.createdOn;
-                    sqlCommand.Parameters.Add(param_createdOn);
+                        sqlCommand.Connection.Open();
+                        returnCode = (int)sqlCommand.ExecuteScalar();
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    returnCode = (int)sqlCommand.ExecuteScalar();
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
-                    if (sqlCommand.Parameters.Contains(param_hashedPassword)) sqlCommand.Parameters.Remove(param_hashedPassword);
-                    if (sqlCommand.Parameters.Contains(param_firstName)) sqlCommand.Parameters.Remove(param_firstName);
-                    if (sqlCommand.Parameters.Contains(param_lastName)) sqlCommand.Parameters.Remove(param_lastName);
-                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
-                    if (sqlCommand.Parameters.Contains(param_newsletterOptOut)) sqlCommand.Parameters.Remove(param_newsletterOptOut);
-                    if (sqlCommand.Parameters.Contains(param_createdOn)) sqlCommand.Parameters.Remove(param_createdOn);
-
-                    sqlCommand.Dispose();
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return returnCode;
             }
@@ -141,41 +138,40 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_userId.Value = userId;
+                        sqlCommand.Parameters.Add(param_userId);
 
-                    if (sqlCommand.Parameters.Contains(param_userId)) sqlCommand.Parameters.Remove(param_userId);
-                    param_userId.Value = userId;
-                    sqlCommand.Parameters.Add(param_userId);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { user = createUser(dbReader); }
+                        else { user = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { user = createUser(dbReader); }
-                    else { user = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_userId)) sqlCommand.Parameters.Remove(param_userId);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     user = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return user;
             }
@@ -195,41 +191,40 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_userName.Value = userName;
+                        sqlCommand.Parameters.Add(param_userName);
 
-                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
-                    param_userName.Value = userName;
-                    sqlCommand.Parameters.Add(param_userName);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { user = createUser(dbReader); }
+                        else { user = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { user = createUser(dbReader); }
-                    else { user = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_userName)) sqlCommand.Parameters.Remove(param_userName);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     user = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return user;
             }
@@ -249,41 +244,40 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_email.Value = email;
+                        sqlCommand.Parameters.Add(param_email);
 
-                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
-                    param_email.Value = email;
-                    sqlCommand.Parameters.Add(param_email);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { user = createUser(dbReader); }
+                        else { user = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { user = createUser(dbReader); }
-                    else { user = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_email)) sqlCommand.Parameters.Remove(param_email);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     user = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     user = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return user;
             }

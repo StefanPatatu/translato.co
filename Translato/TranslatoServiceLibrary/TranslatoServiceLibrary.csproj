@@ -58,7 +58,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\CODE.cs" />
+    <Compile Include="X\CODE.cs" />
     <Compile Include="BLL\CtrFile.cs" />
     <Compile Include="BLL\CtrJob.cs" />
     <Compile Include="BLL\CtrLanguage.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="DAL\ITexts.cs" />
     <Compile Include="DAL\IUploads.cs" />
     <Compile Include="DAL\IUsers.cs" />
-    <Compile Include="DEBUG\Log.cs" />
+    <Compile Include="X\Log.cs" />
     <Compile Include="MODEL\File.cs" />
     <Compile Include="MODEL\Job.cs" />
     <Compile Include="MODEL\Language.cs" />

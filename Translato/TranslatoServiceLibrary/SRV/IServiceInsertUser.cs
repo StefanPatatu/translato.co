@@ -1,8 +1,9 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@07.12.2015
+//last_cheked: futz@08.12.2015
 
 using System.ServiceModel;
+using System.Threading.Tasks;
 using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.SRV

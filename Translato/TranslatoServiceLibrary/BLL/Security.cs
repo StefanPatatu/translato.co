@@ -32,7 +32,7 @@ namespace TranslatoServiceLibrary.BLL
             catch (Exception ex)
             {
                 hashedPassword = null;
-                DEBUG.Log.Add(ex.ToString());
+                X.Log.Add(ex.ToString());
             }
             return hashedPassword;
         }
@@ -49,7 +49,7 @@ namespace TranslatoServiceLibrary.BLL
             catch (Exception ex)
             {
                 isTheSamePassword = false;
-                DEBUG.Log.Add(ex.ToString());
+                X.Log.Add(ex.ToString());
             }
             return isTheSamePassword;
         }

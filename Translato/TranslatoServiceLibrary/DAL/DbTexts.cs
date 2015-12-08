@@ -1,20 +1,26 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@07.12.2015
+//last_checked: futz@08.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.DAL
 {
     internal sealed class DbTexts : ITexts
     {
         //define sql parameters
-        private static SqlParameter param_textId = new SqlParameter("@TextId", SqlDbType.Int);
-        private static SqlParameter param_textData = new SqlParameter("@TextData", SqlDbType.NVarChar, 40000);
+        private SqlParameter param_textId;
+        private SqlParameter param_textData;
+        //regenerate sql parameters
+        private void regenSqlParams()
+        {
+            param_textId = new SqlParameter("@TextId", SqlDbType.Int);
+            param_textData = new SqlParameter("@TextData", SqlDbType.NVarChar, 40000);
+        }
 
         //dbReader
         private static Text createText(IDataReader dbReader)
@@ -25,7 +31,7 @@ namespace TranslatoServiceLibrary.DAL
             return text;
         }
 
-        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
         //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertText(Text text)
         {
@@ -39,41 +45,38 @@ namespace TranslatoServiceLibrary.DAL
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_textData.Value = text.textData;
+                        sqlCommand.Parameters.Add(param_textData);
 
-                    if (sqlCommand.Parameters.Contains(param_textData)) sqlCommand.Parameters.Remove(param_textData);
-                    param_textData.Value = text.textData;
-                    sqlCommand.Parameters.Add(param_textData);
+                        sqlCommand.Connection.Open();
+                        returnCode = (int)sqlCommand.ExecuteScalar();
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    returnCode = (int)sqlCommand.ExecuteScalar();
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_textData)) sqlCommand.Parameters.Remove(param_textData);
-
-                    sqlCommand.Dispose();
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return returnCode;
             }
@@ -93,41 +96,40 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_textId.Value = textId;
+                        sqlCommand.Parameters.Add(param_textId);
 
-                    if (sqlCommand.Parameters.Contains(param_textId)) sqlCommand.Parameters.Remove(param_textId);
-                    param_textId.Value = textId;
-                    sqlCommand.Parameters.Add(param_textId);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { text = createText(dbReader); }
+                        else { text = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { text = createText(dbReader); }
-                    else { text = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_textId)) sqlCommand.Parameters.Remove(param_textId);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     text = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     text = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     text = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     text = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return text;
             }

@@ -67,15 +67,15 @@ namespace TranslatoServiceLibrary.BLL
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    DEBUG.Log.Add(taEx.ToString());
+                    X.Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    DEBUG.Log.Add(aEx.ToString());
+                    X.Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
             }
             else

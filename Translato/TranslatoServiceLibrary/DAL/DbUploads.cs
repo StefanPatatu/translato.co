@@ -1,38 +1,57 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@08.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.DAL
 {
     internal sealed class DbUploads : IUploads
     {
         //define sql parameters
-        private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
-        private static SqlParameter param_textId = new SqlParameter("@TextId", SqlDbType.Int);
-        private static SqlParameter param_fileId = new SqlParameter("@FileId", SqlDbType.Int);
+        private SqlParameter param_uploadId;
+        private SqlParameter param_textId;
+        private SqlParameter param_fileId;
+        //regenerate sql parameters
+        private void regenSqlParams()
+        {
+            param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
+            param_textId = new SqlParameter("@TextId", SqlDbType.Int);
+            param_fileId = new SqlParameter("@FileId", SqlDbType.Int);
+        }
 
         //dbReader
         private static Upload createUpload(IDataReader dbReader)
         {
             Upload upload = new Upload();
             upload.uploadId = Convert.ToInt32(dbReader["UploadId"]);
-            upload.text.textId = Convert.ToInt32(dbReader["TextId"]);
+            if (dbReader["TextId"] != null && dbReader["TextId"] != DBNull.Value)
+            {
+                upload.text = new Text();
+                upload.text.textId = Convert.ToInt32(dbReader["TextId"]);
+            }
+            else { upload.text = null; }
+            if (dbReader["FileId"] != null && dbReader["FileId"] != DBNull.Value)
+            {
+                upload.file = new File();
+                upload.file.fileId = Convert.ToInt32(dbReader["FileId"]);
+            }
+            else { upload.file = null; }
             return upload;
         }
 
-        //author adrian
-        //returns "1" successful
-        //returns "0" if not
+        //author: adrian
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertUploadText(Upload upload)
-        {
-            int result = 0;
+        {                                    
+            int returnCode = (int)CODE.ZERO;
 
-            string sqlQuery = "INSERT INTO Uploads VALUES (" +
+            string sqlQuery = "INSERT INTO Uploads OUTPUT INSERTED.UploadId VALUES (" +
                 "@TextId, " +
                 "NULL" +
             ")";
@@ -41,54 +60,51 @@ namespace TranslatoServiceLibrary.DAL
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_textId.Value = upload.text.textId;
+                        sqlCommand.Parameters.Add(param_textId);
 
-                    if (sqlCommand.Parameters.Contains(param_textId)) sqlCommand.Parameters.Remove(param_textId);
-                    param_textId.Value = upload.text.textId;
-                    sqlCommand.Parameters.Add(param_textId);
+                        sqlCommand.Connection.Open();
+                        returnCode = (int)sqlCommand.ExecuteScalar();
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    result = sqlCommand.ExecuteNonQuery();
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_textId)) sqlCommand.Parameters.Remove(param_textId);
-
-                    sqlCommand.Dispose();
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(argEx.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
+                    X.Log.Add(ex.ToString());
                 }
-                return result;
+                return returnCode;
             }
         }
 
-        //author adrian
-        //returns "1" successful
-        //returns "0" if not
+        //author: adrian
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertUploadFile(Upload upload)
         {
-            int result = 0;
+            int returnCode = (int)CODE.ZERO;
 
-            string sqlQuery = "INSERT INTO Uploads VALUES (" +
+            string sqlQuery = "INSERT INTO Uploads OUTPUT INSERTED.UploadId VALUES (" +
                 "NULL, " +
                 "@FileId" +
             ")";
@@ -97,47 +113,44 @@ namespace TranslatoServiceLibrary.DAL
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_fileId.Value = upload.file.fileId;
+                        sqlCommand.Parameters.Add(param_fileId);
 
-                    if (sqlCommand.Parameters.Contains(param_fileId)) sqlCommand.Parameters.Remove(param_fileId);
-                    param_fileId.Value = upload.file.fileId;
-                    sqlCommand.Parameters.Add(param_fileId);
+                        sqlCommand.Connection.Open();
+                        returnCode = (int)sqlCommand.ExecuteScalar();
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    result = sqlCommand.ExecuteNonQuery();
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_fileId)) sqlCommand.Parameters.Remove(param_fileId);
-
-                    sqlCommand.Dispose();
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(argEx.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
-                    DEBUG.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
+                    X.Log.Add(ex.ToString());
                 }
-                return result;
+                return returnCode;
             }
         }
 
-        //author adrian
+        //author: adrian
         //returns "MODEL.Upload" object if successful
         //returns "null" if not
         public Upload findUploadById(int uploadId)
@@ -152,47 +165,46 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_uploadId.Value = uploadId;
+                        sqlCommand.Parameters.Add(param_uploadId);
 
-                    if (sqlCommand.Parameters.Contains(param_uploadId)) sqlCommand.Parameters.Remove(param_uploadId);
-                    param_uploadId.Value = uploadId;
-                    sqlCommand.Parameters.Add(param_uploadId);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { upload = createUpload(dbReader); }
+                        else { upload = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { upload = createUpload(dbReader); }
-                    else { upload = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_uploadId)) sqlCommand.Parameters.Remove(param_uploadId);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     upload = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     upload = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     upload = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     upload = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return upload;
             }
         }
 
-        //author adrian
+        //author: adrian
         //returns "Model.Upload" object if successful
         //returns "null if not"
         public Upload findUploadByTextId(int textId)
@@ -207,45 +219,97 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_textId.Value = textId;
+                        sqlCommand.Parameters.Add(param_textId);
 
-                    if (sqlCommand.Parameters.Contains(param_textId)) sqlCommand.Parameters.Remove(param_textId);
-                    param_textId.Value = textId;
-                    sqlCommand.Parameters.Add(param_textId);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { upload = createUpload(dbReader); }
+                        else { upload = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if(dbReader.Read()) { upload = createUpload(dbReader); }
-                    else { upload = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_textId)) sqlCommand.Parameters.Remove(param_textId);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     upload = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     upload = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     upload = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     upload = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return upload;
             }
         }
 
+        //author: futz
+        //returns "Model.Upload" object if successful
+        //returns "null if not"
+        public Upload findUploadByFileId(int fileId)
+        {
+            string sqlQuery = "SELECT * FROM Uploads WHERE " +
+                "FileId = @FileId";
+
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
+            {
+                Upload upload = new Upload();
+                IDataReader dbReader;
+
+                try
+                {
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_fileId.Value = fileId;
+                        sqlCommand.Parameters.Add(param_fileId);
+
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { upload = createUpload(dbReader); }
+                        else { upload = null; }
+                        sqlCommand.Connection.Close();
+
+                        sqlCommand.Parameters.Clear();
+                    }
+                }
+                catch (InvalidOperationException ioEx)
+                {
+                    upload = null;
+                    X.Log.Add(ioEx.ToString());
+                }
+                catch (SqlException sqlEx)
+                {
+                    upload = null;
+                    X.Log.Add(sqlEx.ToString());
+                }
+                catch (ArgumentException argEx)
+                {
+                    upload = null;
+                    X.Log.Add(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    upload = null;
+                    X.Log.Add(ex.ToString());
+                }
+                return upload;
+            }
+        }
     }
 }

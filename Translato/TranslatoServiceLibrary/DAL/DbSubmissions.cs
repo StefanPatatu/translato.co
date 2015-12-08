@@ -1,23 +1,34 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@08.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.DAL
 {
     internal sealed class DbSubmissions : ISubmissions
     {
         //define sql parameters
-        private static SqlParameter param_submissionId = new SqlParameter("@SubmissionIs", SqlDbType.Int);
-        private static SqlParameter param_dateSubmitted = new SqlParameter("@DateSubmitted", SqlDbType.DateTimeOffset);
-        private static SqlParameter param_isAwarded = new SqlParameter("@IsAwarded", SqlDbType.Bit);
-        private static SqlParameter param_userId = new SqlParameter("@UserId", SqlDbType.Int);
-        private static SqlParameter param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
-        private static SqlParameter param_jobId = new SqlParameter("@JobId", SqlDbType.Int);
+        private SqlParameter param_submissionId;
+        private SqlParameter param_dateSubmitted;
+        private SqlParameter param_isAwarded;
+        private SqlParameter param_userId;
+        private SqlParameter param_uploadId;
+        private SqlParameter param_jobId;
+        //regenerate sql parameters
+        private void regenSqlParams()
+        {
+            param_submissionId = new SqlParameter("@SubmissionId", SqlDbType.Int);
+            param_dateSubmitted = new SqlParameter("@DateSubmitted", SqlDbType.DateTimeOffset);
+            param_isAwarded = new SqlParameter("@IsAwarded", SqlDbType.Bit);
+            param_userId = new SqlParameter("@UserId", SqlDbType.Int);
+            param_uploadId = new SqlParameter("@UploadId", SqlDbType.Int);
+            param_jobId = new SqlParameter("@JobId", SqlDbType.Int);
+        }
 
         //dbReader
         private static Submission createSubmission(IDataReader dbReader)
@@ -76,19 +87,19 @@ namespace TranslatoServiceLibrary.DAL
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return result;
             }

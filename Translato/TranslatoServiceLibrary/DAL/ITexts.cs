@@ -8,7 +8,7 @@ namespace TranslatoServiceLibrary.DAL
 {
     internal interface ITexts
     {
-        //returns [int > TRANSLATO_DATABASE_SEED] if successful
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
         //returns [int < TRANSLATO_DATABASE_SEED] if not
         int insertText(Text text);
 

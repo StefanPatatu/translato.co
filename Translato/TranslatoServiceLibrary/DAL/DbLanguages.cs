@@ -1,10 +1,11 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@08.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
 
 namespace TranslatoServiceLibrary.DAL
@@ -12,9 +13,15 @@ namespace TranslatoServiceLibrary.DAL
     internal sealed class DbLanguages : ILanguages
     {
         //define sql parameters
-        private static SqlParameter param_languageId = new SqlParameter("@LanguageId", SqlDbType.Int);
-        private static SqlParameter param_languageName = new SqlParameter("@LanguageName", SqlDbType.NVarChar,15);
-        
+        private SqlParameter param_languageId;
+        private SqlParameter param_languageName;
+        //regenerate sql parameters
+        private void regenSqlParams()
+        {
+            param_languageId = new SqlParameter("@LanguageId", SqlDbType.Int);
+            param_languageName = new SqlParameter("@LanguageName", SqlDbType.NVarChar, 15);
+        }
+
         //dbReader
         private static Language createLanguage(IDataReader dbReader)
         {
@@ -24,8 +31,8 @@ namespace TranslatoServiceLibrary.DAL
             return language;
         }
 
-        //returns "1" if successful
-        //returns "0" if not
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertLanguage(Language language)
         {
             int result = 0;
@@ -57,22 +64,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     result = 0;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     result = 0;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     result = 0;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     result = 0;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return result;
             }
@@ -111,22 +118,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     language = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     language = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     language = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     language = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return language;
             }
@@ -165,22 +172,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     language = null;
-                    DEBUG.Log.Add(ioEx.ToString());
+                    X.Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     language = null;
-                    DEBUG.Log.Add(sqlEx.ToString());
+                    X.Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     language = null;
-                    DEBUG.Log.Add(argEx.ToString());
+                    X.Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     language = null;
-                    DEBUG.Log.Add(ex.ToString());
+                    X.Log.Add(ex.ToString());
                 }
                 return language;
             }

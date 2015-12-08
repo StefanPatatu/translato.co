@@ -1,10 +1,11 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@07.12.2015
+//last_cheked: futz@08.12.2015
 
 using System.Runtime.Serialization;
 using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.SRV
 {

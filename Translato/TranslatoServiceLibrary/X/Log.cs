@@ -1,10 +1,10 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@04.12.2015
+//last_checked: futz@08.12.2015
 
 using System;
 
-namespace TranslatoServiceLibrary.DEBUG
+namespace TranslatoServiceLibrary.X
 {
     internal static class Log
     {
