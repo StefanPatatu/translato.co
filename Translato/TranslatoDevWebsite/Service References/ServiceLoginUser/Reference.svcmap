@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="87c9542b-2d6d-400c-9575-fb89cd17c0b9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://translato.cloudapp.net/ServiceLoginUser.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceLoginUser.xsd" MetadataType="Schema" ID="47516660-0390-4074-8479-60b08461506a" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceLoginUser.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceLoginUser1.xsd" MetadataType="Schema" ID="2b8fe910-c0f3-4a6b-bf52-c29b231d67aa" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceLoginUser.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceLoginUser.disco" MetadataType="Disco" ID="a4d9f52c-fc33-47c6-97b8-80c9a35895ce" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceLoginUser.svc?disco" />
+    <MetadataFile FileName="ServiceLoginUser.wsdl" MetadataType="Wsdl" ID="a37ceef8-9d9f-4559-bbb1-8a0901001f2c" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceLoginUser.svc?wsdl" />
+    <MetadataFile FileName="ServiceLoginUser2.xsd" MetadataType="Schema" ID="33db574b-9ae6-4a91-8034-9b60eafad15d" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceLoginUser.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

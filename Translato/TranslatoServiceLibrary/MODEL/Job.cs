@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: DarkSun, futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@10.12.2015
 
 using System;
 using System.Runtime.Serialization;
@@ -16,7 +16,7 @@ namespace TranslatoServiceLibrary.MODEL
         private DateTimeOffset p_dateCreated;
         private int p_durationInDays;
         private decimal p_reward;
-        private DateTimeOffset p_dateAwarded;
+        private DateTimeOffset? p_dateAwarded;
         private Language p_languageFrom;
         private Language p_languageTo;
         private User p_user;
@@ -86,7 +86,7 @@ namespace TranslatoServiceLibrary.MODEL
             set { p_reward = value; }
         }
         [DataMember]
-        internal DateTimeOffset dateAwarded
+        internal DateTimeOffset? dateAwarded
         {
             get { return p_dateAwarded; }
             set { p_dateAwarded = value; }

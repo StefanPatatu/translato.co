@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@08.12.2015
+//last_checked: futz@10.12.2015
 
 using System;
 using System.Data;
@@ -76,22 +76,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADTEXT_EXCEPTION;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return returnCode;
             }
@@ -129,22 +129,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.DBUPLOADS_INSERTUPLOADFILE_EXCEPTION;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return returnCode;
             }
@@ -153,7 +153,7 @@ namespace TranslatoServiceLibrary.DAL
         //author: adrian
         //returns "MODEL.Upload" object if successful
         //returns "null" if not
-        public Upload findUploadById(int uploadId)
+        public Upload findUploadByUploadId(int uploadId)
         {
             string sqlQuery = "SELECT * FROM Uploads WHERE " +
                 "UploadId = @UploadId";
@@ -183,22 +183,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     upload = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     upload = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     upload = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     upload = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return upload;
             }
@@ -237,22 +237,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     upload = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     upload = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     upload = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     upload = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return upload;
             }
@@ -291,22 +291,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     upload = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     upload = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     upload = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     upload = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return upload;
             }

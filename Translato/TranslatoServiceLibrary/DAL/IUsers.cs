@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@07.12.2015
+//last_checked: futz@10.12.2015
 
 using TranslatoServiceLibrary.MODEL;
 
@@ -14,7 +14,7 @@ namespace TranslatoServiceLibrary.DAL
 
         //returns "MODEL.User" object if successful
         //returns "null" if not
-        User findUserById(int userId);
+        User findUserByUserId(int userId);
 
         //returns "MODEL.User" object if successful
         //returns "null" if not

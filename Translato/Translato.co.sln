@@ -12,22 +12,27 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "TranslatoAzureService", "Tr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatoAzureServiceWebRole", "TranslatoAzureServiceWebRole\TranslatoAzureServiceWebRole.csproj", "{30F59A35-0CB7-4403-8A03-48BC48FD8DF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatoWebsite", "TranslatoWebsite\TranslatoWebsite.csproj", "{F15B0BE7-8590-4951-AE18-3BD3D4FD6A5A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatoWebsite.Tests", "TranslatoWebsite.Tests\TranslatoWebsite.Tests.csproj", "{58CE083A-4EA7-48AD-A3F0-9B250FD0AB5A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{0E8D4822-A40E-4C46-9BD9-118AFC707ECF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FBF2D743-2FB1-49DD-AADD-C7CC0060C375}"
 	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup-2.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup-2.ps1
 		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{7E20BDEB-4C13-442D-A4E7-831E79374FB9}"
 	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\TranslatoDevWebsite.json = PublishScripts\Templates\TranslatoDevWebsite.json
+		PublishScripts\Templates\TranslatoDevWebsite.param.dev.json = PublishScripts\Templates\TranslatoDevWebsite.param.dev.json
 		PublishScripts\Templates\TranslatoWebsite.json = PublishScripts\Templates\TranslatoWebsite.json
 		PublishScripts\Templates\TranslatoWebsite.param.dev.json = PublishScripts\Templates\TranslatoWebsite.param.dev.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatoDevWebsite", "TranslatoDevWebsite\TranslatoDevWebsite.csproj", "{00E94503-FF23-4F92-9087-FB719D01A9A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatoDevWebsite.Tests", "TranslatoDevWebsite.Tests\TranslatoDevWebsite.Tests.csproj", "{5BFA278C-38BB-4F7C-9DD5-88EE3C59D3C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENUM", "ENUM\ENUM.csproj", "{194EE5B3-A9B3-4BA4-B389-35CBE330A2D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,14 +62,18 @@ Global
 		{30F59A35-0CB7-4403-8A03-48BC48FD8DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F59A35-0CB7-4403-8A03-48BC48FD8DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30F59A35-0CB7-4403-8A03-48BC48FD8DF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F15B0BE7-8590-4951-AE18-3BD3D4FD6A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F15B0BE7-8590-4951-AE18-3BD3D4FD6A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F15B0BE7-8590-4951-AE18-3BD3D4FD6A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F15B0BE7-8590-4951-AE18-3BD3D4FD6A5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58CE083A-4EA7-48AD-A3F0-9B250FD0AB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58CE083A-4EA7-48AD-A3F0-9B250FD0AB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58CE083A-4EA7-48AD-A3F0-9B250FD0AB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58CE083A-4EA7-48AD-A3F0-9B250FD0AB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E94503-FF23-4F92-9087-FB719D01A9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E94503-FF23-4F92-9087-FB719D01A9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E94503-FF23-4F92-9087-FB719D01A9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E94503-FF23-4F92-9087-FB719D01A9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BFA278C-38BB-4F7C-9DD5-88EE3C59D3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BFA278C-38BB-4F7C-9DD5-88EE3C59D3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BFA278C-38BB-4F7C-9DD5-88EE3C59D3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BFA278C-38BB-4F7C-9DD5-88EE3C59D3C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{194EE5B3-A9B3-4BA4-B389-35CBE330A2D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{194EE5B3-A9B3-4BA4-B389-35CBE330A2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{194EE5B3-A9B3-4BA4-B389-35CBE330A2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{194EE5B3-A9B3-4BA4-B389-35CBE330A2D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@08.12.2015
+//last_checked: futz@10.12.2015
 
 using System;
 using System.Data;
@@ -61,22 +61,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.DBTEXTS_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return returnCode;
             }
@@ -84,7 +84,7 @@ namespace TranslatoServiceLibrary.DAL
 
         //returns "MODEL.Text" object if successful
         //returns "null" if not
-        public Text findTextById(int textId)
+        public Text findTextByTextId(int textId)
         {
             string sqlQuery = "SELECT * FROM Texts WHERE " +
                 "TextId = @TextId";
@@ -114,22 +114,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     text = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     text = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     text = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     text = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return text;
             }

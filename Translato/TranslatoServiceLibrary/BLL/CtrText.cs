@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@08.12.2015
+//last_checked: futz@10.12.2015
 
 using System;
 using System.Transactions;
@@ -22,6 +22,7 @@ namespace TranslatoServiceLibrary.BLL
             //validate textData
             if (
                 result == (int)CODE.ZERO ||
+                returnCode != (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(text.textData) ||
                 !Validate.hasMinLength(text.textData, 1) ||
                 !Validate.hasMaxLength(text.textData, 40000)
@@ -39,23 +40,22 @@ namespace TranslatoServiceLibrary.BLL
                         returnCode = _DbTexts.insertText(text);
 
                         trScope.Complete();
-                        trScope.Dispose();
                     }
                 }
                 catch (TransactionAbortedException taEx)
                 {
                     returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(taEx.ToString());
+                    Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(aEx.ToString());
+                    Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.CTRTEXT_INSERTTEXT_EXCEPTION;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
             }
             else { }
@@ -64,7 +64,7 @@ namespace TranslatoServiceLibrary.BLL
 
         //returns "MODEL.Text" object if successful/found
         //returns "null" if not
-        internal Text findTextById(int textId)
+        internal Text findTextByTextId(int textId)
         {
             int result = (int)CODE.MINUS_ONE;
             Text text = null;
@@ -74,7 +74,7 @@ namespace TranslatoServiceLibrary.BLL
                 result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(textId.ToString()) ||
                 !Validate.isAllNumbers(textId.ToString()) ||
-                !Validate.isBiggerThan(textId, 0)
+                !Validate.isBiggerThan(textId, (int)CODE.TRANSLATO_DATABASE_SEED)
                ) { result = (int)CODE.ZERO; }
             if (result != (int)CODE.ZERO)//safe to proceed
             {
@@ -84,26 +84,25 @@ namespace TranslatoServiceLibrary.BLL
                 {
                     using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
-                        text = _DbTexts.findTextById(textId);
+                        text = _DbTexts.findTextByTextId(textId);
 
                         trScope.Complete();
-                        trScope.Dispose();
                     }
                 }
                 catch (TransactionAbortedException taEx)
                 {
                     result = (int)CODE.ZERO;
-                    X.Log.Add(taEx.ToString());
+                    Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
                     result = (int)CODE.ZERO;
-                    X.Log.Add(aEx.ToString());
+                    Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     result = (int)CODE.ZERO;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
             }
             else { result = (int)CODE.ZERO; }

@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@07.12.2015
+//last_checked: futz@10.12.2015
 
 using TranslatoServiceLibrary.MODEL;
 
@@ -18,7 +18,7 @@ namespace TranslatoServiceLibrary.DAL
 
         //returns "MODEL.Upload" object if successful
         //returns "null" if not
-        Upload findUploadById(int uploadId);
+        Upload findUploadByUploadId(int uploadId);
 
         //returns "MODEL.Upload" object if successful
         //returns "null" if not

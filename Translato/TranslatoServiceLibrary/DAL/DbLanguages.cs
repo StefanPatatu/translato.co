@@ -1,12 +1,13 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@08.12.2015
+//last_checked: futz@10.12.2015
 
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.DAL
 {
@@ -35,53 +36,50 @@ namespace TranslatoServiceLibrary.DAL
         //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertLanguage(Language language)
         {
-            int result = 0;
+            int returnCode = (int)CODE.ZERO;
 
-            string sqlQuery = "INSERT INTO Languages VALUES (" +
-                "@LanguageName " +
+            string sqlQuery = "INSERT INTO Languages OUTPUT INSERTED.LanguageId VALUES (" +
+                "@LanguageName" +
             ")";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_languageName.Value = language.languageName;
+                        sqlCommand.Parameters.Add(param_languageName);
 
-                    if (sqlCommand.Parameters.Contains(param_languageName)) sqlCommand.Parameters.Remove(param_languageName);
-                    param_languageName.Value = language.languageName;
-                    sqlCommand.Parameters.Add(param_languageName);
+                        sqlCommand.Connection.Open();
+                        returnCode = (int)sqlCommand.ExecuteScalar();
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    result = sqlCommand.ExecuteNonQuery();
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_languageName)) sqlCommand.Parameters.Remove(param_languageName);
-
-                    sqlCommand.Dispose();
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    result = 0;
-                    X.Log.Add(ioEx.ToString());
+                    returnCode = (int)CODE.DBLANGUAGES_INSERTLANGUAGE_EXCEPTION;
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    result = 0;
-                    X.Log.Add(sqlEx.ToString());
+                    returnCode = (int)CODE.DBLANGUAGES_INSERTLANGUAGE_EXCEPTION;
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    result = 0;
-                    X.Log.Add(argEx.ToString());
+                    returnCode = (int)CODE.DBLANGUAGES_INSERTLANGUAGE_EXCEPTION;
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    result = 0;
-                    X.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.DBLANGUAGES_INSERTLANGUAGE_EXCEPTION;
+                    Log.Add(ex.ToString());
                 }
-                return result;
+                return returnCode;
             }
         }
 
@@ -99,52 +97,51 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_languageId.Value = languageId;
+                        sqlCommand.Parameters.Add(param_languageId);
 
-                    if (sqlCommand.Parameters.Contains(param_languageId)) sqlCommand.Parameters.Remove(param_languageId);
-                    param_languageId.Value = languageId;
-                    sqlCommand.Parameters.Add(param_languageId);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { language = createLanguage(dbReader); }
+                        else { language = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { language = createLanguage(dbReader); }
-                    else { language = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_languageId)) sqlCommand.Parameters.Remove(param_languageId);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     language = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     language = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     language = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     language = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return language;
             }
         }
 
-        //returns "MODEL.Language" object if successful
+        //returns "Model.Language" object if successful
         //returns "null" if not
         public Language findLanguageByLanguageName(string languageName)
         {
             string sqlQuery = "SELECT * FROM Languages WHERE " +
-                "LanguageName = @LanguageNname";
+                "LanguageName = @LanguageName";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
@@ -153,43 +150,95 @@ namespace TranslatoServiceLibrary.DAL
 
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        param_languageName.Value = languageName;
+                        sqlCommand.Parameters.Add(param_languageName);
 
-                    if (sqlCommand.Parameters.Contains(param_languageName)) sqlCommand.Parameters.Remove(param_languageName);
-                    param_languageName.Value = languageName;
-                    sqlCommand.Parameters.Add(param_languageName);
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        if (dbReader.Read()) { language = createLanguage(dbReader); }
+                        else { language = null; }
+                        sqlCommand.Connection.Close();
 
-                    sqlCommand.Connection.Open();
-                    dbReader = sqlCommand.ExecuteReader();
-                    if (dbReader.Read()) { language = createLanguage(dbReader); }
-                    else { language = null; }
-                    sqlCommand.Connection.Close();
-
-                    sqlCommand.Parameters.Clear();
-                    if (sqlCommand.Parameters.Contains(param_languageName)) sqlCommand.Parameters.Remove(param_languageName);
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
                     language = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     language = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     language = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     language = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return language;
+            }
+        }
+
+        //returns "List<MODEL.Language>" object if successful
+        //returns "null" if not
+        public List<Language> getAllLanguages()
+        {
+            string sqlQuery = "SELECT * FROM Languages " +
+                "ORDER BY LanguageName ASC";
+
+            using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
+            {
+                List<Language> languages = new List<Language>();
+                IDataReader dbReader;
+
+                try
+                {
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        sqlCommand.Connection.Open();
+                        dbReader = sqlCommand.ExecuteReader();
+                        while (dbReader.Read())
+                        {
+                            Language language = createLanguage(dbReader);
+                            languages.Add(language);
+                        }
+                        sqlCommand.Connection.Close();
+
+                        sqlCommand.Parameters.Clear();
+                    }
+                }
+                catch (InvalidOperationException ioEx)
+                {
+                    languages = null;
+                    Log.Add(ioEx.ToString());
+                }
+                catch (SqlException sqlEx)
+                {
+                    languages = null;
+                    Log.Add(sqlEx.ToString());
+                }
+                catch (ArgumentException argEx)
+                {
+                    languages = null;
+                    Log.Add(argEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    languages = null;
+                    Log.Add(ex.ToString());
+                }
+                return languages;
             }
         }
     }

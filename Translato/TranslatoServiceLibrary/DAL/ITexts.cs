@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@07.12.2015
+//last_checked: futz@10.12.2015
 
 using TranslatoServiceLibrary.MODEL;
 
@@ -14,6 +14,6 @@ namespace TranslatoServiceLibrary.DAL
 
         //returns "MODEL.Text" object if successful
         //returns "null" if not
-        Text findTextById(int textId);
+        Text findTextByTextId(int textId);
     }
 }

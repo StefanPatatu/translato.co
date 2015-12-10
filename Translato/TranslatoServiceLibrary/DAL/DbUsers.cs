@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@08.12.2015
+//last_cheked: futz@10.12.2015
 
 using System;
 using System.Data;
@@ -103,22 +103,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     returnCode = (int)CODE.DBUSERS_INSERTUSER_EXCEPTION;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return returnCode;
             }
@@ -126,7 +126,7 @@ namespace TranslatoServiceLibrary.DAL
 
         //returns "MODEL.User" object if successful
         //returns "null" if not
-        public User findUserById(int userId)
+        public User findUserByUserId(int userId)
         {
             string sqlQuery = "SELECT * FROM Users WHERE " +
                 "UserId = @UserId";
@@ -156,22 +156,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     user = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     user = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     user = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     user = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return user;
             }
@@ -209,22 +209,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     user = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     user = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     user = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     user = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return user;
             }
@@ -262,22 +262,22 @@ namespace TranslatoServiceLibrary.DAL
                 catch (InvalidOperationException ioEx)
                 {
                     user = null;
-                    X.Log.Add(ioEx.ToString());
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
                     user = null;
-                    X.Log.Add(sqlEx.ToString());
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
                     user = null;
-                    X.Log.Add(argEx.ToString());
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
                     user = null;
-                    X.Log.Add(ex.ToString());
+                    Log.Add(ex.ToString());
                 }
                 return user;
             }

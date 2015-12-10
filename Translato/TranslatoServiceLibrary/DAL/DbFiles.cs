@@ -1,18 +1,24 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@10.12.2015
 
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.DAL
 {
     internal sealed class DbFiles : IFiles
     {
         //define sql parameters
-        private static SqlParameter param_textId = new SqlParameter("@FileId", SqlDbType.Int);
+        private SqlParameter param_fileId;
+        //regenerate sql parameters
+        private void regenSqlParams()
+        {
+            param_fileId = new SqlParameter("@FileId", SqlDbType.Int);
+        }
 
         //dbReader
         private static File createFile(IDataReader dbReader)
@@ -22,44 +28,48 @@ namespace TranslatoServiceLibrary.DAL
             return file;
         }
 
-        //returns
-        //returns
-        //todo@futz
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         public int insertFile(File file)
         {
-            int result = -1;
+            int returnCode = (int)CODE.ZERO;
 
-            string sqlQuery = "INSERT INTO Files DEFAULT VALUES";
+            string sqlQuery = "INSERT INTO Files OUTPUT INSERTED.FileId DEFAULT VALUES";
 
             using (SqlConnection sqlConnection = new SqlConnection(AccessTranslatoDb.sqlConnectionString))
             {
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
-                    sqlCommand.Parameters.Clear();
+                    regenSqlParams();
+                    using (SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection))
+                    {
+                        sqlCommand.Connection.Open();
+                        returnCode = (int)sqlCommand.ExecuteScalar();
 
-                    sqlCommand.Connection.Open();
-                    result = sqlCommand.ExecuteNonQuery();
-
-                    sqlCommand.Parameters.Clear();
+                        sqlCommand.Parameters.Clear();
+                    }
                 }
                 catch (InvalidOperationException ioEx)
                 {
-                    X.Log.Add(ioEx.ToString());
+                    returnCode = (int)CODE.DBFILES_INSERTFILE_EXCEPTION;
+                    Log.Add(ioEx.ToString());
                 }
                 catch (SqlException sqlEx)
                 {
-                    X.Log.Add(sqlEx.ToString());
+                    returnCode = (int)CODE.DBFILES_INSERTFILE_EXCEPTION;
+                    Log.Add(sqlEx.ToString());
                 }
                 catch (ArgumentException argEx)
                 {
-                    X.Log.Add(argEx.ToString());
+                    returnCode = (int)CODE.DBFILES_INSERTFILE_EXCEPTION;
+                    Log.Add(argEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    X.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.DBFILES_INSERTFILE_EXCEPTION;
+                    Log.Add(ex.ToString());
                 }
-                return result;
+                return returnCode;
             }
         }
     }

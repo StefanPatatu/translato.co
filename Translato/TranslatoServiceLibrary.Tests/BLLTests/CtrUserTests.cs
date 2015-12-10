@@ -53,7 +53,7 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
             CtrUser _CtrUser = new CtrUser();
 
             //act
-            User user = _CtrUser.findUserById(userId);
+            User user = _CtrUser.findUserByUserId(userId);
 
             //assert
             Assert.IsNotNull(user);

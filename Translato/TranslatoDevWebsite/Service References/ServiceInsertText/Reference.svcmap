@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="611f3e71-1cad-45b3-b7d9-1264f3f0409c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://translato.cloudapp.net/ServiceInsertText.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceInsertText.xsd" MetadataType="Schema" ID="555d6b82-0025-41b3-ad47-d78c0e81e69a" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceInsertText.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceInsertText.wsdl" MetadataType="Wsdl" ID="a9e73f31-bb3c-44ac-9cbf-f713d6602575" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceInsertText.svc?wsdl" />
+    <MetadataFile FileName="ServiceInsertText1.xsd" MetadataType="Schema" ID="9de01298-579c-40c3-8d19-ccab77f7219c" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceInsertText.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceInsertText2.xsd" MetadataType="Schema" ID="56214d36-f436-443b-9707-eb6f039a0f5a" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceInsertText.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceInsertText.disco" MetadataType="Disco" ID="7d03f70c-8f5e-43bc-a2af-3df5f0798a5b" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceInsertText.svc?disco" />
+    <MetadataFile FileName="ServiceInsertText3.xsd" MetadataType="Schema" ID="8673b309-7b3e-42ce-836f-ba73aae8cdc0" SourceId="1" SourceUrl="http://translato.cloudapp.net/ServiceInsertText.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

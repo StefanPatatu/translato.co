@@ -1,0 +1,29 @@
+{
+  "siteName": {
+    "value": "TranslatoDevWebsite"
+  },
+  "hostingPlanName": {
+    "value": "TranslatoAppService"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Shared"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "siteMode": {
+    "value": "Limited"
+  },
+  "computeMode": {
+    "value": "0"
+  },
+  "subscriptionId": {
+    "value": "d9a9c93d-3936-49e9-92a4-a78b627afec7"
+  },
+  "resourceGroup": {
+    "value": "Translato.co"
+  }
+}
