@@ -1,8 +1,10 @@
 ﻿//author: futz
 //helpers:
-//last_checked: futz@10.12.2015
+//last_checked: futz@13.12.2015
 
+using ENUM;
 using System;
+using System.Threading;
 using System.Transactions;
 using TranslatoServiceLibrary.DAL;
 using TranslatoServiceLibrary.MODEL;
@@ -257,22 +259,51 @@ namespace TranslatoServiceLibrary.BLL
         {
             int returnCode = (int)CODE.CTRUSER_LOGINUSER_FAILURE_INITIAL;
             //check if userName
-            bool isPossibleUserName = false; 
-            if (
-                !string.IsNullOrWhiteSpace(userNameOrEmail) &&
-                Validate.isAlphaNumericWithUnderscore(userNameOrEmail) &&
-                Validate.hasMinLength(userNameOrEmail, 5) &&
-                Validate.hasMaxLength(userNameOrEmail, 15)
-               ) { isPossibleUserName = true; }
+            bool isPossibleUserName = false;
+            Thread checkIsPossibleUserNameThread = new Thread(
+                new ThreadStart(() =>
+                {
+                    if (
+                        !string.IsNullOrWhiteSpace(userNameOrEmail) &&
+                        Validate.isAlphaNumericWithUnderscore(userNameOrEmail) &&
+                        Validate.hasMinLength(userNameOrEmail, 5) &&
+                        Validate.hasMaxLength(userNameOrEmail, 15)
+                       )
+                    { isPossibleUserName = true; }
+                })); 
             //check if email
             bool isPossibleEmail = false;
-            if (
-                !string.IsNullOrWhiteSpace(userNameOrEmail) &&
-                Validate.hasMinLength(userNameOrEmail, 5) &&
-                Validate.hasMaxLength(userNameOrEmail, 50) &&
-                userNameOrEmail.Contains("@")
-               ) { isPossibleEmail = true; }
-
+            Thread checkIsPossibleEmailThread = new Thread(
+                new ThreadStart(() =>
+                {
+                    if (
+                        !string.IsNullOrWhiteSpace(userNameOrEmail) &&
+                        Validate.hasMinLength(userNameOrEmail, 5) &&
+                        Validate.hasMaxLength(userNameOrEmail, 50) &&
+                        userNameOrEmail.Contains("@")
+                       )
+                    { isPossibleEmail = true; }
+                }));
+            try
+            {
+                checkIsPossibleUserNameThread.Start();
+                checkIsPossibleEmailThread.Start();
+                checkIsPossibleUserNameThread.Join();
+                checkIsPossibleEmailThread.Join();
+            }
+            catch (ThreadAbortException taEx)
+            {
+                isPossibleEmail = false;
+                isPossibleUserName = false;
+                Log.Add(taEx.ToString());
+            }
+            catch (Exception ex)
+            {
+                isPossibleEmail = false;
+                isPossibleUserName = false;
+                Log.Add(ex.ToString());
+            }
+        
             //authenticate by case
             bool isTheSamePassword = false;
             if (isPossibleUserName || isPossibleEmail)

@@ -1,26 +1,31 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@04.12.2015
+//last_checked: futz@13.12.2015
 
+using ENUM;
 using System;
 using System.Transactions;
 using TranslatoServiceLibrary.DAL;
 using TranslatoServiceLibrary.MODEL;
+using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.BLL
 {
     internal sealed class CtrFile
     {
-        //returns "1" if successful
-        //returns "0" if failure of any kind
-        //todo@futz
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         internal int insertFile(File file)
         {
-            int result = -1;
+            int returnCode = (int)CODE.ZERO;
+            int result = (int)CODE.MINUS_ONE;
 
-           //validations to be added
-
-            if (result != 0)//safe to proceed
+            //validate -> ToDo
+            if (
+                result == (int)CODE.ZERO ||
+                returnCode != (int)CODE.ZERO
+               ) { returnCode = (int)CODE.CTRTEXT_INSERTTEXT_INVALID_TEXTDATA; result = (int)CODE.ZERO; }
+            if (returnCode == (int)CODE.ZERO && result != (int)CODE.ZERO)//safe to proceed
             {
                 IFiles _DbFiles = new DbFiles();
 
@@ -28,29 +33,29 @@ namespace TranslatoServiceLibrary.BLL
                 {
                     using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
-                        result = _DbFiles.insertFile(file);
+                        returnCode = _DbFiles.insertFile(file);
 
                         trScope.Complete();
                     }
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    X.Log.Add(taEx.ToString());
+                    returnCode = (int)CODE.CTRFILE_INSERTFILE_EXCEPTION;
+                    Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    X.Log.Add(aEx.ToString());
+                    returnCode = (int)CODE.CTRFILE_INSERTFILE_EXCEPTION;
+                    Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    X.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.CTRFILE_INSERTFILE_EXCEPTION;
+                    Log.Add(ex.ToString());
                 }
             }
-            else
-            {
-                result = 0;
-            }
-            return result;
+            else { }
+            return returnCode;
         }
     }
 }

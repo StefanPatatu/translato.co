@@ -1,7 +1,8 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@08.12.2015
+//last_checked: futz@13.12.2015
 
+using ENUM;
 using System;
 using System.Transactions;
 using TranslatoServiceLibrary.DAL;
@@ -21,7 +22,8 @@ namespace TranslatoServiceLibrary.BLL
 
             //validate only text
             if (
-                result == (int)CODE.ZERO || 
+                result == (int)CODE.ZERO ||
+                returnCode != (int)CODE.ZERO ||
                 upload.text == null ||
                 upload.file != null
                ) { returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADTEXT_FAILED_ONLYTEXT; result = (int)CODE.ZERO; }
@@ -49,73 +51,86 @@ namespace TranslatoServiceLibrary.BLL
                         }
 
                         trScope.Complete();
-                        trScope.Dispose();
                     }
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    X.Log.Add(taEx.ToString());
+                    returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADTEXT_EXCEPTION;
+                    Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    X.Log.Add(aEx.ToString());
+                    returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADTEXT_EXCEPTION;
+                    Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    X.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADTEXT_EXCEPTION;
+                    Log.Add(ex.ToString());
                 }
             }
-            else
-            {
-                result = 0;
-            }
-            return result;
+            else { }
+            return returnCode;
         }
 
-        //returns "1" if successful
-        //returns "0" if failure of any kind
-        //todo@futz
+        //returns [int >= TRANSLATO_DATABASE_SEED] if successful
+        //returns [int < TRANSLATO_DATABASE_SEED] if not
         internal int insertUploadFile(Upload upload)
         {
-            int result = -1;
+            int returnCode = (int)CODE.ZERO;
+            int result = (int)CODE.MINUS_ONE;
 
-            if (result == 0 ||
-                 !upload.text.Equals(null) ||
-                 upload.file.Equals(null)
-               )
-            { result = 0; }
-
-            if (result != 0)//safe to proceed
+            //validate only file
+            if (
+                result == (int)CODE.ZERO ||
+                returnCode != (int)CODE.ZERO ||
+                upload.text != null ||
+                upload.file == null
+               ) { returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADFILE_FAILED_ONLYFILE; result = (int)CODE.ZERO; }
+            if (returnCode == (int)CODE.ZERO && result != (int)CODE.ZERO)//safe to proceed
             {
+                upload.text = null;
+                upload.file = upload.file;
+
+                CtrFile _CtrFile = new CtrFile();
                 IUploads _DbUploads = new DbUploads();
 
                 try
                 {
                     using (var trScope = TransactionScopeBuilder.CreateSerializable())
                     {
-                        result = _DbUploads.insertUploadFile(upload);
+                        returnCode = _CtrFile.insertFile(upload.file);
+                        if (returnCode >= (int)CODE.TRANSLATO_DATABASE_SEED)//means file was inserted successfully
+                        {
+                            upload.file.fileId = returnCode;
+                            returnCode = _DbUploads.insertUploadFile(upload);
+                        }
+                        else
+                        {//means file failed to be inserted
+                            trScope.Dispose();
+                        }
 
                         trScope.Complete();
                     }
                 }
                 catch (TransactionAbortedException taEx)
                 {
-                    X.Log.Add(taEx.ToString());
+                    returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADFILE_EXCEPTION;
+                    Log.Add(taEx.ToString());
                 }
                 catch (ApplicationException aEx)
                 {
-                    X.Log.Add(aEx.ToString());
+                    returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADFILE_EXCEPTION;
+                    Log.Add(aEx.ToString());
                 }
                 catch (Exception ex)
                 {
-                    X.Log.Add(ex.ToString());
+                    returnCode = (int)CODE.CTRUPLOAD_INSERTUPLOADFILE_EXCEPTION;
+                    Log.Add(ex.ToString());
                 }
             }
-            else
-            {
-                result = 0;
-            }
-            return result;
+            else { }
+            return returnCode;
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@10.12.2015
+//last_cheked: futz@11.12.2015
 
+using ENUM;
 using System.Runtime.Serialization;
 using TranslatoServiceLibrary.BLL;
 using TranslatoServiceLibrary.MODEL;
-using TranslatoServiceLibrary.X;
 
 namespace TranslatoServiceLibrary.SRV
 {

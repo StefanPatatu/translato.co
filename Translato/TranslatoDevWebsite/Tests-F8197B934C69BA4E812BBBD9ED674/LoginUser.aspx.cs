@@ -1,7 +1,11 @@
-﻿using System;
+﻿//author: futz
+//helpers:
+//last_checked: futz@11.12.2015
+
+using ENUM;
+using System;
 using TranslatoDevWebsite.Cookies;
 using TranslatoDevWebsite.ServiceLoginUser;
-using TranslatoServiceLibrary.X;
 
 namespace TranslatoDevWebsite.Tests_F8197B934C69BA4E812BBBD9ED674
 {

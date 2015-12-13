@@ -1,7 +1,8 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@10.12.2015
+//last_checked: futz@11.12.2015
 
+using ENUM;
 using System;
 using System.Transactions;
 using TranslatoServiceLibrary.DAL;
