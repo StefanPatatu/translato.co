@@ -73,6 +73,7 @@
     <Compile Include="DAL\DbFiles.cs" />
     <Compile Include="DAL\DbJobs.cs" />
     <Compile Include="DAL\DbLanguages.cs" />
+    <Compile Include="DAL\DbLiveTranslations.cs" />
     <Compile Include="DAL\DbSubmissions.cs" />
     <Compile Include="DAL\DbTexts.cs" />
     <Compile Include="DAL\DbUploads.cs" />
@@ -80,10 +81,12 @@
     <Compile Include="DAL\IFiles.cs" />
     <Compile Include="DAL\IJobs.cs" />
     <Compile Include="DAL\ILanguages.cs" />
+    <Compile Include="DAL\ILiveTranslations.cs" />
     <Compile Include="DAL\ISubmissions.cs" />
     <Compile Include="DAL\ITexts.cs" />
     <Compile Include="DAL\IUploads.cs" />
     <Compile Include="DAL\IUsers.cs" />
+    <Compile Include="MODEL\LiveTranslation.cs" />
     <Compile Include="SRV\IServiceInsertJob.cs" />
     <Compile Include="SRV\IServiceInsertSubmission.cs" />
     <Compile Include="SRV\IServiceInsertUpload.cs" />

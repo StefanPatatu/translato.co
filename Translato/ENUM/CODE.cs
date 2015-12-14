@@ -1,6 +1,6 @@
 ﻿//author: futz
 //helpers:
-//last_cheked: futz@13.12.2015
+//last_cheked: futz@14.12.2015
 
 namespace ENUM
 {
@@ -166,7 +166,15 @@ namespace ENUM
         CTRSUBMISSION_INSERTSUBMISSIONFILE_INVALID_UPLOAD = CTRSUBMISSION_INSERTSUBMISSIONFILE + 13,
         CTRSUBMISSION_INSERTSUBMISSIONFILE_INVALID_JOB = CTRSUBMISSION_INSERTSUBMISSIONFILE + 14,
         CTRSUBMISSION_INSERTSUBMISSIONFILE_EXCEPTION = CTRSUBMISSION_INSERTSUBMISSIONFILE + EXCEPTION,
+        //--------------------------------------------------
 
+        //LIVETRANSLATION
+        //--------------------------------------------------
+        //DBLIVETRANSLATIONS
+        DBLIVETRANSLATIONS = XX * 24,
+        //CTRLIVETRANSLATION
+        CTRLIVETRANSLATION = XX * 25,
         //--------------------------------------------------
     }
 }
+                         

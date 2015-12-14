@@ -4,21 +4,21 @@
 	[DateCreated] DATETIMEOFFSET(0) DEFAULT SYSDATETIMEOFFSET() NOT NULL,
 	[ProviderId] INT NOT NULL,
 	[PricePerHour] DECIMAL(13,2) DEFAULT 0 NOT NULL,
-	[Language1] INT NOT NULL,
-	[Language2] INT NOT NULL,
-	[Language3] INT DEFAULT NULL NULL,
-	[Language4] INT DEFAULT NULL NULL,
-	[Language5] INT DEFAULT NULL NULL,
+	[Language1Id] INT NOT NULL,
+	[Language2Id] INT NOT NULL,
+	[Language3Id] INT DEFAULT NULL NULL,
+	[Language4Id] INT DEFAULT NULL NULL,
+	[Language5Id] INT DEFAULT NULL NULL,
 	[DateStarted] DATETIMEOFFSET(0) DEFAULT NULL NULL,
 	[RequesterId] INT DEFAULT NULL NULL,
 	[DateEnded] DATETIMEOFFSET(0) DEFAULT NULL NULL,
 	PRIMARY KEY ([LiveTranslationId]),
 	FOREIGN KEY ([ProviderId]) REFERENCES dbo.[Users]([UserId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	FOREIGN KEY ([Language1]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	FOREIGN KEY ([Language2]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	FOREIGN KEY ([Language3]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	FOREIGN KEY ([Language4]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	FOREIGN KEY ([Language5]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	FOREIGN KEY ([Language1Id]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	FOREIGN KEY ([Language2Id]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	FOREIGN KEY ([Language3Id]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	FOREIGN KEY ([Language4Id]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	FOREIGN KEY ([Language5Id]) REFERENCES dbo.[Languages]([LanguageId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	FOREIGN KEY (RequesterId) REFERENCES dbo.[Users]([UserId]) ON DELETE NO ACTION ON UPDATE NO ACTION,
 	CONSTRAINT CK_LiveTranslations_Meaningful_Dates CHECK (
 		(
@@ -44,43 +44,43 @@
 		)	
 	),
 	CONSTRAINT CK_LiveTranslations_Different_LanguagesIds CHECK (
-		[Language1]	!= [Language2]
+		[Language1Id]	!= [Language2Id]
 		AND
 		(
 			( 
-			[Language2] != [Language3]
+			[Language2Id] != [Language3Id]
 			) 
 			OR
 			( 
-				[Language3] IS NULL
+				[Language3Id] IS NULL
 			) 
 		)
 		AND
 		(
 			(
-			[Language3] != [Language4]
+			[Language3Id] != [Language4Id]
 			)
 			OR
 			(
-				[Language3] IS NOT NULL AND [Language4] IS NULL
+				[Language3Id] IS NOT NULL AND [Language4Id] IS NULL
 			)
 			OR
 			(
-				[Language3] IS NULL AND [Language4] IS NULL
+				[Language3Id] IS NULL AND [Language4Id] IS NULL
 			) 
 		) 
 		AND
 		(
 			(
-			[Language4] != [Language5]
+			[Language4Id] != [Language5Id]
 			)
 			OR
 			(
-				[Language4] IS NOT NULL AND [Language5] IS NULL
+				[Language4Id] IS NOT NULL AND [Language5Id] IS NULL
 			)
 			OR
 			(
-				[Language4] IS NULL AND [Language5] IS NULL
+				[Language4Id] IS NULL AND [Language5Id] IS NULL
 			) 
 		)
 	)
