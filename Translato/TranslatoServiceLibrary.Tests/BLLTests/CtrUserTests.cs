@@ -2,6 +2,7 @@
 //helpers:
 //last_checked: futz@20.11.2015
 
+using ENUM;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TranslatoServiceLibrary.MODEL;
@@ -41,7 +42,8 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
             int result = _CtrUser.insertUser(user_m1);
 
             //assert
-            Assert.AreEqual(1, result, "user not inserted");
+         //   Assert.AreEqual(1, result, "user not inserted");
+            Assert.IsTrue(result>=(int)ENUM.CODE.TRANSLATO_DATABASE_SEED);
         }
 
         [TestMethod]
@@ -49,7 +51,7 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
         public void BLL_CtrUser_findUserById_FindExistingUserById_UserObjectIsReturned()
         {
             //arrange
-            int userId = 17; //change to a valid one before running the test
+            int userId = 1000000; //change to a valid one before running the test
             CtrUser _CtrUser = new CtrUser();
 
             //act

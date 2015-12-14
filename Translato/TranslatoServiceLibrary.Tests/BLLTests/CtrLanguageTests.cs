@@ -2,6 +2,7 @@
 //helpers:
 //last_checked:
 
+using ENUM;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TranslatoServiceLibrary.MODEL;
@@ -30,7 +31,8 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
             int result = _CtrLanguage.insertLanguage(language_m1);
 
             //assert
-            Assert.AreEqual(1, result, "language not inserted");
+           
+            Assert.IsTrue(result >= (int)ENUM.CODE.TRANSLATO_DATABASE_SEED,"language not inserted");
         }
     }
 }

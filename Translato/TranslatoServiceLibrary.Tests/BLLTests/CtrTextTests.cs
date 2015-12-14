@@ -30,7 +30,8 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
             int result = _CtrText.insertText(text_m1);
 
             //assert
-            Assert.AreEqual(1, result, "text not inserted");
+            
+            Assert.IsTrue(result >= (int)ENUM.CODE.TRANSLATO_DATABASE_SEED, "text not inserted");
         }
     }
 }

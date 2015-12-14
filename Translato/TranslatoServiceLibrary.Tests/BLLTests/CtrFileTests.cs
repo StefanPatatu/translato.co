@@ -28,7 +28,8 @@ namespace TranslatoServiceLibrary.Tests.BLLTests
             int result = _CtrFile.insertFile(file_m1);
 
             //assert
-            Assert.AreEqual(1, result, "file not inserted");
+            
+            Assert.IsTrue(result >= (int)ENUM.CODE.TRANSLATO_DATABASE_SEED, "file not inserted");
         }
     }
 }
