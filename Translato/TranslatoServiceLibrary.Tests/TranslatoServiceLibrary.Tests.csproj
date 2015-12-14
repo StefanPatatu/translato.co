@@ -74,6 +74,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ENUM\ENUM.csproj">
+      <Project>{194ee5b3-a9b3-4ba4-b389-35cbe330a2d7}</Project>
+      <Name>ENUM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TranslatoServiceLibrary\TranslatoServiceLibrary.csproj">
       <Project>{93f07356-84e4-4b70-9e84-5d22db638721}</Project>
       <Name>TranslatoServiceLibrary</Name>

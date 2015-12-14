@@ -41,7 +41,8 @@ namespace TranslatoServiceLibrary.Tests.DALTests
             int result = _DbUsers.insertUser(user_m1);
 
             //assert
-            Assert.AreEqual(1, result, "user not inserted into the database");
+            
+            Assert.IsTrue(result >= (int)ENUM.CODE.TRANSLATO_DATABASE_SEED);
         }
     }
 }

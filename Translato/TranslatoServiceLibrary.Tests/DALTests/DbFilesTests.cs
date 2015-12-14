@@ -26,7 +26,8 @@ namespace TranslatoServiceLibrary.Tests.DALTests
             int result = _DbFiles.insertFile(file_m1);
 
             //assert
-            Assert.AreEqual(1, result, "file not inserted into the database");
+
+            Assert.IsTrue(result>=(int)ENUM.CODE.TRANSLATO_DATABASE_SEED, "file not inserted into the database");
         }
     }
 }
