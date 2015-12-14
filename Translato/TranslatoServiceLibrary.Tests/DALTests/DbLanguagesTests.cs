@@ -28,7 +28,7 @@ namespace TranslatoServiceLibrary.Tests.DALTests
             int result = _DbLanguages.insertLanguage(language_m1);
 
             //assert
-            Assert.AreEqual(1, result, "language not inserted into the database");
+            Assert.IsTrue(result>=(int)ENUM.CODE.TRANSLATO_DATABASE_SEED,"language not inserted");
         }
     }
 }

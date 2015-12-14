@@ -28,7 +28,7 @@ namespace TranslatoServiceLibrary.Tests.DALTests
             int result = _DbTexts.insertText(text_m1);
 
             //assert
-            Assert.AreEqual(1, result, "text not inserted into the database");
+                       Assert.IsTrue(result>=(int)ENUM.CODE.TRANSLATO_DATABASE_SEED, "text not inserted into the database");
         }
     }
 }
