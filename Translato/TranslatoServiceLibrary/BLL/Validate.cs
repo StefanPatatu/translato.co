@@ -29,6 +29,13 @@ namespace TranslatoServiceLibrary.BLL
             return regex.IsMatch(stringToCheck);
         }
 
+        //isAlphaNumericWithUnderscoreAndSpaceAndDash: true | false
+        internal static bool isAlphaNumericWithUnderscoreAndSpaceAndDash(string stringToCheck)
+        {
+            Regex regex = new Regex(@"^[a-zA-Z0-9_\- ]*$");
+            return regex.IsMatch(stringToCheck);
+        }
+
         //isAllLetters: true | false
         internal static bool isAllLetters(string stringToCheck)
         {
@@ -50,15 +57,29 @@ namespace TranslatoServiceLibrary.BLL
             else { return false; }
         }
 
-        //isBiggerThan: true | false
-        internal static bool isBiggerThan(int numberToCheck, int minValue)
+        //integerIsBiggerThan: true | false
+        internal static bool integerIsBiggerThan(int numberToCheck, int minValue)
         {
             if (numberToCheck > minValue) { return true; }
             else { return false; }
         }
 
-        //isSmallerThan: true | false
-        internal static bool isSmallerThan(int numberToCheck, int maxValue)
+        //decimalIsBiggerThan: true | false
+        internal static bool decimalIsBiggerThan(decimal numberToCheck, decimal minValue)
+        {
+            if (numberToCheck > minValue) { return true; }
+            else { return false; }
+        }
+
+        //integerIsSmallerThan: true | false
+        internal static bool integerIsSmallerThan(int numberToCheck, int maxValue)
+        {
+            if (numberToCheck < maxValue) { return true; }
+            else { return false; }
+        }
+
+        //decimalIsSmallerThan: true | false
+        internal static bool decimalIsSmallerThan(decimal numberToCheck, decimal maxValue)
         {
             if (numberToCheck < maxValue) { return true; }
             else { return false; }

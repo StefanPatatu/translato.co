@@ -1,6 +1,6 @@
 ﻿//author: adrian
 //helpers: futz
-//last_checked: futz@11.12.2015
+//last_checked: futz@13.12.2015
 
 using ENUM;
 using System;
@@ -27,7 +27,7 @@ namespace TranslatoServiceLibrary.BLL
                 string.IsNullOrWhiteSpace(text.textData) ||
                 !Validate.hasMinLength(text.textData, 1) ||
                 !Validate.hasMaxLength(text.textData, 40000)
-                ) {returnCode = (int)CODE.CTRTEXT_INSERTTEXT_INVALID_TEXTDATA; result = (int)CODE.ZERO; }
+               ) {returnCode = (int)CODE.CTRTEXT_INSERTTEXT_INVALID_TEXTDATA; result = (int)CODE.ZERO; }
             if (returnCode == (int)CODE.ZERO && result != (int)CODE.ZERO)//safe to proceed
             {
                 text.textData = text.textData;
@@ -75,7 +75,7 @@ namespace TranslatoServiceLibrary.BLL
                 result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(textId.ToString()) ||
                 !Validate.isAllNumbers(textId.ToString()) ||
-                !Validate.isBiggerThan(textId, (int)CODE.TRANSLATO_DATABASE_SEED)
+                !Validate.integerIsBiggerThan(textId, (int)CODE.TRANSLATO_DATABASE_SEED - 1)
                ) { result = (int)CODE.ZERO; }
             if (result != (int)CODE.ZERO)//safe to proceed
             {

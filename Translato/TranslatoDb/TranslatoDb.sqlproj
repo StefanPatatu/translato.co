@@ -82,6 +82,7 @@
     <Build Include="dbo.Submissions.sql" />
     <Build Include="dbo.Texts.sql" />
     <Build Include="dbo.Uploads.sql" />
+    <Build Include="dbo.LiveTranslations.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TranlatoDb.refactorlog" />

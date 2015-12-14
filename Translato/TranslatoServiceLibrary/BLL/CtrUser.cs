@@ -116,7 +116,7 @@ namespace TranslatoServiceLibrary.BLL
                 result == (int)CODE.ZERO ||
                 string.IsNullOrWhiteSpace(userId.ToString()) ||
                 !Validate.isAllNumbers(userId.ToString()) ||
-                !Validate.isBiggerThan(userId, (int)CODE.TRANSLATO_DATABASE_SEED)
+                !Validate.integerIsBiggerThan(userId, (int)CODE.TRANSLATO_DATABASE_SEED - 1)
                ) { result = (int)CODE.ZERO; }
             if (result != (int)CODE.ZERO)//safe to proceed
             {

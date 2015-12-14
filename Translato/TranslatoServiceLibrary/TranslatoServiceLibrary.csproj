@@ -84,6 +84,12 @@
     <Compile Include="DAL\ITexts.cs" />
     <Compile Include="DAL\IUploads.cs" />
     <Compile Include="DAL\IUsers.cs" />
+    <Compile Include="SRV\IServiceInsertJob.cs" />
+    <Compile Include="SRV\IServiceInsertSubmission.cs" />
+    <Compile Include="SRV\IServiceInsertUpload.cs" />
+    <Compile Include="SRV\ServiceInsertJob.cs" />
+    <Compile Include="SRV\ServiceInsertSubmission.cs" />
+    <Compile Include="SRV\ServiceInsertUpload.cs" />
     <Compile Include="X\Log.cs" />
     <Compile Include="MODEL\File.cs" />
     <Compile Include="MODEL\Job.cs" />

@@ -132,5 +132,54 @@ namespace TranslatoServiceLibrary.BLL
             else { }
             return returnCode;
         }
+
+        //returns "MODEL.Upload" object if successful/found
+        //returns "null" if not
+        internal Upload findUploadByUploadId(int uploadId)
+        {
+            int result = (int)CODE.MINUS_ONE;
+            Upload upload = null;
+
+            //validate uploadId
+            if (
+                result == (int)CODE.ZERO ||
+                string.IsNullOrWhiteSpace(uploadId.ToString()) ||
+                !Validate.isAllNumbers(uploadId.ToString()) ||
+                !Validate.integerIsBiggerThan(uploadId, (int)CODE.TRANSLATO_DATABASE_SEED - 1)
+               ) { result = (int)CODE.ZERO; }
+            if (result != (int)CODE.ZERO)//safe to proceed
+            {
+                IUploads _DbUploads = new DbUploads();
+
+                try
+                {
+                    using (var trScope = TransactionScopeBuilder.CreateSerializable())
+                    {
+                        upload = _DbUploads.findUploadByUploadId(uploadId);
+
+                        trScope.Complete();
+                    }
+                }
+                catch (TransactionAbortedException taEx)
+                {
+                    result = (int)CODE.ZERO;
+                    Log.Add(taEx.ToString());
+                }
+                catch (ApplicationException aEx)
+                {
+                    result = (int)CODE.ZERO;
+                    Log.Add(aEx.ToString());
+                }
+                catch (Exception ex)
+                {
+                    result = (int)CODE.ZERO;
+                    Log.Add(ex.ToString());
+                }
+            }
+            else { result = (int)CODE.ZERO; }
+
+            if (result == (int)CODE.ZERO || upload == null) { return null; }
+            else { return upload; }
+        }
     }
 }
