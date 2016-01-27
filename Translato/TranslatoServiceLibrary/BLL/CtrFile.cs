@@ -1,6 +1,7 @@
 ﻿//author: adrian
 //helpers: futz
 //last_checked: futz@13.12.2015
+//talked about with Alex
 
 using ENUM;
 using System;

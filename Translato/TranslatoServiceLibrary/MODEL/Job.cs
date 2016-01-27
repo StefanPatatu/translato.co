@@ -1,6 +1,7 @@
 ﻿//author: adrian
 //helpers: DarkSun, futz
 //last_checked: futz@10.12.2015
+//talked about with Alex
 
 using System;
 using System.Runtime.Serialization;

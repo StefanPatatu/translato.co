@@ -1,6 +1,7 @@
 ﻿//author: adrian
 //helpers: futz
 //last_checked: futz@10.12.2015
+//talked about with Alex
 
 using System.Collections.Generic;
 using TranslatoServiceLibrary.MODEL;

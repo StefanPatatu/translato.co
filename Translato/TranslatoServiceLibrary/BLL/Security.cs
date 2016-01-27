@@ -1,6 +1,7 @@
 ﻿//author: futz
 //helpers:
 //last_checked: futz@05.12.2015
+//talked about with Alex
 
 using System;
 using System.Collections.Generic;
